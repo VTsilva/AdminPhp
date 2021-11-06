@@ -1,5 +1,2 @@
 <?php
-
-$conexao =  mysqli_connect('sql10.freemysqlhosting.net', 'sql10372006', 'gmy6HYrmjt', 'sql10372006', '3306');
-
-?>
+$conexao =  mysqli_connect('localhost', 'root', 'vs521733', 'bd_vulcar', '3308');
