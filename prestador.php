@@ -29,31 +29,6 @@ include('funcoes.php');
             <li><a href="index.php">Sair</a></li>
         </ul>
     </div>
-
-    <?php
-
-        listarPrestador($conexao);
-
-        if ($nrows > 0) {
-            do {
-    ?>
-            <p> 
-                <?=$rows['id']> . "/" .
-                <?=$rows['nome']> . "/" .
-                <?=$rows['cpnj']> "/"   
-                <?=$rows['email']> "/"
-                <?=$rows['tel']> "/"
-                <?=$rows['senha']> "/"
-                <?=$rows['cep']> "/"
-                <?=$rows['status']> "/"
-                <?=$rows['img']> "/"
-            </p>
-    <?php
-            }
-        }else{
-        
-        }
-    ?>
 </body>
 
 </html>
