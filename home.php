@@ -15,9 +15,14 @@
     <div class="div">
         <ul class="menu">
             <li><a href="home.php" style="box-shadow: 0 -5px 0 #38d38f;">Home</a></li>
-            <li><a href="cliente.php">Clientes</a></li>
-            <li><img src="img/logo.png" style="width: 100px; padding-top:4px; position: center center;display: table;">
-            <li><a href="prestador.php">Prestadores</a>
+            <li><a href="./Cliente/cliente.php">Clientes</a></li>
+            <li><img src="./img/logo.png" style="width: 100px; padding-top:4px; position: center center;display: table;">
+            <li><a href="./Prestador/prestador.php">Prestadores</a>
+                <ul class="sub-menu">
+                    <li><a href="./Prestador/ativos.php">Prestadores Ativos</a></li>
+                    <li><a href="./Prestador/analise.php">Prestadores para Análise</a></li>
+                    <li><a href="./Prestador/recusados.php">Prestadores Recusadas</a></li>
+                </ul>
             </li>
             <li><a href="index.php">Sair</a></li>
         </ul>

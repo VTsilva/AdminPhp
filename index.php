@@ -46,7 +46,7 @@
 
                 <!-- CADASTRO -->
 
-                <form class="form" action="verificaUser.php" method="POST">
+                <form class="form" action="./php/verificaUser.php" method="POST">
                     <label class="label-input">
                         <i class="far fa-user icon-modify"></i>
 
@@ -109,7 +109,7 @@
 
                 <!-- LOGIN -->
 
-                <form class="form" action="verificaUser.php" method="POST">
+                <form class="form" action="./php/verificaUser.php" method="POST">
                     <label class="label-input">
                         <i class="far fa-envelope icon-modify"></i>
 
