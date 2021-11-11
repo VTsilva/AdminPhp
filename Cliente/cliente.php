@@ -16,6 +16,7 @@ $clientes = listarCliente($conexao);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="../css/estilo.css">
+    <link rel="stylesheet" href="../css/table.css">
 
     <title>CLIENTES VULCAR</title>
 </head>
@@ -23,9 +24,9 @@ $clientes = listarCliente($conexao);
 <body>
     <div class="div">
         <ul class="menu">
-            <li><a href="../home.php" style="box-shadow: 0 -5px 0 #38d38f;">Home</a></li>
+            <li><a href="../home.php">Home</a></li>
             <li><a href="cliente.php">Clientes</a></li>
-            <li><img src="../img/logo.png" style="width: 100px; padding-top:4px; position: center center;display: table;">
+            <li><img src="../img/carro.png">
             <li><a href="../Prestador/prestador.php">Prestadores</a>
                 <ul class="sub-menu">
                     <li><a href="../Prestador/ativos.php">Prestadores Ativos</a></li>
@@ -33,36 +34,40 @@ $clientes = listarCliente($conexao);
                     <li><a href="../Prestador/recusados.php">Prestadores Recusadas</a></li>
                 </ul>
             </li>
-            <li><a href="index.php">Sair</a></li>
+            <li><a href="../index.php">Sair</a></li>
         </ul>
     </div>
 
-    <h3>Quantidade de Cliente Cadastrados: <?php echo implode(",", $num); ?> </h3>
+    <section class="section-table">
+        <div class="quadro">
+            <div>
+                <h3>Quantidade de Cliente Cadastrados: <?php echo implode(",", $num); ?> </h3>
+            </div>
 
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>NOME</th>
+                    <th>CPF</th>
+                    <th>TEL</th>
+                    <th>STATUS</th>
+                </tr>
 
+                <?php foreach ($clientes as $cliente) : ?>
 
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>NOME</th>
-            <th>CPF</th>
-            <th>TEL</th>
-            <th>STATUS</th>
-        </tr>
+                    <tr>
+                        <td> <?php echo $cliente['id']; ?> </td>
+                        <td> <?php echo $cliente['nome']; ?> </td>
+                        <td> <?php echo $cliente['cpf']; ?> </td>
+                        <td> <?php echo $cliente['tel']; ?> </td>
+                        <td> <?php echo $cliente['status']; ?> </td>
+                    </tr>
 
-        <?php foreach ($clientes as $cliente) : ?>
+                <?php endforeach; ?>
 
-            <tr>
-                <td> <?php echo $cliente['id']; ?> </td>
-                <td> <?php echo $cliente['nome']; ?> </td>
-                <td> <?php echo $cliente['cpf']; ?> </td>
-                <td> <?php echo $cliente['tel']; ?> </td>
-                <td> <?php echo $cliente['status']; ?> </td>
-            </tr>
-
-        <?php endforeach; ?>
-
-    </table>
+            </table>
+        </div>
+    </section>
 
 
 </body>

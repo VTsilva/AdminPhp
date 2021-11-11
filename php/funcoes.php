@@ -125,3 +125,100 @@ function prestAtivos($conexao)
 
     return $ativos;
 }
+
+
+function contarAnalise($conexao)
+{
+    $sql = "
+            select count(tb_loja_id)
+            from tb_loja
+            inner join tb_status
+            on tb_status.tb_status_id = tb_loja.tb_status_id
+            where tb_status.tb_status_nome = 'em analise';";
+
+    $query = mysqli_query($conexao, $sql);
+
+    $nAnalise = mysqli_fetch_assoc($query);
+
+    return $nAnalise;
+}
+
+function prestAnalise($conexao)
+{
+    $analises = array();
+    $sql =
+        "select tb_loja.tb_loja_id as 'id',
+	        tb_loja.tb_loja_nome as 'nome',
+            tb_loja.tb_loja_cnpj as 'cnpj',
+            tb_loja.tb_loja_email as 'email',
+            tb_loja.tb_loja_tel as 'tel',
+            tb_loja.tb_loja_cep as 'cep',
+            tb_status.tb_status_nome as 'status',
+            tb_loja.tb_loja_img as 'img'
+        from tb_loja
+        inner join tb_status
+        on tb_status.tb_status_id = tb_loja.tb_status_id
+        where tb_status.tb_status_nome = 'em analise';";
+
+    $query = mysqli_query($conexao, $sql);
+
+    while ($analise = mysqli_fetch_assoc($query)) {
+        array_push($analises, $analise);
+    }
+
+    return $analises;
+}
+
+function contarRecusados($conexao)
+{
+    $sql = "
+            select count(tb_loja_id)
+            from tb_loja
+            inner join tb_status
+            on tb_status.tb_status_id = tb_loja.tb_status_id
+            where tb_status.tb_status_nome = 'recusado';";
+
+    $query = mysqli_query($conexao, $sql);
+
+    $nRecusado = mysqli_fetch_assoc($query);
+
+    return $nRecusado;
+}
+
+function prestRecusado($conexao)
+{
+    $recusados = array();
+    $sql =
+        "select tb_loja.tb_loja_id as 'id',
+	        tb_loja.tb_loja_nome as 'nome',
+            tb_loja.tb_loja_cnpj as 'cnpj',
+            tb_loja.tb_loja_email as 'email',
+            tb_loja.tb_loja_tel as 'tel',
+            tb_loja.tb_loja_cep as 'cep',
+            tb_status.tb_status_nome as 'status',
+            tb_loja.tb_loja_img as 'img'
+        from tb_loja
+        inner join tb_status
+        on tb_status.tb_status_id = tb_loja.tb_status_id
+        where tb_status.tb_status_nome = 'recusado';";
+
+    $query = mysqli_query($conexao, $sql);
+
+    while ($recusado = mysqli_fetch_assoc($query)) {
+        array_push($recusados, $recusado);
+    }
+
+    return $recusados;
+}
+
+function aceitarPrest($conexao, $id)
+{
+
+    $sql = "update tb_loja
+            set tb_status_id = 1
+            where tb_loja_id = '$id';";
+
+    $query = mysqli_query($conexao, $sql);
+
+    return "Prestador aceito com sucesso. <a href='../Prestador/analise.php'>Voltar</a>";
+}
