@@ -176,7 +176,7 @@ function contarRecusados($conexao)
             from tb_loja
             inner join tb_status
             on tb_status.tb_status_id = tb_loja.tb_status_id
-            where tb_status.tb_status_nome = 'recusado';";
+            where not tb_status.tb_status_nome = 'aceito' and not tb_status.tb_status_nome = 'em análise';";
 
     $query = mysqli_query($conexao, $sql);
 
@@ -200,7 +200,7 @@ function prestRecusado($conexao)
         from tb_loja
         inner join tb_status
         on tb_status.tb_status_id = tb_loja.tb_status_id
-        where tb_status.tb_status_nome = 'recusado';";
+        where not tb_status.tb_status_nome = 'aceito' and not tb_status.tb_status_nome = 'em análise';";
 
     $query = mysqli_query($conexao, $sql);
 
@@ -220,5 +220,77 @@ function aceitarPrest($conexao, $id)
 
     $query = mysqli_query($conexao, $sql);
 
-    return "Prestador aceito com sucesso. <a href='../Prestador/analise.php'>Voltar</a>";
+    echo "Prestador aceito com sucesso. <a href='javascript:history.back()'>Voltar</a>";
+}
+
+function recusarPrest($conexao, $id)
+{
+
+    $sql = "update tb_loja
+            set tb_status_id = 2
+            where tb_loja_id = '$id';";
+
+    $query = mysqli_query($conexao, $sql);
+
+    echo "Prestador recusado com sucesso. <a href='javascript:history.back()'>Voltar</a>";
+}
+
+function banirPrest($conexao, $id)
+{
+
+    $sql = "update tb_loja
+            set tb_status_id = 5
+            where tb_loja_id = '$id';";
+
+    $query = mysqli_query($conexao, $sql);
+
+    echo "Prestador banido com sucesso. <a href='javascript:history.back()'>Voltar</a>";
+}
+
+function desbanirPrest($conexao, $id)
+{
+    $sql = "update tb_loja
+            set tb_status_id = 1
+            where tb_loja_id = '$id';";
+
+    $query = mysqli_query($conexao, $sql);
+
+    echo "Prestador desbanido com sucesso. <a href='javascript:history.back()'>Voltar</a>";
+}
+
+function contarBanido($conexao)
+{
+    $sql = "select count(tb_cliente_id)
+            from tb_cliente
+            inner join tb_status
+            on tb_status.tb_status_id = tb_cliente.tb_status_id
+            where tb_status.tb_status_nome = 'banido';";
+
+    $query = mysqli_query($conexao, $sql);
+
+    $num = mysqli_fetch_assoc($query);
+
+    return $num;
+}
+
+function clienteBanido($conexao)
+{
+    $clientes = array();
+    $sql = "select tb_cliente.tb_cliente_id as 'id',
+	            tb_cliente.tb_cliente_nome as 'nome',
+                tb_cliente.tb_cliente_cpf as 'cpf',
+                tb_cliente.tb_cliente_tel as 'tel',
+                tb_status.tb_status_nome as 'status'
+            from tb_cliente
+            inner join tb_status
+            on tb_status.tb_status_id = tb_cliente.tb_status_id
+            where tb_status.tb_status_nome = 'banido';";
+
+    $query = mysqli_query($conexao, $sql);
+
+    while ($cliente = mysqli_fetch_assoc($query)) {
+        array_push($clientes, $cliente);
+    }
+
+    return $clientes;
 }

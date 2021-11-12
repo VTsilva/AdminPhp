@@ -2,8 +2,8 @@
 include('../php/conexao.php');
 include('../php/funcoes.php');
 
-$num = contarCliente($conexao);
-$clientes = listarCliente($conexao);
+$num = contarBanido($conexao);
+$clientes = clienteBanido($conexao);
 
 ?>
 
@@ -27,8 +27,7 @@ $clientes = listarCliente($conexao);
             <li><a href="../home.php">Home</a></li>
             <li><a href="cliente.php">Clientes</a>
                 <ul class="sub-menu">
-                    <li><a href="ativos.php">Ativos</a></li>
-                    <li><a href="banidos.php">Banidos</a></li>
+                    <li><a href="../Cliente/banidos.php">Banidos</a></li>
                 </ul>
             </li>
             <li><img src="../img/carro.png">
@@ -46,7 +45,7 @@ $clientes = listarCliente($conexao);
     <section class="section-table">
         <div class="quadro">
             <div>
-                <h3>Quantidade de Cliente Cadastrados: <?php echo implode(",", $num); ?> </h3>
+                <h3>Quantidade de Cliente Banidos: <?php echo implode(",", $num); ?> </h3>
             </div>
 
             <table class="table">

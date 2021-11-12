@@ -25,7 +25,11 @@ $prestadores = listarPrestador($conexao);
     <div class="div">
         <ul class="menu">
             <li><a href="../home.php">Home</a></li>
-            <li><a href="../Cliente/cliente.php">Clientes</a></li>
+            <li><a href="../Cliente/cliente.php">Clientes</a>
+                <ul class="sub-menu">
+                    <li><a href="../Cliente/banidos.php">Banidos</a></li>
+                </ul>
+            </li>
             <li><img src="../img/logo.png" style="width: 100px; padding-top:4px; position: center center;display: table;">
             <li><a href="./prestador.php" style="box-shadow: 0 -5px 0 #2F343D;">Prestadores</a>
                 <ul class=" sub-menu">

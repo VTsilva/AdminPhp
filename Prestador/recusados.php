@@ -25,7 +25,11 @@ $recusados = prestRecusado($conexao);
     <div class="div">
         <ul class="menu">
             <li><a href="../home.php">Home</a></li>
-            <li><a href="../Cliente/cliente.php">Clientes</a></li>
+            <li><a href="../Cliente/cliente.php">Clientes</a>
+                <ul class="sub-menu">
+                    <li><a href="../Cliente/banidos.php">Banidos</a></li>
+                </ul>
+            </li>
             <li><img src="../img/logo.png" style="width: 100px; padding-top:4px; position: center center;display: table;">
             <li><a href="prestador.php" style="box-shadow: 0 -5px 0 #2F343D;">Prestadores</a>
                 <ul class="sub-menu">
@@ -41,7 +45,7 @@ $recusados = prestRecusado($conexao);
     <section class="section-table">
         <div class="quadro">
             <div>
-                <h3>Quantidade de Prestadores Ativos Cadastrados: <?php echo implode(",", $nRecusado); ?> </h3>
+                <h3>Quantidade de Prestadores Inativos: <?php echo implode(",", $nRecusado); ?> </h3>
             </div>
 
             <table class="table">
@@ -59,14 +63,18 @@ $recusados = prestRecusado($conexao);
                 <?php foreach ($recusados as $recusado) : ?>
 
                     <tr>
-                        <td> <?php echo $recusado['id']; ?> </td>
-                        <td> <?php echo $recusado['nome']; ?> </td>
-                        <td> <?php echo $recusado['cnpj']; ?> </td>
-                        <td> <?php echo $recusado['email']; ?> </td>
-                        <td> <?php echo $recusado['tel']; ?> </td>
-                        <td> <?php echo $recusado['cep']; ?> </td>
-                        <td> <?php echo $recusado['status']; ?> </td>
-                        <td> <?php echo $recusado['img']; ?> </td>
+                        <form action="../php/verificacao.php" method="post">
+                            <td> <input type="text" name="id" value="<?php echo $recusado['id']; ?>"></td>
+                            <td> <?php echo $recusado['nome']; ?> </td>
+                            <td> <?php echo $recusado['cnpj']; ?> </td>
+                            <td> <?php echo $recusado['email']; ?> </td>
+                            <td> <?php echo $recusado['tel']; ?> </td>
+                            <td> <?php echo $recusado['cep']; ?> </td>
+                            <td> <?php echo $recusado['status']; ?> </td>
+                            <td> <?php echo $recusado['img']; ?> </td>
+
+                            <td> <button type="submit" name="btn-desbanirP">Desbanir</button> </td>
+                        </form>
                     </tr>
 
                 <?php endforeach; ?>

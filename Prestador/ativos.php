@@ -5,6 +5,7 @@ include('../php/funcoes.php');
 $nAtivos = contarAtivos($conexao);
 $ativos = prestAtivos($conexao);
 
+
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +26,11 @@ $ativos = prestAtivos($conexao);
     <div class="div">
         <ul class="menu">
             <li><a href="../home.php" style="box-shadow: 0 -5px 0 #2F343D;">Home</a></li>
-            <li><a href="../Cliente/cliente.php">Clientes</a></li>
+            <li><a href="../Cliente/cliente.php">Clientes</a>
+                <ul class="sub-menu">
+                    <li><a href="../Cliente/banidos.php">Banidos</a></li>
+                </ul>
+            </li>
             <li><img src="../img/logo.png" style="width: 100px; padding-top:4px; position: center center;display: table;">
             <li><a href="prestador.php">Prestadores</a>
                 <ul class="sub-menu">
@@ -59,14 +64,18 @@ $ativos = prestAtivos($conexao);
                 <?php foreach ($ativos as $ativo) : ?>
 
                     <tr>
-                        <td> <?php echo $ativo['id']; ?> </td>
-                        <td> <?php echo $ativo['nome']; ?> </td>
-                        <td> <?php echo $ativo['cnpj']; ?> </td>
-                        <td> <?php echo $ativo['email']; ?> </td>
-                        <td> <?php echo $ativo['tel']; ?> </td>
-                        <td> <?php echo $ativo['cep']; ?> </td>
-                        <td> <?php echo $ativo['status']; ?> </td>
-                        <td> <?php echo $ativo['img']; ?> </td>
+                        <form action="../php/verificacao.php" method="post">
+                            <td> <input type="text" name="id" value="<?php echo $ativo['id']; ?>"></td>
+                            <td> <?php echo $ativo['nome']; ?> </td>
+                            <td> <?php echo $ativo['cnpj']; ?> </td>
+                            <td> <?php echo $ativo['email']; ?> </td>
+                            <td> <?php echo $ativo['tel']; ?> </td>
+                            <td> <?php echo $ativo['cep']; ?> </td>
+                            <td> <?php echo $ativo['status']; ?> </td>
+                            <td> <?php echo $ativo['img']; ?> </td>
+
+                            <td> <button type="submit" name="btn-banirP">Banir</button> </td>
+                        </form>
                     </tr>
 
                 <?php endforeach; ?>

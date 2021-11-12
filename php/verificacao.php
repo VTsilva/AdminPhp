@@ -10,8 +10,26 @@ if (isset($_POST['btn-login'])) {
     logup($conexao, $login, $password);
 }
 
-if (isset($_POST['btn-aceitar'])) {
+if (isset($_POST['btn-aceitarP'])) {
     $id = mysqli_escape_string($conexao, $_POST['id']);
 
     aceitarPrest($conexao, $id);
+}
+
+if (isset($_POST['btn-recusarP'])) {
+    $id = mysqli_escape_string($conexao, $_POST['id']);
+
+    recusarPrest($conexao, $id);
+}
+
+if (isset($_POST['btn-banirP'])) {
+    $id = mysqli_escape_string($conexao, $_POST['id']);
+
+    banirPrest($conexao, $id);
+}
+
+if (isset($_POST['btn-desbanirP'])) {
+    $id = mysqli_escape_string($conexao, $_POST['id']);
+
+    desbanirPrest($conexao, $id);
 }

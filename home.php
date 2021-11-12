@@ -15,7 +15,11 @@
     <div class="div">
         <ul class="menu">
             <li><a href="./home.php">Home</a></li>
-            <li><a href="./Cliente/cliente.php">Clientes</a></li>
+            <li><a href="./Cliente/cliente.php">Clientes</a>
+                <ul class="sub-menu">
+                    <li><a href="./Cliente/banidos.php">Banidos</a></li>
+                </ul>
+            </li>
             <li><img src="./img/carro.png" class="img-logo">
             <li><a href="./Prestador/prestador.php">Prestadores</a>
                 <ul class="sub-menu">
