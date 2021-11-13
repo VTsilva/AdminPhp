@@ -10,7 +10,7 @@
         <title>VULCAR ADM</title>
     </head>
     <body>
-        <section>
+        <section class="section-login">
             <form action="./php/verificacao.php" method="post" id="form" class="container">
                 <img src="img/car.svg" alt="">
                 <input type="text" name="login" placeholder="Usuário" autocomplete="off">
