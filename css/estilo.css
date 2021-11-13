@@ -17,7 +17,6 @@ body {
    	justify-content: center;
 }
 
-
 .menu {
 	margin: 30px;
 	padding: 2px;
@@ -34,14 +33,11 @@ body {
 
 .menu li {
 	position: relative;
-
-
 }
 
 .menu > li {
 	float: left;
 	list-style: none;
-
 }
 
 .menu a {
