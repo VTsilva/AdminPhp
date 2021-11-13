@@ -1,6 +1,6 @@
 <?php
 include('../php/conexao.php');
-include('../php/funcoes.php');
+include('../php/funcoesCli.php');
 
 $num = contarBanido($conexao);
 $clientes = clienteBanido($conexao);
@@ -36,6 +36,7 @@ $clientes = clienteBanido($conexao);
                     <li><a href="../Prestador/ativos.php">Prestadores Ativos</a></li>
                     <li><a href="../Prestador/analise.php">Prestadores para Análise</a></li>
                     <li><a href="../Prestador/recusados.php">Prestadores Recusadas</a></li>
+                    <li><a href="../Prestador/banidos.php">Banidos</a></li>
                 </ul>
             </li>
             <li><a href="../index.php">Sair</a></li>

@@ -1,14 +1,14 @@
 <?php
 include('../php/conexao.php');
-include('../php/funcoes.php');
+include('../php/funcoesPrest.php');
 
-$num = contarPrestador($conexao);
+$nPrestadores = contarPrestador($conexao);
 $prestadores = listarPrestador($conexao);
 
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -36,6 +36,7 @@ $prestadores = listarPrestador($conexao);
                     <li><a href="./ativos.php">Prestadores Ativos</a></li>
                     <li><a href="./analise.php">Prestadores para Análise</a></li>
                     <li><a href="./recusados.php">Prestadores Recusadas</a></li>
+                    <li><a href="banidos.php">Banidos</a></li>
                 </ul>
             </li>
             <li><a href="../index.php">Sair</a></li>
@@ -45,7 +46,17 @@ $prestadores = listarPrestador($conexao);
     <section class="section-table">
         <div class="quadro">
             <div>
-                <h3>Quantidade de Prestadores Cadastrados: <?php echo implode(",", $num); ?> </h3>
+                <h3>Quantidade de Prestadores Cadastrados: <?php echo implode(",", $nPrestadores); ?> </h3>
+
+                <form action="" method="get">
+                    <select name="selectB">
+                        <option value="idB"> Por id</option>
+                        <option value="nomeB"> Por nome</option>
+                        <option value="cnpjB"> Por cnpj</option>
+                    </select>
+                    <?php ?>
+
+                </form>
             </div>
             <table class="table">
                 <tr>
@@ -62,14 +73,18 @@ $prestadores = listarPrestador($conexao);
                 <?php foreach ($prestadores as $prestador) : ?>
 
                     <tr>
-                        <td> <?php echo $prestador['id']; ?> </td>
-                        <td> <?php echo $prestador['nome']; ?> </td>
-                        <td> <?php echo $prestador['cnpj']; ?> </td>
-                        <td> <?php echo $prestador['email']; ?> </td>
-                        <td> <?php echo $prestador['tel']; ?> </td>
-                        <td> <?php echo $prestador['cep']; ?> </td>
-                        <td> <?php echo $prestador['status']; ?> </td>
-                        <td> <?php echo $prestador['img']; ?> </td>
+                        <form action="verPrest.php" method="post">
+                            <td> <input type="text" name="id" value="<?php echo $prestador['id']; ?>"></td>
+                            <td> <?php echo $prestador['nome']; ?> </td>
+                            <td> <?php echo $prestador['cnpj']; ?> </td>
+                            <td> <?php echo $prestador['email']; ?> </td>
+                            <td> <?php echo $prestador['tel']; ?> </td>
+                            <td> <?php echo $prestador['cep']; ?> </td>
+                            <td> <?php echo $prestador['status']; ?> </td>
+                            <td> <?php echo $prestador['img']; ?> </td>
+
+                            <td> <button type="submit" name="btn-verP">Ver</button> </td>
+                        </form>
                     </tr>
 
                 <?php endforeach; ?>

@@ -1,8 +1,8 @@
 <?php
 include('../php/conexao.php');
-include('../php/funcoes.php');
+include('../php/funcoesPrest.php');
 
-$nAnalise = contarAnalise($conexao);
+$nAnalises = contarAnalise($conexao);
 $analises = prestAnalise($conexao);
 
 ?>
@@ -36,6 +36,7 @@ $analises = prestAnalise($conexao);
                     <li><a href="ativos.php">Prestadores Ativos</a></li>
                     <li><a href="analise.php">Prestadores para Análise</a></li>
                     <li><a href="recusados.php">Prestadores Recusadas</a></li>
+                    <li><a href="banidos.php">Banidos</a></li>
                 </ul>
             </li>
             <li><a href="../index.php">Sair</a></li>
@@ -45,7 +46,7 @@ $analises = prestAnalise($conexao);
     <section class="section-table">
         <div class="quadro">
             <div>
-                <h3>Quantidade de Prestadores Em Análise: <?php echo implode(",", $nAnalise); ?> </h3>
+                <h3>Quantidade de Prestadores Em Análise: <?php echo implode(",", $nAnalises); ?> </h3>
             </div>
 
             <table class="table">

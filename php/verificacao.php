@@ -2,6 +2,9 @@
 
 include('conexao.php');
 include('funcoes.php');
+include('funcoesPrest.php');
+include('funcoesCli.php');
+
 
 if (isset($_POST['btn-login'])) {
     $login = mysqli_escape_string($conexao, $_POST['login']);
@@ -32,4 +35,10 @@ if (isset($_POST['btn-desbanirP'])) {
     $id = mysqli_escape_string($conexao, $_POST['id']);
 
     desbanirPrest($conexao, $id);
+}
+
+if (isset($_POST['btn-verP'])) {
+    $id = mysqli_escape_string($conexao, $_POST['id']);
+
+    verPrestador($conexao, $id);
 }

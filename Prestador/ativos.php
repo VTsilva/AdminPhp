@@ -1,6 +1,6 @@
 <?php
 include('../php/conexao.php');
-include('../php/funcoes.php');
+include('../php/funcoesPrest.php');
 
 $nAtivos = contarAtivos($conexao);
 $ativos = prestAtivos($conexao);
@@ -9,7 +9,7 @@ $ativos = prestAtivos($conexao);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -37,6 +37,7 @@ $ativos = prestAtivos($conexao);
                     <li><a href="ativos.php">Prestadores Ativos</a></li>
                     <li><a href="analise.php">Prestadores para Análise</a></li>
                     <li><a href="recusados.php">Prestadores Recusadas</a></li>
+                    <li><a href="banidos.php">Banidos</a></li>
                 </ul>
             </li>
             <li><a href="../index.php">Sair</a></li>

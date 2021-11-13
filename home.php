@@ -26,6 +26,7 @@
                     <li><a href="./Prestador/ativos.php">Ativos</a></li>
                     <li><a href="./Prestador/analise.php">Para Análise</a></li>
                     <li><a href="./Prestador/recusados.php">Recusadas</a></li>
+                    <li><a href="./Prestador/banidos.php">Banidos</a></li>
                 </ul>
             </li>
             <li><a href="./index.php">Sair</a></li>

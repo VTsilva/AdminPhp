@@ -2,8 +2,8 @@
 include('../php/conexao.php');
 include('../php/funcoesPrest.php');
 
-$nRecusados = contarRecusados($conexao);
-$recusados = prestRecusado($conexao);
+$nBanidos = contarBanidos($conexao);
+$banidos = prestBanidos($conexao);
 
 ?>
 
@@ -18,7 +18,7 @@ $recusados = prestRecusado($conexao);
     <link rel="stylesheet" href="../css/estilo.css">
     <link rel="stylesheet" href="../css/table.css">
 
-    <title>PRESTADOR VULCAR RECUSADOS</title>
+    <title>PRESTADOR VULCAR BANIDOS</title>
 </head>
 
 <body>
@@ -46,7 +46,7 @@ $recusados = prestRecusado($conexao);
     <section class="section-table">
         <div class="quadro">
             <div>
-                <h3>Quantidade de Prestadores Inativos: <?php echo implode(",", $nRecusados); ?> </h3>
+                <h3>Quantidade de Prestadores Banidos: <?php echo implode(",", $nBanidos); ?> </h3>
             </div>
 
             <table class="table">
@@ -61,18 +61,18 @@ $recusados = prestRecusado($conexao);
                     <th>IMG</th>
                 </tr>
 
-                <?php foreach ($recusados as $recusado) : ?>
+                <?php foreach ($banidos as $banido) : ?>
 
                     <tr>
                         <form action="../php/verificacao.php" method="post">
-                            <td> <input type="text" name="id" value="<?php echo $recusado['id']; ?>"></td>
-                            <td> <?php echo $recusado['nome']; ?> </td>
-                            <td> <?php echo $recusado['cnpj']; ?> </td>
-                            <td> <?php echo $recusado['email']; ?> </td>
-                            <td> <?php echo $recusado['tel']; ?> </td>
-                            <td> <?php echo $recusado['cep']; ?> </td>
-                            <td> <?php echo $recusado['status']; ?> </td>
-                            <td> <?php echo $recusado['img']; ?> </td>
+                            <td> <input type="text" name="id" value="<?php echo $banido['id']; ?>"></td>
+                            <td> <?php echo $banido['nome']; ?> </td>
+                            <td> <?php echo $banido['cnpj']; ?> </td>
+                            <td> <?php echo $banido['email']; ?> </td>
+                            <td> <?php echo $banido['tel']; ?> </td>
+                            <td> <?php echo $banido['cep']; ?> </td>
+                            <td> <?php echo $banido['status']; ?> </td>
+                            <td> <?php echo $banido['img']; ?> </td>
 
                             <td> <button type="submit" name="btn-desbanirP">Desbanir</button> </td>
                         </form>
