@@ -1,9 +1,9 @@
 <?php
     include('../php/conexao.php');
-    include('../php/funcoesPrest.php');
+    include('../php/funcoesCli.php');
 
-    $nAtivos = contarAtivos($conexao);
-    $ativos = prestAtivos($conexao);
+    $num = contarBanido($conexao);
+    $clientes = clienteBanido($conexao);
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="../css/styles.css">
         <link rel="stylesheet" href="../css/table.css">
 
-        <title>Prestadores Ativos</title>
+        <title>Clientes Ativos</title>
     </head>
     <body>
         <div class="sidebar close">
@@ -37,32 +37,32 @@
                 </li>
                 <li>
                     <div class="icon-link">
-                        <a href="./../clientes/cliente.php">
+                        <a href="cliente.php">
                             <span class="icon"><img src="./../img/ic-cliente.png" alt=""></span>
                             <span class="link-name">Clientes</span>
                         </a>
                         <span class="material-icons icon seta">expand_more</span>  
                     </div>
                     <ul class="sub-menu">
-                        <li><a class="link-name" href="./../clientes/cliente.php">Clientes</a></li>
-                        <li><a href="./../clientes/ativos.php">Ativos</a></li>
-                        <li><a href="./../clientes/banidos.php">Banidos</a></li>
+                        <li><a class="link-name" href="cliente.php">Clientes</a></li>
+                        <li><a href="ativos.php">Ativos</a></li>
+                        <li><a href="banidos.php">Banidos</a></li>
                     </ul>
                 </li>
                 <li>
                     <div class="icon-link">
-                        <a href="prestador.php">
+                        <a href="./../prestadores/prestador.php">
                             <span class="icon"><img src="./../img/ic-prestador.png" alt=""></span>
                             <span class="link-name">Prestadores</span>
                         </a>
                         <span class="material-icons icon seta">expand_more</span>  
                     </div>
                     <ul class="sub-menu">
-                        <li><a class="link-name" href="prestador.php">Prestadores</a></li>
-                        <li><a href="ativos.php">Ativos</a></li>
-                        <li><a href="analise.php">Em Análise</a></li>
-                        <li><a href="recusados.php">Recusados</a></li>
-                        <li><a href="banidos.php">Banidos</a></li>
+                        <li><a class="link-name" href="./../prestadores/prestador.php">Prestadores</a></li>
+                        <li><a href="./../prestadores/ativos.php">Ativos</a></li>
+                        <li><a href="./../prestadores/analise.php">Em Análise</a></li>
+                        <li><a href="./../prestadores/recusados.php">Recusados</a></li>
+                        <li><a href="#">Banidos</a></li>
                     </ul>
                 </li>
                 <li>
@@ -74,44 +74,15 @@
                             <div class="profile-name">Daniel556</div>
                             <div class="job">Web Designer</div>
                         </div>
-                        <a href="./../index.php"><span class="material-icons icon logout">logout</span></a>
+                        <a href="../index.php"><span class="material-icons icon logout">logout</span></a>
                     </div>
                 </li>
             </ul>
         </div>
 
         <section class="home-section">
-            <section class="section-table">
-                <div class="quadro">
-                    <div><h3>Quantidade de Prestadores Ativos Cadastrados: <?php echo implode(",", $nAtivos); ?></h3></div>
-                    <table class="table">
-                        <tr>
-                            <th>ID</th>
-                            <th>NOME</th>
-                            <th>CNPJ</th>
-                            <th>EMAIL</th>
-                            <th>TEL</th>
-                            <th>CEP</th>
-                            <th>STATUS</th>
-                            <th>IMG</th>
-                        </tr>
-                        <?php foreach ($ativos as $ativo) : ?>
-                            <tr>
-                                <td> <?php echo $ativo['id']; ?> </td>
-                                <td> <?php echo $ativo['nome']; ?> </td>
-                                <td> <?php echo $ativo['cnpj']; ?> </td>
-                                <td> <?php echo $ativo['email']; ?> </td>
-                                <td> <?php echo $ativo['tel']; ?> </td>
-                                <td> <?php echo $ativo['cep']; ?> </td>
-                                <td> <?php echo $ativo['status']; ?> </td>
-                                <td> <?php echo $ativo['img']; ?> </td>
-                            </tr>
-                            <td><button type="submit" name="btn-banirP">Banir</button></td>
-                        <?php endforeach; ?>
-                    </table>
-                </div>
-            </section>     
-        </section> 
+            <!-- Criar aqui dentro -->
+        </section>
 
         <script src="./../js/animacao.js"></script>
     </body>

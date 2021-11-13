@@ -1,6 +1,6 @@
 <?php
     include('../php/conexao.php');
-    include('../php/funcoes.php');
+    include('../php/funcoesCli.php');
 
     $num = contarCliente($conexao);
     $clientes = listarCliente($conexao);
@@ -19,7 +19,6 @@
 
         <title>Clientes</title>
     </head>
-
     <body>
         <div class="sidebar close">
             <div class="logo-details">
@@ -33,7 +32,7 @@
                         <span class="link-name">Home</span>
                     </a>
                     <ul class="sub-menu blank">
-                        <li><a href="#" class="link-name">Home</a></li>
+                        <li><a href="./../home.php" class="link-name">Home</a></li>
                     </ul>
                 </li>
                 <li>
@@ -46,8 +45,8 @@
                     </div>
                     <ul class="sub-menu">
                         <li><a class="link-name" href="cliente.php">Clientes</a></li>
-                        <li><a href="#">Ativos</a></li>
-                        <li><a href="#">Banidos</a></li>
+                        <li><a href="ativos.php">Ativos</a></li>
+                        <li><a href="banidos.php">Banidos</a></li>
                     </ul>
                 </li>
                 <li>
@@ -63,7 +62,7 @@
                         <li><a href="./../prestadores/ativos.php">Ativos</a></li>
                         <li><a href="./../prestadores/analise.php">Em Análise</a></li>
                         <li><a href="./../prestadores/recusados.php">Recusados</a></li>
-                        <li><a href="#">Banidos</a></li>
+                        <li><a href="./../prestadores/banidos.php">Banidos</a></li>
                     </ul>
                 </li>
                 <li>

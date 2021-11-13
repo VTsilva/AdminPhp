@@ -2,8 +2,8 @@
     include('../php/conexao.php');
     include('../php/funcoesPrest.php');
 
-    $nAtivos = contarAtivos($conexao);
-    $ativos = prestAtivos($conexao);
+    $nBanidos = contarBanidos($conexao);
+    $banidos = prestBanidos($conexao);
 ?>
 
 <!DOCTYPE html>
@@ -17,8 +17,9 @@
         <link rel="stylesheet" href="../css/styles.css">
         <link rel="stylesheet" href="../css/table.css">
 
-        <title>Prestadores Ativos</title>
+        <title>Prestadores Banidos</title>
     </head>
+
     <body>
         <div class="sidebar close">
             <div class="logo-details">
@@ -83,7 +84,8 @@
         <section class="home-section">
             <section class="section-table">
                 <div class="quadro">
-                    <div><h3>Quantidade de Prestadores Ativos Cadastrados: <?php echo implode(",", $nAtivos); ?></h3></div>
+                    <div><h3>Quantidade de Prestadores Banidos: <?php echo implode(",", $nBanidos); ?></h3></div>
+
                     <table class="table">
                         <tr>
                             <th>ID</th>
@@ -95,22 +97,25 @@
                             <th>STATUS</th>
                             <th>IMG</th>
                         </tr>
-                        <?php foreach ($ativos as $ativo) : ?>
+                        <?php foreach ($banidos as $banido) : ?>
                             <tr>
-                                <td> <?php echo $ativo['id']; ?> </td>
-                                <td> <?php echo $ativo['nome']; ?> </td>
-                                <td> <?php echo $ativo['cnpj']; ?> </td>
-                                <td> <?php echo $ativo['email']; ?> </td>
-                                <td> <?php echo $ativo['tel']; ?> </td>
-                                <td> <?php echo $ativo['cep']; ?> </td>
-                                <td> <?php echo $ativo['status']; ?> </td>
-                                <td> <?php echo $ativo['img']; ?> </td>
+                                <form action="../php/verificacao.php" method="post">
+                                    <td> <input type="text" name="id" value="<?php echo $banido['id']; ?>"></td>
+                                    <td> <?php echo $banido['nome']; ?> </td>
+                                    <td> <?php echo $banido['cnpj']; ?> </td>
+                                    <td> <?php echo $banido['email']; ?> </td>
+                                    <td> <?php echo $banido['tel']; ?> </td>
+                                    <td> <?php echo $banido['cep']; ?> </td>
+                                    <td> <?php echo $banido['status']; ?> </td>
+                                    <td> <?php echo $banido['img']; ?> </td>
+
+                                    <td> <button type="submit" name="btn-desbanirP">Desbanir</button> </td>
+                                </form>
                             </tr>
-                            <td><button type="submit" name="btn-banirP">Banir</button></td>
                         <?php endforeach; ?>
                     </table>
                 </div>
-            </section>     
+            </section>
         </section> 
 
         <script src="./../js/animacao.js"></script>

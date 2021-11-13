@@ -1,8 +1,8 @@
 <?php
     include('../php/conexao.php');
-    include('../php/funcoes.php');
-
-    $num = contarPrestador($conexao);
+    include('../php/funcoesPrest.php');
+    
+    $nPrestadores = contarPrestador($conexao);
     $prestadores = listarPrestador($conexao);
 ?>
 
@@ -32,7 +32,7 @@
                         <span class="link-name">Home</span>
                     </a>
                     <ul class="sub-menu blank">
-                        <li><a href="#" class="link-name">Home</a></li>
+                        <li><a href="./../home.php" class="link-name">Home</a></li>
                     </ul>
                 </li>
                 <li>
@@ -45,8 +45,8 @@
                     </div>
                     <ul class="sub-menu">
                         <li><a class="link-name" href="./../clientes/cliente.php">Clientes</a></li>
-                        <li><a href="#">Ativos</a></li>
-                        <li><a href="#">Banidos</a></li>
+                        <li><a href="./../clientes/ativos.php">Ativos</a></li>
+                        <li><a href="./../clientes/banidos.php">Banidos</a></li>
                     </ul>
                 </li>
                 <li>
@@ -62,7 +62,7 @@
                         <li><a href="ativos.php">Ativos</a></li>
                         <li><a href="analise.php">Em Análise</a></li>
                         <li><a href="recusados.php">Recusados</a></li>
-                        <li><a href="#">Banidos</a></li>
+                        <li><a href="banidos">Banidos</a></li>
                     </ul>
                 </li>
                 <li>
@@ -84,7 +84,15 @@
             <section class="section-table">
                 <div class="quadro">
                     <div>
-                        <h3>Quantidade de Prestadores Cadastrados: <?php echo implode(",", $num); ?> </h3>
+                        <h3>Quantidade de Prestadores Cadastrados: <?php echo implode(",", $nPrestadores); ?></h3>
+                        <form action="" method="get">
+                            <select name="selectB">
+                                <option value="idB">Por id</option>
+                                <option value="nomeB">Por nome</option>
+                                <option value="cnpjB">Por cnpj</option>
+                            </select>
+                            <?php ?>
+                        </form>
                     </div>
                     <table class="table">
                         <tr>
@@ -97,9 +105,7 @@
                             <th>STATUS</th>
                             <th>IMG</th>
                         </tr>
-
                         <?php foreach ($prestadores as $prestador) : ?>
-
                             <tr>
                                 <td> <?php echo $prestador['id']; ?> </td>
                                 <td> <?php echo $prestador['nome']; ?> </td>
@@ -110,9 +116,7 @@
                                 <td> <?php echo $prestador['status']; ?> </td>
                                 <td> <?php echo $prestador['img']; ?> </td>
                             </tr>
-
                         <?php endforeach; ?>
-
                     </table>
                 </div>
             </section>

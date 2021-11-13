@@ -1,6 +1,6 @@
 <?php
     include('../php/conexao.php');
-    include('../php/funcoes.php');
+    include('../php/funcoesPrest.php');
 
     $nAnalise = contarAnalise($conexao);
     $analises = prestAnalise($conexao);
@@ -32,7 +32,7 @@
                         <span class="link-name">Home</span>
                     </a>
                     <ul class="sub-menu blank">
-                        <li><a href="#" class="link-name">Home</a></li>
+                        <li><a href="./../home.php" class="link-name">Home</a></li>
                     </ul>
                 </li>
                 <li>
@@ -45,8 +45,8 @@
                     </div>
                     <ul class="sub-menu">
                         <li><a class="link-name" href="./../clientes/cliente.php">Clientes</a></li>
-                        <li><a href="#">Ativos</a></li>
-                        <li><a href="#">Banidos</a></li>
+                        <li><a href="./../clientes/ativos.php">Ativos</a></li>
+                        <li><a href="./../clientes/banidos.php">Banidos</a></li>
                     </ul>
                 </li>
                 <li>
@@ -62,7 +62,7 @@
                         <li><a href="ativos.php">Ativos</a></li>
                         <li><a href="analise.php">Em Análise</a></li>
                         <li><a href="recusados.php">Recusados</a></li>
-                        <li><a href="#">Banidos</a></li>
+                        <li><a href="banidos.php">Banidos</a></li>
                     </ul>
                 </li>
                 <li>
@@ -107,8 +107,9 @@
                                     <td> <?php echo $analise['status']; ?> </td>
                                     <td> <?php echo $analise['img']; ?> </td>
 
-                                    <td> <button type="submit" name="btn-aceitar">Aceitar</button> </td>
-                                    <td> <button type="submit" name="btn-recusar">Recusar</button> </td>
+                                    <td><button type="submit" name="btn-aceitarP">Aceitar</button></td>
+                                    <td><button type="submit" name="btn-recusarP">Recusar</button></td>
+                                    <td><button type="submit" name="btn-banirP">Banir</button></td>
                                 </form>
                             </tr>
                         <?php endforeach; ?>
