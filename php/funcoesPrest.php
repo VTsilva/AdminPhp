@@ -232,7 +232,7 @@ function aceitarPrest($conexao, $id)
 
     $query = mysqli_query($conexao, $sql);
 
-    echo "Prestador aceito com sucesso. <button onclick='location.href = document.referrer;'>Voltar 2</button>";
+    echo "Prestador aceito com sucesso. <button onclick='location.href = document.referrer;'>Voltar</button>";
 }
 
 function recusarPrest($conexao, $id)
@@ -245,7 +245,7 @@ function recusarPrest($conexao, $id)
     $query = mysqli_query($conexao, $sql);
 
 
-    echo "Prestador recusado com sucesso. <button onclick='location.href = document.referrer;'>Voltar 2</button>";
+    echo "Prestador recusado com sucesso. <button onclick='location.href = document.referrer;'>Voltar</button>";
 }
 
 function banirPrest($conexao, $id)
@@ -257,7 +257,7 @@ function banirPrest($conexao, $id)
 
     $query = mysqli_query($conexao, $sql);
 
-    echo "Prestador banido com sucesso. <button onclick='location.href = document.referrer;'>Voltar 2</button>";
+    echo "Prestador banido com sucesso. <button onclick='location.href = document.referrer;'>Voltar</button>";
 }
 
 function desbanirPrest($conexao, $id)
@@ -268,9 +268,7 @@ function desbanirPrest($conexao, $id)
 
     $query = mysqli_query($conexao, $sql);
 
-    echo "Prestador desbanido com sucesso. <button onclick='location.href = document.referrer;'>Voltar 2</button>";
-
-    // echo "Prestador desbanido com sucesso. <a href='javascript:history.back()'>Voltar</a>";
+    echo "Prestador desbanido com sucesso. <button onclick='location.href = document.referrer;'>Voltar</button>";
 }
 
 function verPrestador($conexao, $id)
@@ -307,7 +305,6 @@ function buscarPrest($conexao, $clausula, $busca)
 
 function contarBusca($conexao, $clausula, $busca)
 {
-    $bPrestador = array();
     $clausula = $clausula;
 
     if ($clausula == '1') {

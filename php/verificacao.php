@@ -42,3 +42,15 @@ if (isset($_POST['btn-verP'])) {
 
     verPrestador($conexao, $id);
 }
+
+if (isset($_POST['btn-banirC'])) {
+    $id = mysqli_escape_string($conexao, $_POST['id']);
+
+    banirCLi($conexao, $id);
+}
+
+if (isset($_POST['btn-desbanirC'])) {
+    $id = mysqli_escape_string($conexao, $_POST['id']);
+
+    desbanirCli($conexao, $id);
+}
