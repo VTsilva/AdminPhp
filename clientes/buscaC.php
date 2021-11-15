@@ -2,12 +2,18 @@
 include('../php/conexao.php');
 include('../php/funcoesCli.php');
 
-$num = contarBanido($conexao);
-$clientes = clienteBanido($conexao);
+$clausula = $_POST['clausula'];
+
+$busca = $_POST['busca'];
+
+$bClientes = buscarCli($conexao, $clausula, $busca);
+
+$nBuscac = contarBuscaC($conexao, $clausula, $busca);
+
 ?>
 
 <!DOCTYPE html>
-<html lang="pt-br" ng-app="cliente">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
@@ -18,7 +24,7 @@ $clientes = clienteBanido($conexao);
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/table.css">
 
-    <title>Clientes Banidos</title>
+    <title>Prestadores de Serviços</title>
 </head>
 
 <body>
@@ -29,7 +35,7 @@ $clientes = clienteBanido($conexao);
         </div>
         <ul class="nav-links">
             <li>
-                <a href="./../home.php">
+                <a href="../home.php">
                     <span class="icon"><img src="./../img/ic-home.svg" alt=""></span>
                     <span class="link-name">Home</span>
                 </a>
@@ -39,32 +45,32 @@ $clientes = clienteBanido($conexao);
             </li>
             <li>
                 <div class="icon-link">
-                    <a href="cliente.php">
+                    <a href="./../clientes/cliente.php">
                         <span class="icon"><img src="./../img/ic-cliente.png" alt=""></span>
                         <span class="link-name">Clientes</span>
                     </a>
                     <span class="material-icons icon seta">expand_more</span>
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link-name" href="cliente.php">Clientes</a></li>
-                    <li><a href="ativos.php">Ativos</a></li>
-                    <li><a href="banidos.php">Banidos</a></li>
+                    <li><a class="link-name" href="./../clientes/cliente.php">Clientes</a></li>
+                    <li><a href="./../clientes/ativos.php">Ativos</a></li>
+                    <li><a href="./../clientes/banidos.php">Banidos</a></li>
                 </ul>
             </li>
             <li>
                 <div class="icon-link">
-                    <a href="./../prestadores/prestador.php">
+                    <a href="prestador.php">
                         <span class="icon"><img src="./../img/ic-prestador.png" alt=""></span>
                         <span class="link-name">Prestadores</span>
                     </a>
                     <span class="material-icons icon seta">expand_more</span>
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link-name" href="./../prestadores/prestador.php">Prestadores</a></li>
-                    <li><a href="./../prestadores/ativos.php">Ativos</a></li>
-                    <li><a href="./../prestadores/analise.php">Em Análise</a></li>
-                    <li><a href="./../prestadores/recusados.php">Recusados</a></li>
-                    <li><a href="#">Banidos</a></li>
+                    <li><a class="link-name" href="prestador.php">Prestadores</a></li>
+                    <li><a href="ativos.php">Ativos</a></li>
+                    <li><a href="analise.php">Em Análise</a></li>
+                    <li><a href="recusados.php">Recusados</a></li>
+                    <li><a href="banidos">Banidos</a></li>
                 </ul>
             </li>
             <li>
@@ -76,7 +82,7 @@ $clientes = clienteBanido($conexao);
                         <div class="profile-name">Daniel556</div>
                         <div class="job">Web Designer</div>
                     </div>
-                    <a href="../index.php"><span class="material-icons icon logout">logout</span></a>
+                    <a href="./../index.php"><span class="material-icons icon logout">logout</span></a>
                 </div>
             </li>
         </ul>
@@ -86,18 +92,18 @@ $clientes = clienteBanido($conexao);
         <section class="section-table">
             <div class="quadro">
                 <div>
-                    <h3>Quantidade de Cliente Banidos: <?php echo implode(",", $num); ?> </h3>
+                    <h3>Quantidade de Registros Achados: <?php echo implode(",", $nBuscac); ?></h3>
 
                     <form action="buscaC.php" method="post">
                         <select name="clausula">
-                            <option value="1" selected>Por id</option>
+                            <option value="1">Por id</option>
                             <option value="2">Por nome</option>
                             <option value="3">Por cpf</option>
                         </select>
-
                         <input type="text" name="busca" placeholder="Insira aqui">
                         <button type="submit" name="btn-buscar">Buscar</button>
                     </form>
+
                 </div>
                 <table class="table">
                     <tr>
@@ -107,11 +113,11 @@ $clientes = clienteBanido($conexao);
                         <th>TEL</th>
                         <th>STATUS</th>
                         <th>IMG</th>
-
                     </tr>
-                    <?php foreach ($clientes as $cliente) : ?>
+
+                    <?php foreach ($bClientes as $cliente) : ?>
                         <tr>
-                            <form action="../php/verificacao.php" method="post">
+                            <form action="verCli.php" method="post">
                                 <td> <input type="text" name="id" value="<?php echo $cliente['id']; ?>"></td>
                                 <td> <?php echo $cliente['nome']; ?> </td>
                                 <td> <?php echo $cliente['cpf']; ?> </td>
@@ -119,14 +125,11 @@ $clientes = clienteBanido($conexao);
                                 <td> <?php echo $cliente['status']; ?> </td>
                                 <td> <?php echo $cliente['img']; ?> </td>
 
-                                <td> <button type="submit" name="btn-desbanirC">Desbanir</button> </td>
-                            </form>
-                            <form action="verCli.php" method="post">
-                                <td style="display: none;"> <input type="text" name="id" value="<?php echo $cliente['id']; ?>"></td>
-                                <td><button type="submit" name="btn-verP">Ver</button></td>
+                                <td> <button type="submit" name="btn-verP">Ver</button> </td>
                             </form>
                         </tr>
                     <?php endforeach; ?>
+
                 </table>
             </div>
         </section>
