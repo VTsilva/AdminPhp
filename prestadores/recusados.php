@@ -1,8 +1,8 @@
 <?php
     include('../php/conexao.php');
-    include('../php/funcoes.php');
-
-    $nRecusado = contarRecusados($conexao);
+    include('../php/funcoesPrest.php');
+    
+    $nRecusados = contarRecusados($conexao);
     $recusados = prestRecusado($conexao);
 
 ?>
@@ -33,7 +33,7 @@
                         <span class="link-name">Home</span>
                     </a>
                     <ul class="sub-menu blank">
-                        <li><a href="#" class="link-name">Home</a></li>
+                        <li><a href="./../home.php" class="link-name">Home</a></li>
                     </ul>
                 </li>
                 <li>
@@ -46,8 +46,8 @@
                     </div>
                     <ul class="sub-menu">
                         <li><a class="link-name" href="./../clientes/cliente.php">Clientes</a></li>
-                        <li><a href="#">Ativos</a></li>
-                        <li><a href="#">Banidos</a></li>
+                        <li><a href="./../clientes/ativos.php">Ativos</a></li>
+                        <li><a href="./../clientes/banidos.php">Banidos</a></li>
                     </ul>
                 </li>
                 <li>
@@ -63,7 +63,7 @@
                         <li><a href="ativos.php">Ativos</a></li>
                         <li><a href="analise.php">Em Análise</a></li>
                         <li><a href="recusados.php">Recusados</a></li>
-                        <li><a href="#">Banidos</a></li>
+                        <li><a href="banidos.php">Banidos</a></li>
                     </ul>
                 </li>
                 <li>
@@ -84,10 +84,7 @@
         <section class="home-section">
             <section class="section-table">
                 <div class="quadro">
-                    <div>
-                        <h3>Quantidade de Prestadores Ativos Cadastrados: <?php echo implode(",", $nRecusado); ?> </h3>
-                    </div>
-
+                    <div><h3>Quantidade de Prestadores Ativos Cadastrados: <?php echo implode(",", $nRecusados); ?> </h3></div>
                     <table class="table">
                         <tr>
                             <th>ID</th>
@@ -99,22 +96,22 @@
                             <th>STATUS</th>
                             <th>IMG</th>
                         </tr>
-
                         <?php foreach ($recusados as $recusado) : ?>
-
                             <tr>
-                                <td> <?php echo $recusado['id']; ?> </td>
-                                <td> <?php echo $recusado['nome']; ?> </td>
-                                <td> <?php echo $recusado['cnpj']; ?> </td>
-                                <td> <?php echo $recusado['email']; ?> </td>
-                                <td> <?php echo $recusado['tel']; ?> </td>
-                                <td> <?php echo $recusado['cep']; ?> </td>
-                                <td> <?php echo $recusado['status']; ?> </td>
-                                <td> <?php echo $recusado['img']; ?> </td>
+                                <form action="../php/verificacao.php" method="post">
+                                    <td> <input type="text" name="id" value="<?php echo $recusado['id']; ?>"></td>
+                                    <td> <?php echo $recusado['nome']; ?> </td>
+                                    <td> <?php echo $recusado['cnpj']; ?> </td>
+                                    <td> <?php echo $recusado['email']; ?> </td>
+                                    <td> <?php echo $recusado['tel']; ?> </td>
+                                    <td> <?php echo $recusado['cep']; ?> </td>
+                                    <td> <?php echo $recusado['status']; ?> </td>
+                                    <td> <?php echo $recusado['img']; ?> </td>
+
+                                    <td> <button type="submit" name="btn-desbanirP">Desbanir</button> </td>
+                                </form>
                             </tr>
-
                         <?php endforeach; ?>
-
                     </table>
                 </div>
             </section>

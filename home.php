@@ -18,12 +18,12 @@
             </div>
             <ul class="nav-links">
                 <li>
-                    <a href="./home.php">
+                    <a href="home.php">
                         <span class="icon"><img src="./img/ic-home.svg" alt=""></span>
                         <span class="link-name">Home</span>
                     </a>
                     <ul class="sub-menu blank">
-                        <li><a href="#" class="link-name">Home</a></li>
+                        <li><a href="home.php" class="link-name">Home</a></li>
                     </ul>
                 </li>
                 <li>
@@ -36,24 +36,24 @@
                     </div>
                     <ul class="sub-menu">
                         <li><a class="link-name" href="./clientes/cliente.php">Clientes</a></li>
-                        <li><a href="#">Ativos</a></li>
-                        <li><a href="#">Banidos</a></li>
+                        <li><a href="./clientes/ativos.php">Ativos</a></li>
+                        <li><a href="./clientes/banidos.php">Banidos</a></li>
                     </ul>
                 </li>
                 <li>
                     <div class="icon-link">
-                        <a href="./Prestador/prestador.php">
+                        <a href="./prestadores/prestador.php">
                             <span class="icon"><img src="./img/ic-prestador.png" alt=""></span>
                             <span class="link-name">Prestadores</span>
                         </a>
                         <span class="material-icons icon seta">expand_more</span>  
                     </div>
                     <ul class="sub-menu">
-                        <li><a class="link-name" href="./Prestador/prestador.php">Prestadores</a></li>
-                        <li><a href="./Prestador/ativos.php">Ativos</a></li>
-                        <li><a href="./Prestador/analise.php">Em Análise</a></li>
-                        <li><a href="./Prestador/recusados.php">Recusados</a></li>
-                        <li><a href="#">Banidos</a></li>
+                        <li><a class="link-name" href="./prestadores/prestador.php">Prestadores</a></li>
+                        <li><a href="./prestadores/ativos.php">Ativos</a></li>
+                        <li><a href="./prestadores/analise.php">Em Análise</a></li>
+                        <li><a href="./prestadores/recusados.php">Recusados</a></li>
+                        <li><a href="./prestadores/banidos.php">Banidos</a></li>
                     </ul>
                 </li>
                 <li>
