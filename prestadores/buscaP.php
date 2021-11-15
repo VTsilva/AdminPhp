@@ -2,8 +2,14 @@
 include('../php/conexao.php');
 include('../php/funcoesPrest.php');
 
-$nAnalise = contarAnalise($conexao);
-$analises = prestAnalise($conexao);
+$clausula = $_POST['clausula'];
+
+$busca = $_POST['busca'];
+
+$bPrestador = buscarPrest($conexao, $clausula, $busca);
+
+$nBuscap = contarBusca($conexao, $clausula, $busca);
+
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +24,7 @@ $analises = prestAnalise($conexao);
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/table.css">
 
-    <title>Prestadores em Análise</title>
+    <title>Prestadores de Serviços</title>
 </head>
 
 <body>
@@ -64,7 +70,7 @@ $analises = prestAnalise($conexao);
                     <li><a href="ativos.php">Ativos</a></li>
                     <li><a href="analise.php">Em Análise</a></li>
                     <li><a href="recusados.php">Recusados</a></li>
-                    <li><a href="banidos.php">Banidos</a></li>
+                    <li><a href="banidos">Banidos</a></li>
                 </ul>
             </li>
             <li>
@@ -86,20 +92,19 @@ $analises = prestAnalise($conexao);
         <section class="section-table">
             <div class="quadro">
                 <div>
-                    <h3>Quantidade de Prestadores Em Análise: <?php echo implode(",", $nAnalise); ?></h3>
+                    <h3>Quantidade de Registros Achados: <?php echo implode(",", $nBuscap); ?></h3>
 
                     <form action="buscaP.php" method="post">
                         <select name="clausula">
-                            <option value="1" selected>Por id</option>
+                            <option value="1">Por id</option>
                             <option value="2">Por nome</option>
                             <option value="3">Por cnpj</option>
                         </select>
-
                         <input type="text" name="busca" placeholder="Insira aqui">
                         <button type="submit" name="btn-buscar">Buscar</button>
                     </form>
-                </div>
 
+                </div>
                 <table class="table">
                     <tr>
                         <th>ID</th>
@@ -111,28 +116,24 @@ $analises = prestAnalise($conexao);
                         <th>STATUS</th>
                         <th>IMG</th>
                     </tr>
-                    <?php foreach ($analises as $analise) : ?>
-                        <tr>
-                            <form action="../php/verificacao.php" method="post">
-                                <td> <input type="text" name="id" value="<?php echo $analise['id']; ?>"></td>
-                                <td> <?php echo $analise['nome']; ?> </td>
-                                <td> <?php echo $analise['cnpj']; ?> </td>
-                                <td> <?php echo $analise['email']; ?> </td>
-                                <td> <?php echo $analise['tel']; ?> </td>
-                                <td> <?php echo $analise['cep']; ?> </td>
-                                <td> <?php echo $analise['status']; ?> </td>
-                                <td> <?php echo $analise['img']; ?> </td>
 
-                                <td><button type="submit" name="btn-aceitarP">Aceitar</button></td>
-                                <td><button type="submit" name="btn-recusarP">Recusar</button></td>
-                                <td><button type="submit" name="btn-banirP">Banir</button></td>
-                            </form>
+                    <?php foreach ($bPrestador as $prestador) : ?>
+                        <tr>
                             <form action="verPrest.php" method="post">
-                                <td style="display: none;"> <input type="text" name="id" value="<?php echo $analise['id']; ?>"></td>
-                                <td><button type="submit" name="btn-verP">Ver</button></td>
+                                <td> <input type="text" name="id" value="<?php echo $prestador['id']; ?>"></td>
+                                <td> <?php echo $prestador['nome']; ?> </td>
+                                <td> <?php echo $prestador['cnpj']; ?> </td>
+                                <td> <?php echo $prestador['email']; ?> </td>
+                                <td> <?php echo $prestador['tel']; ?> </td>
+                                <td> <?php echo $prestador['cep']; ?> </td>
+                                <td> <?php echo $prestador['status']; ?> </td>
+                                <td> <?php echo $prestador['img']; ?> </td>
+
+                                <td> <button type="submit" name="btn-verP">Ver</button> </td>
                             </form>
                         </tr>
                     <?php endforeach; ?>
+
                 </table>
             </div>
         </section>

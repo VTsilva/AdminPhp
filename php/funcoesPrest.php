@@ -232,7 +232,7 @@ function aceitarPrest($conexao, $id)
 
     $query = mysqli_query($conexao, $sql);
 
-    echo "Prestador aceito com sucesso. <a href='javascript:history.back()'>Voltar</a>";
+    echo "Prestador aceito com sucesso. <button onclick='location.href = document.referrer;'>Voltar 2</button>";
 }
 
 function recusarPrest($conexao, $id)
@@ -244,7 +244,8 @@ function recusarPrest($conexao, $id)
 
     $query = mysqli_query($conexao, $sql);
 
-    echo "Prestador recusado com sucesso. <a href='javascript:history.back()'>Voltar</a>";
+
+    echo "Prestador recusado com sucesso. <button onclick='location.href = document.referrer;'>Voltar 2</button>";
 }
 
 function banirPrest($conexao, $id)
@@ -256,7 +257,7 @@ function banirPrest($conexao, $id)
 
     $query = mysqli_query($conexao, $sql);
 
-    echo "Prestador banido com sucesso. <a href='javascript:history.back()'>Voltar</a>";
+    echo "Prestador banido com sucesso. <button onclick='location.href = document.referrer;'>Voltar 2</button>";
 }
 
 function desbanirPrest($conexao, $id)
@@ -267,7 +268,9 @@ function desbanirPrest($conexao, $id)
 
     $query = mysqli_query($conexao, $sql);
 
-    echo "Prestador desbanido com sucesso. <a href='javascript:history.back()'>Voltar</a>";
+    echo "Prestador desbanido com sucesso. <button onclick='location.href = document.referrer;'>Voltar 2</button>";
+
+    // echo "Prestador desbanido com sucesso. <a href='javascript:history.back()'>Voltar</a>";
 }
 
 function verPrestador($conexao, $id)
@@ -279,4 +282,85 @@ function verPrestador($conexao, $id)
     $vPrestadores = mysqli_query($conexao, $sql);
 
     return mysqli_fetch_assoc($vPrestadores);
+}
+
+function buscarPrest($conexao, $clausula, $busca)
+{
+    $bPrestador = array();
+    $clausula = $clausula;
+
+    if ($clausula == '1') {
+        $sql = "select * from seleciona_loja where id =  '$busca';";
+    } elseif ($clausula == '2') {
+        $sql = "select * from seleciona_loja where nome like '%$busca%';";
+    } elseif ($clausula == '3') {
+        $sql = "select * from seleciona_loja where cnpj = '$busca';";
+    }
+
+    $query = mysqli_query($conexao, $sql);
+
+    while ($bPrest = mysqli_fetch_assoc($query)) {
+        array_push($bPrestador, $bPrest);
+    }
+    return $bPrestador;
+}
+
+function contarBusca($conexao, $clausula, $busca)
+{
+    $bPrestador = array();
+    $clausula = $clausula;
+
+    if ($clausula == '1') {
+        $sql = "select count(id) from seleciona_loja where id =  '$busca';";
+    } elseif ($clausula == '2') {
+        $sql = "select count(id) from seleciona_loja where nome like '%$busca%';";
+    } elseif ($clausula == '3') {
+        $sql = "select count(id) from seleciona_loja where cnpj = '$busca';";
+    }
+
+    $query = mysqli_query($conexao, $sql);
+
+    $nBuscap = mysqli_fetch_assoc($query);
+
+    return $nBuscap;
+}
+
+
+function buscarFuncionario($conexao, $idLoja)
+{
+    $funcionarios = array();
+
+    $sql = "select tb_funcionario.tb_funcionario_id as 'id',
+	               tb_funcionario.tb_funcionario_nome as 'nome',
+	               tb_funcionario.tb_funcionario_cpf as 'cpf',
+                   tb_loja.tb_loja_nome as 'loja',
+                   tb_status.tb_status_nome as 'status'
+	        from tb_funcionario
+	        inner join tb_loja
+            on tb_loja.tb_loja_id = tb_funcionario.tb_loja_id
+            inner join tb_status
+            on tb_status.tb_status_id = tb_funcionario.tb_status_id
+            where tb_funcionario.tb_loja_id = '$idLoja';";
+
+    $query = mysqli_query($conexao, $sql);
+
+    while ($funcionario = mysqli_fetch_assoc($query)) {
+        array_push($funcionarios, $funcionario);
+    }
+
+    return $funcionarios;
+}
+
+function contarFuncionario($conexao, $idLoja)
+{
+
+    $sql = "select count(tb_funcionario.tb_funcionario_id)
+	        from tb_funcionario
+            where tb_funcionario.tb_loja_id = '$idLoja';";
+
+    $query = mysqli_query($conexao, $sql);
+
+    $nFuncionarios = mysqli_fetch_assoc($query);
+
+    return $nFuncionarios;
 }
