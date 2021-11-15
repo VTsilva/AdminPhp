@@ -6,6 +6,10 @@ $id = $_POST['id'];
 
 $vPrestador = verPrestador($conexao, $id);
 
+$funcionarios = buscarFuncionario($conexao, $id);
+
+$nFuncionarios = contarFuncionario($conexao, $id);
+
 ?>
 
 <!DOCTYPE html>
@@ -16,50 +20,116 @@ $vPrestador = verPrestador($conexao, $id);
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="../css/estilo.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/table.css">
 
-    <title>PRESTADOR VULCAR DETALHES</title>
+    <title>Prestadores de Serviços</title>
 </head>
 
 <body>
-    <div class="div">
-        <ul class="menu">
-            <li><a href="../home.php">Home</a></li>
-            <li><a href="../Cliente/cliente.php">Clientes</a>
+    <div class="sidebar close">
+        <div class="logo-details">
+            <div class="img menu-side-bar"><img src="./../img/car-white.svg" alt=""></div>
+            <div class="logo-name">VulCar</div>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="./../home.php">
+                    <span class="icon"><img src="./../img/ic-home.svg" alt=""></span>
+                    <span class="link-name">Home</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a href="./../home.php" class="link-name">Home</a></li>
+                </ul>
+            </li>
+            <li>
+                <div class="icon-link">
+                    <a href="./../clientes/cliente.php">
+                        <span class="icon"><img src="./../img/ic-cliente.png" alt=""></span>
+                        <span class="link-name">Clientes</span>
+                    </a>
+                    <span class="material-icons icon seta">expand_more</span>
+                </div>
                 <ul class="sub-menu">
-                    <li><a href="../Cliente/banidos.php">Banidos</a></li>
+                    <li><a class="link-name" href="./../clientes/cliente.php">Clientes</a></li>
+                    <li><a href="./../clientes/ativos.php">Ativos</a></li>
+                    <li><a href="./../clientes/banidos.php">Banidos</a></li>
                 </ul>
             </li>
-            <li><img src="../img/logo.png" style="width: 100px; padding-top:4px; position: center center;display: table;">
-            <li><a href="prestador.php" style="box-shadow: 0 -5px 0 #2F343D;">Prestadores</a>
-                <ul class=" sub-menu">
-                    <li><a href="ativos.php">Prestadores Ativos</a></li>
-                    <li><a href="analise.php">Prestadores para Análise</a></li>
-                    <li><a href="recusados.php">Prestadores Recusadas</a></li>
-                    <li><a href="banidos.php">Banidos</a></li>
+            <li>
+                <div class="icon-link">
+                    <a href="prestador.php">
+                        <span class="icon"><img src="./../img/ic-prestador.png" alt=""></span>
+                        <span class="link-name">Prestadores</span>
+                    </a>
+                    <span class="material-icons icon seta">expand_more</span>
+                </div>
+                <ul class="sub-menu">
+                    <li><a class="link-name" href="prestador.php">Prestadores</a></li>
+                    <li><a href="ativos.php">Ativos</a></li>
+                    <li><a href="analise.php">Em Análise</a></li>
+                    <li><a href="recusados.php">Recusados</a></li>
+                    <li><a href="banidos">Banidos</a></li>
                 </ul>
             </li>
-            <li><a href="../index.php">Sair</a></li>
+            <li>
+                <div class="profile-details">
+                    <div class="profile-content">
+                        <img src="./../img/profile2.png" alt="">
+                    </div>
+                    <div class="name-job">
+                        <div class="profile-name">Daniel556</div>
+                        <div class="job">Web Designer</div>
+                    </div>
+                    <a href="./../index.php"><span class="material-icons icon logout">logout</span></a>
+                </div>
+            </li>
         </ul>
     </div>
 
-    <section class="info">
+    <section class="home-section">
+        <section class="section-table">
+            <section class="info">
+                <div>
+                    <h3>Este é o id: <?php echo $vPrestador['id'] ?></h3> <br>
+                    <h3>Este é o nome: <?php echo $vPrestador['nome'] ?></h3> <br>
+                    <h3>Este é o cnpj: <?php echo $vPrestador['cnpj'] ?></h3> <br>
+                    <h3>Este é o email: <?php echo $vPrestador['email'] ?></h3> <br>
+                    <h3>Este é o tel: <?php echo $vPrestador['tel'] ?></h3> <br>
+                    <h3>Este é o cep: <?php echo $vPrestador['cep'] ?></h3> <br>
+                    <h3>Este é o status: <?php echo $vPrestador['status'] ?></h3> <br>
+                    <h3>Este é caminho para a img: <?php echo $vPrestador['img'] ?></h3> <br>
+                </div>
+            </section>
 
-        <div>
-            <h3>Este é o id: <?php echo $vPrestador['id'] ?></h3> <br>
-            <h3>Este é o nome: <?php echo $vPrestador['nome'] ?></h3> <br>
-            <h3>Este é o cnpj: <?php echo $vPrestador['cnpj'] ?></h3> <br>
-            <h3>Este é o email: <?php echo $vPrestador['email'] ?></h3> <br>
-            <h3>Este é o tel: <?php echo $vPrestador['tel'] ?></h3> <br>
-            <h3>Este é o cep: <?php echo $vPrestador['cep'] ?></h3> <br>
-            <h3>Este é o status: <?php echo $vPrestador['status'] ?></h3> <br>
-            <h3>Este é caminho para a img: <?php echo $vPrestador['img'] ?></h3> <br>
-        </div>
+            <div class="quadro">
+                <div>
+                    <h3>Quantidade de Funcionarios cadastrados da Loja: <?php echo implode(",", $nFuncionarios); ?></h3>
+                </div>
 
+                <table class="table">
+                    <tr>
+                        <th>ID</th>
+                        <th>NOME</th>
+                        <th>CPF</th>
+                        <th>LOJA</th>
+                        <th>STATUS</th>
+                    </tr>
+                    <?php foreach ($funcionarios as $funcionario) : ?>
+                        <tr>
+                            <td> <input type="text" name="id" value="<?php echo $funcionario['id']; ?>"></td>
+                            <td> <?php echo $funcionario['nome']; ?> </td>
+                            <td> <?php echo $funcionario['cpf']; ?> </td>
+                            <td> <?php echo $funcionario['loja']; ?> </td>
+                            <td> <?php echo $funcionario['status']; ?> </td>>
+                        </tr>
+                    <?php endforeach; ?>
+            </div>
+        </section>
     </section>
 
-
+    <script src="./../js/animacao.js"></script>
 </body>
 
 </html>
