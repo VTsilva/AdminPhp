@@ -5,14 +5,12 @@ include('../php/funcoesPrest.php');
 $id = $_POST['id'];
 
 if (!$id) {
-    echo "Prestador não encontrado. <a href='./../prestadores/prestador.php'>VOLTAR</a>";
+    echo "Orçamentos não encontrados. <a href='./../prestadores/prestador.php'>VOLTAR</a>";
 }
 
-$vPrestador = verPrestador($conexao, $id);
+$orcamentos = vOrca($conexao, $id);
 
-$funcionarios = buscarFuncionario($conexao, $id);
-
-$nFuncionarios = contarFuncionario($conexao, $id);
+$nOrca = contarOrca($conexao, $id);
 
 ?>
 
@@ -28,7 +26,7 @@ $nFuncionarios = contarFuncionario($conexao, $id);
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/table.css">
 
-    <title>Prestadores de Serviços</title>
+    <title>Prestadores de Serviços - Orçamentos</title>
 </head>
 
 <body>
@@ -95,72 +93,45 @@ $nFuncionarios = contarFuncionario($conexao, $id);
     <section class="home-section">
         <section class="section-table">
             <section class="info">
+
                 <div>
-                    <h3>Este é o id: <?php echo $vPrestador['id'] ?></h3> <br>
-                    <h3>Este é o nome: <?php echo $vPrestador['nome'] ?></h3> <br>
-                    <h3>Este é o cnpj: <?php echo $vPrestador['cnpj'] ?></h3> <br>
-                    <h3>Este é o email: <?php echo $vPrestador['email'] ?></h3> <br>
-                    <h3>Este é o tel: <?php echo $vPrestador['tel'] ?></h3> <br>
-                    <h3>Este é o cep: <?php echo $vPrestador['cep'] ?></h3> <br>
-                    <h3>Este é o status: <?php echo $vPrestador['status'] ?></h3> <br>
-                    <h3>Este é caminho para a img: <?php echo $vPrestador['img'] ?></h3> <br>
-
-                    <?php
-                    $status = $vPrestador['status'];
-                    if ($status == 'ACEITO') {
-                        echo "<form action='../php/verificacao.php' method='post'> 
-                                 <input style='display: none' type='text' name='id' value='" . $id . "'>
-                                 <button type='submit' name='btn-banirP'> Banir </button> 
-                              </form>";
-                    } elseif ($status == 'EM ANÁLISE') {
-                        echo "<form action='../php/verificacao.php' method='post'> 
-                                 <input style='display: none' type='text' name='id' value='" . $id . "'>
-                                 <button type='submit' name='btn-aceitarP'> Aceitar </button>
-                                 <button type='submit' name='btn-recusarP'> Recusar </button> 
-                              </form>";
-                    } else {
-                        echo "<form action='../php/verificacao.php' method='post'> 
-                                <input style='display: none' type='text' name='id' value='" . $id . "'>
-                                <button type='submit' name='btn-desbanirP'> Aceitar </button>
-                              </form>";
-                    }
-                    ?>
-                </div>
-            </section>
-
-            <div class="quadro">
-                <div>
-                    <form action="orcaP.php" method="post">
-                        <input type="text" style="display: none;" name="id" value="<?php echo $id ?>">
-
-                        <button type="submit" name="btn-verO">Ver Orcamentos</button>
-                    </form>
-
-
-                    <h3>Quantidade de Funcionarios cadastrados da Loja: <?php echo implode(",", $nFuncionarios); ?></h3>
+                    <h3>Quantidade de Orçamentos realizados: <?php echo implode(",", $nOrca) ?></h3>
                 </div>
 
                 <table class="table">
                     <tr>
-                        <th>ID</th>
-                        <th>NOME</th>
-                        <th>CPF</th>
+                        <th>ID ORCAMENTO</th>
+                        <th>CLIENTE</th>
+                        <th>ID DO CLIENTE</th>
                         <th>LOJA</th>
+                        <th>ID DA lOJA</th>
                         <th>STATUS</th>
+                        <th>VALOR TOTAL</th>
+                        <th>AVALIAÇÃO(EM ESTRELAS)</th>
+                        <th>DATA</th>
                     </tr>
-                    <?php foreach ($funcionarios as $funcionario) : ?>
+                    <?php foreach ($orcamentos as $orcamento) : ?>
                         <tr>
-                            <td> <input type="text" name="id" value="<?php echo $funcionario['id']; ?>"></td>
-                            <td> <?php echo $funcionario['nome']; ?> </td>
-                            <td> <?php echo $funcionario['cpf']; ?> </td>
-                            <td> <?php echo $funcionario['loja']; ?> </td>
-                            <td> <?php echo $funcionario['status']; ?> </td>>
+                            <form action="verOrca.php" method="post">
+                                <td> <input type="text" name="idOrca" value="<?php echo $orcamento['id']; ?>"></td>
+                                <td> <?php echo $orcamento['cliente']; ?> </td>
+                                <td> <?php echo $orcamento['idCliente']; ?> </td>
+                                <td> <?php echo $orcamento['loja']; ?> </td>
+                                <td> <input type="text" name="idLoja" value="<?php echo $orcamento['idLoja']; ?>"></td>
+                                <td> <?php echo $orcamento['status']; ?> </td>
+                                <td> <?php echo $orcamento['valorTotal']; ?> </td>
+                                <td> <?php echo $orcamento['avaliacao']; ?> </td>
+                                <td> <?php echo $orcamento['data']; ?> </td>
+
+                                <td> <button type="submit" name="btn-verP">Ver</button> </td>
+                            </form>
                         </tr>
                     <?php endforeach; ?>
-            </div>
+                </table>
+
+            </section>
         </section>
     </section>
-
     <script src="./../js/animacao.js"></script>
 </body>
 
