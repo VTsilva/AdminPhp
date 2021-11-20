@@ -33,36 +33,36 @@ $nAuto = contarAuto($conexao, $id);
 <body>
     <div class="sidebar close">
         <div class="logo-details">
-            <div class="img menu-side-bar"><img src="./../img/car-white.svg" alt=""></div>
+            <div class="img menu-side-bar"><img src="../img/car-white.svg" alt=""></div>
             <div class="logo-name">VulCar</div>
         </div>
         <ul class="nav-links">
             <li>
-                <a href="./../home.php">
-                    <span class="icon"><img src="./../img/ic-home.svg" alt=""></span>
+                <a href="../home.php">
+                    <span class="icon"><img src="../img/ic-home.svg" alt=""></span>
                     <span class="link-name">Home</span>
                 </a>
                 <ul class="sub-menu blank">
-                    <li><a href="./../home.php" class="link-name">Home</a></li>
+                    <li><a href="../home.php" class="link-name">Home</a></li>
                 </ul>
             </li>
             <li>
                 <div class="icon-link">
-                    <a href="./../clientes/cliente.php">
-                        <span class="icon"><img src="./../img/ic-cliente.png" alt=""></span>
+                    <a href="cliente.php">
+                        <span class="icon"><img src="../img/ic-cliente.png" alt=""></span>
                         <span class="link-name">Clientes</span>
                     </a>
                     <span class="material-icons icon seta">expand_more</span>
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link-name" href="./../clientes/cliente.php">Clientes</a></li>
-                    <li><a href="./../clientes/ativos.php">Ativos</a></li>
-                    <li><a href="./../clientes/banidos.php">Banidos</a></li>
+                    <li><a class="link-name" href="cliente.php">Clientes</a></li>
+                    <li><a href="ativos.php">Ativos</a></li>
+                    <li><a href="banidos.php">Banidos</a></li>
                 </ul>
             </li>
             <li>
                 <div class="icon-link">
-                    <a href="prestador.php">
+                    <a href="../prestadores/prestador.php">
                         <span class="icon"><img src="./../img/ic-prestador.png" alt=""></span>
                         <span class="link-name">Prestadores</span>
                     </a>
