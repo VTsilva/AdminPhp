@@ -361,3 +361,98 @@ function contarFuncionario($conexao, $idLoja)
 
     return $nFuncionarios;
 }
+
+
+function vOrca($conexao, $idLoja)
+{
+    $vOrca = array();
+
+    $sql = "select tb_orcamento.tb_orcamento_id as 'id',
+                   tb_cliente.tb_cliente_nome as 'cliente',
+                   tb_cliente.tb_cliente_id as 'idCliente', 
+                   tb_loja.tb_loja_nome as 'loja',
+                   tb_loja.tb_loja_id as 'idLoja',
+                   tb_status.tb_status_nome as 'status',
+                   tb_total.tb_total_valor as 'valorTotal',
+                   tb_avaliacao.tb_avaliacao_indice as 'avaliacao',
+                   tb_orcamento.tb_orcamento_dt as 'data'
+            from tb_orcamento
+            inner join tb_cliente
+            on tb_cliente.tb_cliente_id = tb_orcamento.tb_orcamento_id
+            inner join tb_loja
+            on tb_loja.tb_loja_id = tb_orcamento.tb_loja_id
+            inner join tb_status
+            on tb_status.tb_status_id = tb_orcamento.tb_status_id
+            inner join tb_total
+            on tb_total.tb_orcamento_id = tb_orcamento.tb_orcamento_id
+            inner join tb_avaliacao
+            on tb_avaliacao.tb_orcamento_id = tb_orcamento.tb_orcamento_id
+            where tb_loja.tb_loja_id = $idLoja;";
+
+    $query = mysqli_query($conexao, $sql);
+
+    while ($orca = mysqli_fetch_assoc($query)) {
+        array_push($vOrca, $orca);
+    }
+
+    return $vOrca;
+}
+
+function contarOrca($conexao, $idLoja)
+{
+    $sql = "select count(tb_orcamento_id)
+            from tb_orcamento
+            where tb_loja_id = $idLoja;";
+
+    $query = mysqli_query($conexao, $sql);
+
+    $nOrca = mysqli_fetch_assoc($query);
+
+    return $nOrca;
+}
+
+function detalhaOrca($conexao, $idOrca)
+{
+    $servicos = array();
+
+    $sql = "select tb_orcamento.tb_orcamento_id as 'idOrca',
+                   tb_servico.tb_servico_nome as 'servico',
+                   tb_modelo.tb_modelo_nome as 'veiculo',
+                   tb_itens_orc.tb_funcionario_id as 'idFun',
+                   tb_funcionario.tb_funcionario_nome as 'funcionario'
+            from tb_itens_orc
+            inner join tb_orcamento
+            on tb_orcamento.tb_orcamento_id = tb_itens_orc.tb_orcamento_id
+            inner join tb_servico
+            on tb_servico.tb_servico_id = tb_itens_orc.tb_servico_id
+            inner join tb_automovel
+            on tb_automovel.tb_automovel_id = tb_itens_orc.tb_automovel_id
+            inner join tb_modelo
+            on tb_modelo.tb_modelo_id = tb_automovel.tb_modelo_id
+            inner join tb_funcionario
+            on tb_funcionario.tb_funcionario_id = tb_itens_orc.tb_funcionario_id
+            where tb_orcamento.tb_orcamento_id = $idOrca;";
+
+    $query = mysqli_query($conexao, $sql);
+
+    while ($servico = mysqli_fetch_assoc($query)) {
+        array_push($servicos, $servico);
+    }
+
+    return $servicos;
+}
+
+function contaDetalhe($conexao, $idOrca)
+{
+    $sql = "select count(tb_itens_orc.tb_itens_orc_id)
+            from tb_itens_orc
+            inner join tb_orcamento
+            on tb_orcamento.tb_orcamento_id = tb_itens_orc.tb_orcamento_id
+            where tb_orcamento.tb_orcamento_id = $idOrca;";
+
+    $query = mysqli_query($conexao, $sql);
+
+    $nDetalhe = mysqli_fetch_assoc($query);
+
+    return $nDetalhe;
+}
