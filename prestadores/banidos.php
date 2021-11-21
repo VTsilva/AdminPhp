@@ -83,6 +83,11 @@ $banidos = prestBanidos($conexao);
     </div>
 
     <section class="home-section">
+
+        <div class="outdoor">
+            <h2>Lista de Todos os Prestadores de Serviços Banidos</h2>
+        </div>
+
         <section class="section-table">
             <div class="quadro">
                 <div>

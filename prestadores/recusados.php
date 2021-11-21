@@ -84,6 +84,11 @@ $recusados = prestRecusado($conexao);
     </div>
 
     <section class="home-section">
+
+        <div class="outdoor">
+            <h2>Lista de Todos os Prestadores de Serviços Recusados</h2>
+        </div>
+
         <section class="section-table">
             <div class="quadro">
                 <div>
@@ -97,7 +102,7 @@ $recusados = prestRecusado($conexao);
                         </select>
 
                         <input type="text" name="busca" placeholder="Insira aqui">
-                        <button type="submit" name="btn-buscar">Buscar</button>
+                        <button type="submit" name="btn-buscar" id="botao">Buscar</button>
                     </form>
 
                 </div>
@@ -124,7 +129,7 @@ $recusados = prestRecusado($conexao);
                                 <td> <?php echo $recusado['status']; ?> </td>
                                 <td> <?php echo $recusado['img']; ?> </td>
 
-                                <td> <button type="submit" name="btn-desbanirP">Aceitar</button> </td>
+                                <td> <button type="submit" name="btn-desbanirP" id="botao">Aceitar</button> </td>
                             </form>
                         </tr>
                     <?php endforeach; ?>
