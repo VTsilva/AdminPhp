@@ -14,12 +14,10 @@ body {
 }
 
 section {
-    /* background-color: white; */
-    height: 100%;
+    margin-top: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 }
 
 .section-login {
@@ -399,5 +397,24 @@ input[type="password"] {
 .home-section .home-content .text {
     font-size: 26px;
     font-weight: 600;
+}
+
+
+
+.outdoor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100px;
+    width: 100%;
+    color: white;
+}
+
+.outdoor h2{
+    width: 1150px;
+    background-color:#2F343D;
+    padding: 10px;
+    text-align: center;
 }
 

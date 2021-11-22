@@ -84,47 +84,63 @@ $prestadores = listarPrestador($conexao);
     </div>
 
     <section class="home-section">
-        <section class="section-table">
+
+        <div class="outdoor">
+            <h2>Prestadores de Serviços</h2>
+        </div>
+        <div class="busca">
+            <div class="title-busca">
+                <h3>Buscar</h3>
+            </div>
+            <form action="buscaP.php" method="post" class="frm-busca">
+                <div class="area">
+                    <select name="clausula" class="combobox">
+                        <option value="1" selected>Por id</option>
+                        <option value="2">Por nome</option>
+                        <option value="3">Por cnpj</option>
+                    </select>
+                    <div class="input-btn">
+                        <input type="text" name="busca" placeholder="Insira aqui">
+                        <button type="submit" name="btn-buscar" id="botao">Buscar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <section class="table100">
             <div class="quadro">
                 <div>
                     <h3>Quantidade de Prestadores Cadastrados: <?php echo implode(",", $nPrestadores); ?></h3>
 
-                    <form action="buscaP.php" method="post">
-                        <select name="clausula">
-                            <option value="1" selected>Por id</option>
-                            <option value="2">Por nome</option>
-                            <option value="3">Por cnpj</option>
-                        </select>
 
-                        <input type="text" name="busca" placeholder="Insira aqui">
-                        <button type="submit" name="btn-buscar">Buscar</button>
-                    </form>
 
                 </div>
                 <table class="table">
-                    <tr>
-                        <th>ID</th>
-                        <th>NOME</th>
-                        <th>CNPJ</th>
-                        <th>EMAIL</th>
-                        <th>TEL</th>
-                        <th>CEP</th>
-                        <th>STATUS</th>
-                        <th>IMG</th>
-                    </tr>
+                    <thead>
+                        <tr class="table100-head">
+                            <th class="column1">ID</th>
+                            <th class="column2">NOME</th>
+                            <th class="column3">CNPJ</th>
+                            <th class="column4">EMAIL</th>
+                            <th class="column5">TEL</th>
+                            <th class="column6">CEP</th>
+                            <th class="column3">STATUS</th>
+                            <th class="column2">IMG</th>
+                        </tr>
+                    </thead>
                     <?php foreach ($prestadores as $prestador) : ?>
                         <tr>
                             <form action="verPrest.php" method="post">
-                                <td> <input type="text" name="id" value="<?php echo $prestador['id']; ?>"></td>
-                                <td> <?php echo $prestador['nome']; ?> </td>
-                                <td> <?php echo $prestador['cnpj']; ?> </td>
-                                <td> <?php echo $prestador['email']; ?> </td>
-                                <td> <?php echo $prestador['tel']; ?> </td>
-                                <td> <?php echo $prestador['cep']; ?> </td>
-                                <td> <?php echo $prestador['status']; ?> </td>
-                                <td> <?php echo $prestador['img']; ?> </td>
+                                <td class="column1"> <input type="text" name="id" value="<?php echo $prestador['id']; ?>"></td>
+                                <td class="column2"> <?php echo $prestador['nome']; ?> </td>
+                                <td class="column3"> <?php echo $prestador['cnpj']; ?> </td>
+                                <td class="column4"> <?php echo $prestador['email']; ?> </td>
+                                <td class="column5"> <?php echo $prestador['tel']; ?> </td>
+                                <td class="column6"> <?php echo $prestador['cep']; ?> </td>
+                                <td class="column3"> <?php echo $prestador['status']; ?> </td>
+                                <td class="column2"> <?php echo $prestador['img']; ?> </td>
 
-                                <td> <button type="submit" name="btn-verP">Ver</button> </td>
+                                <td> <button type="submit" name="btn-verP" id="botao">Ver</button> </td>
                             </form>
                         </tr>
                     <?php endforeach; ?>
