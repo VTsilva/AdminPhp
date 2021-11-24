@@ -88,32 +88,23 @@ $prestadores = listarPrestador($conexao);
         <div class="outdoor">
             <h2>Prestadores de Serviços</h2>
         </div>
+
         <div class="busca">
-            <div class="title-busca">
-                <h3>Buscar</h3>
-            </div>
             <form action="buscaP.php" method="post" class="frm-busca">
-                <div class="area">
-                    <select name="clausula" class="combobox">
-                        <option value="1" selected>Por id</option>
-                        <option value="2">Por nome</option>
-                        <option value="3">Por cnpj</option>
-                    </select>
-                    <div class="input-btn">
-                        <input type="text" name="busca" placeholder="Insira aqui">
-                        <button type="submit" name="btn-buscar" id="botao">Buscar</button>
-                    </div>
-                </div>
+                <select name="clausula" class="combobox">
+                    <option value="1" selected>Por id</option>
+                    <option value="2">Por nome</option>
+                    <option value="3">Por cnpj</option>
+                </select>
+                <input type="text" name="busca" placeholder="Insira aqui" class="search" />
+                <button type="submit" name="btn-buscar" class="btn-buscar">Buscar</button>
             </form>
         </div>
 
         <section class="table100">
             <div class="quadro">
                 <div>
-                    <h3>Quantidade de Prestadores Cadastrados: <?php echo implode(",", $nPrestadores); ?></h3>
-
-
-
+                    <h3 class="qtd">Quantidade de Prestadores Cadastrados: <?php echo implode(",", $nPrestadores); ?></h3>
                 </div>
                 <table class="table">
                     <thead>
@@ -126,6 +117,7 @@ $prestadores = listarPrestador($conexao);
                             <th class="column6">CEP</th>
                             <th class="column3">STATUS</th>
                             <th class="column2">IMG</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <?php foreach ($prestadores as $prestador) : ?>

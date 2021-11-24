@@ -89,47 +89,55 @@ $recusados = prestRecusado($conexao);
             <h2>Lista de Todos os Prestadores de Serviços Recusados</h2>
         </div>
 
-        <section class="section-table">
+        <div class="busca">
+            <form action="buscaP.php" method="post" class="frm-busca">
+                <select name="clausula" class="combobox">
+                    <option value="1" selected>Por id</option>
+                    <option value="2">Por nome</option>
+                    <option value="3">Por cnpj</option>
+                </select>
+                <input type="text" name="busca" placeholder="Insira aqui" class="search" />
+                <button type="submit" name="btn-buscar" class="btn-buscar">Buscar</button>
+            </form>
+        </div>
+
+        <section class="table100">
             <div class="quadro">
                 <div>
-                    <h3>Quantidade de Prestadores Recusados: <?php echo implode(",", $nRecusados); ?> </h3>
-
-                    <form action="buscaP.php" method="post">
-                        <select name="clausula">
-                            <option value="1" selected>Por id</option>
-                            <option value="2">Por nome</option>
-                            <option value="3">Por cnpj</option>
-                        </select>
-
-                        <input type="text" name="busca" placeholder="Insira aqui">
-                        <button type="submit" name="btn-buscar" id="botao">Buscar</button>
-                    </form>
-
+                    <h3 class="qtd">Quantidade de Prestadores Recusados: <?php echo implode(",", $nRecusados); ?> </h3>
                 </div>
                 <table class="table">
-                    <tr>
-                        <th>ID</th>
-                        <th>NOME</th>
-                        <th>CNPJ</th>
-                        <th>EMAIL</th>
-                        <th>TEL</th>
-                        <th>CEP</th>
-                        <th>STATUS</th>
-                        <th>IMG</th>
-                    </tr>
+                    <thead>
+                        <tr class="table100-head">
+                            <th class="column1">ID</th>
+                            <th class="column2">NOME</th>
+                            <th class="column3">CNPJ</th>
+                            <th class="column4">EMAIL</th>
+                            <th class="column5">TEL</th>
+                            <th class="column6">CEP</th>
+                            <th class="column3">STATUS</th>
+                            <th class="column4">IMG</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
                     <?php foreach ($recusados as $recusado) : ?>
                         <tr>
                             <form action="../php/verificacao.php" method="post">
-                                <td> <input type="text" name="id" value="<?php echo $recusado['id']; ?>"></td>
-                                <td> <?php echo $recusado['nome']; ?> </td>
-                                <td> <?php echo $recusado['cnpj']; ?> </td>
-                                <td> <?php echo $recusado['email']; ?> </td>
-                                <td> <?php echo $recusado['tel']; ?> </td>
-                                <td> <?php echo $recusado['cep']; ?> </td>
-                                <td> <?php echo $recusado['status']; ?> </td>
-                                <td> <?php echo $recusado['img']; ?> </td>
+                                <td class="column1"> <input type="text" name="id" value="<?php echo $recusado['id']; ?>"></td>
+                                <td class="column2"> <?php echo $recusado['nome']; ?> </td>
+                                <td class="column3"> <?php echo $recusado['cnpj']; ?> </td>
+                                <td class="column4"> <?php echo $recusado['email']; ?> </td>
+                                <td class="column5"> <?php echo $recusado['tel']; ?> </td>
+                                <td class="column6"> <?php echo $recusado['cep']; ?> </td>
+                                <td class="column3"> <?php echo $recusado['status']; ?> </td>
+                                <td class="column4"> <?php echo $recusado['img']; ?> </td>
 
                                 <td> <button type="submit" name="btn-desbanirP" id="botao">Aceitar</button> </td>
+                            </form>
+                            <form action="verPrest.php" method="post">
+                                <td style="display: none;"> <input type="text" name="id" value="<?php echo $recusado['id']; ?>"></td>
+                                <td> <button type="submit" name="btn-verP" id="botao">Ver</button> </td>
                             </form>
                         </tr>
                     <?php endforeach; ?>

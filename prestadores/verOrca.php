@@ -92,46 +92,53 @@ $nDetalhe = contaDetalhe($conexao, $idOrca);
     </div>
 
     <section class="home-section">
-        <section class="section-table">
-            <section class="info">
-                <div>
-                    <?php foreach ($orcamentos as $orcamento) : ?>
-                        <h3>Este é o id do orcamento: <?php echo $orcamento['id'] ?></h3> <br>
-                        <h3>Este é o Cliente: <?php echo $orcamento['cliente'] ?></h3> <br>
-                        <h3>Este é o id do Cliente: <?php echo $orcamento['idCliente'] ?></h3> <br>
-                        <h3>Este é o Prestador: <?php echo $orcamento['loja'] ?></h3> <br>
-                        <h3>Este é o id do Prestador: <?php echo $orcamento['idLoja'] ?></h3> <br>
-                        <h3>Este é o status do orcamento: <?php echo $orcamento['status'] ?></h3> <br>
-                        <h3>Este é o valor total do orcamento: <?php echo $orcamento['valorTotal'] ?></h3> <br>
-                        <h3>Este é a avaliação dos servicos prestados(0-5, estrelas): <?php echo $orcamento['avaliacao'] ?></h3> <br>
-                        <h3>Este é a data do orcamento: <?php echo $orcamento['data'] ?></h3> <br>
-                    <?php endforeach; ?>
+        <div class="outdoor">
+            <h2>PRESTADOR DE SERVIÇOS</h2>
+        </div>
+        <section class="verp-section">
+            <section class="table100">
+                <section class="info">
+                    <div>
+                        <?php foreach ($orcamentos as $orcamento) : ?>
+                            <h3>Este é o id do orcamento: <?php echo $orcamento['id'] ?></h3> <br>
+                            <h3>Este é o Cliente: <?php echo $orcamento['cliente'] ?></h3> <br>
+                            <h3>Este é o id do Cliente: <?php echo $orcamento['idCliente'] ?></h3> <br>
+                            <h3>Este é o Prestador: <?php echo $orcamento['loja'] ?></h3> <br>
+                            <h3>Este é o id do Prestador: <?php echo $orcamento['idLoja'] ?></h3> <br>
+                            <h3>Este é o status do orcamento: <?php echo $orcamento['status'] ?></h3> <br>
+                            <h3>Este é o valor total do orcamento: <?php echo $orcamento['valorTotal'] ?></h3> <br>
+                            <h3>Este é a avaliação dos servicos prestados(0-5, estrelas): <?php echo $orcamento['avaliacao'] ?></h3> <br>
+                            <h3>Este é a data do orcamento: <?php echo $orcamento['data'] ?></h3> <br>
+                        <?php endforeach; ?>
+                    </div>
+                </section>
+
+                <div class="quadro">
+                    <div>
+                        <h3 class="qtd">Quantidade de Serviços prestados: <?php echo implode(",", $nDetalhe); ?></h3>
+                    </div>
+
+                    <table class="table">
+                        <thead>
+                            <tr class="table100-head">
+                                <th class="column1">ID do Orçamento</th>
+                                <th class="column2">Serviço Prestado</th>
+                                <th class="column3">Veículo</th>
+                                <th class="column4">ID Fun</th>
+                                <th class="column5">Funcionario</th>
+                            </tr>
+                        </thead>
+                        <?php foreach ($detalhaOrcas as $detalhaOrca) : ?>
+                            <tr>
+                                <td class="column1"> <input type="text" name="id" value="<?php echo $detalhaOrca['idOrca']; ?>"></td>
+                                <td class="column2"> <?php echo $detalhaOrca['servico']; ?> </td>
+                                <td class="column3"> <?php echo $detalhaOrca['veiculo']; ?> </td>
+                                <td class="column4"> <?php echo $detalhaOrca['idFun']; ?> </td>
+                                <td class="column5"> <?php echo $detalhaOrca['funcionario']; ?> </td>>
+                            </tr>
+                        <?php endforeach; ?>
                 </div>
             </section>
-
-            <div class="quadro">
-                <div>
-                    <h3>Quantidade de Serviços prestados: <?php echo implode(",", $nDetalhe); ?></h3>
-                </div>
-
-                <table class="table">
-                    <tr>
-                        <th>ID do Orçamento</th>
-                        <th>Serviço Prestado</th>
-                        <th>Veículo</th>
-                        <th>ID Fun</th>
-                        <th>Funcionario</th>
-                    </tr>
-                    <?php foreach ($detalhaOrcas as $detalhaOrca) : ?>
-                        <tr>
-                            <td> <input type="text" name="id" value="<?php echo $detalhaOrca['idOrca']; ?>"></td>
-                            <td> <?php echo $detalhaOrca['servico']; ?> </td>
-                            <td> <?php echo $detalhaOrca['veiculo']; ?> </td>
-                            <td> <?php echo $detalhaOrca['idFun']; ?> </td>
-                            <td> <?php echo $detalhaOrca['funcionario']; ?> </td>>
-                        </tr>
-                    <?php endforeach; ?>
-            </div>
         </section>
     </section>
 

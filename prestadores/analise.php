@@ -88,53 +88,60 @@ $analises = prestAnalise($conexao);
             <h2>Lista de Todos os Prestadores de Serviços Em Análise</h2>
         </div>
 
-        <section class="section-table">
+        <div class="busca">
+            <form action="buscaP.php" method="post" class="frm-busca">
+                <select name="clausula" class="combobox">
+                    <option value="1" selected>Por id</option>
+                    <option value="2">Por nome</option>
+                    <option value="3">Por cnpj</option>
+                </select>
+                <input type="text" name="busca" placeholder="Insira aqui" class="search" />
+                <button type="submit" name="btn-buscar" class="btn-buscar">Buscar</button>
+            </form>
+        </div>
+
+        <section class="table100">
             <div class="quadro">
                 <div>
-                    <h3>Quantidade de Prestadores Em Análise: <?php echo implode(",", $nAnalise); ?></h3>
-
-                    <form action="buscaP.php" method="post">
-                        <select name="clausula">
-                            <option value="1" selected>Por id</option>
-                            <option value="2">Por nome</option>
-                            <option value="3">Por cnpj</option>
-                        </select>
-
-                        <input type="text" name="busca" placeholder="Insira aqui">
-                        <button type="submit" name="btn-buscar">Buscar</button>
-                    </form>
+                    <h3 class="qtd">Quantidade de Prestadores Em Análise: <?php echo implode(",", $nAnalise); ?></h3>
                 </div>
 
                 <table class="table">
-                    <tr>
-                        <th>ID</th>
-                        <th>NOME</th>
-                        <th>CNPJ</th>
-                        <th>EMAIL</th>
-                        <th>TEL</th>
-                        <th>CEP</th>
-                        <th>STATUS</th>
-                        <th>IMG</th>
-                    </tr>
+                    <thead>
+                        <tr class="table100-head">
+                            <th class="column1">ID</th>
+                            <th class="column2">NOME</th>
+                            <th class="column3">CNPJ</th>
+                            <th class="column4">EMAIL</th>
+                            <th class="column5">TEL</th>
+                            <th class="column6">CEP</th>
+                            <th class="column3">STATUS</th>
+                            <th class="column3">IMG</th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
                     <?php foreach ($analises as $analise) : ?>
                         <tr>
                             <form action="../php/verificacao.php" method="post">
-                                <td> <input type="text" name="id" value="<?php echo $analise['id']; ?>"></td>
-                                <td> <?php echo $analise['nome']; ?> </td>
-                                <td> <?php echo $analise['cnpj']; ?> </td>
-                                <td> <?php echo $analise['email']; ?> </td>
-                                <td> <?php echo $analise['tel']; ?> </td>
-                                <td> <?php echo $analise['cep']; ?> </td>
-                                <td> <?php echo $analise['status']; ?> </td>
-                                <td> <?php echo $analise['img']; ?> </td>
+                                <td class="column1"> <input type="text" name="id" value="<?php echo $analise['id']; ?>"></td>
+                                <td class="column2"> <?php echo $analise['nome']; ?> </td>
+                                <td class="column3"> <?php echo $analise['cnpj']; ?> </td>
+                                <td class="column4"> <?php echo $analise['email']; ?> </td>
+                                <td class="column5"> <?php echo $analise['tel']; ?> </td>
+                                <td class="column6"> <?php echo $analise['cep']; ?> </td>
+                                <td class="column3"> <?php echo $analise['status']; ?> </td>
+                                <td class="column3"> <?php echo $analise['img']; ?> </td>
 
-                                <td><button type="submit" name="btn-aceitarP">Aceitar</button></td>
-                                <td><button type="submit" name="btn-recusarP">Recusar</button></td>
-                                <td><button type="submit" name="btn-banirP">Banir</button></td>
+                                <td><button type="submit" name="btn-aceitarP" id="botao">Aceitar</button></td>
+                                <td><button type="submit" name="btn-recusarP" id="botao">Recusar</button></td>
+                                <td><button type="submit" name="btn-banirP" id="botao">Banir</button></td>
                             </form>
                             <form action="verPrest.php" method="post">
                                 <td style="display: none;"> <input type="text" name="id" value="<?php echo $analise['id']; ?>"></td>
-                                <td><button type="submit" name="btn-verP">Ver</button></td>
+                                <td><button type="submit" name="btn-verP" id="botao">Ver</button></td>
                             </form>
                         </tr>
                     <?php endforeach; ?>
