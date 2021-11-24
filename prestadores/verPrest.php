@@ -93,7 +93,10 @@ $nFuncionarios = contarFuncionario($conexao, $id);
     </div>
 
     <section class="home-section">
-        <section class="section-table">
+        <div class="outdoor">
+            <h2>PRESTADOR DE SERVIÇOS</h2>
+        </div>
+        <section class="verp-section">
             <section class="info">
                 <div>
                     <h3>Este é o id: <?php echo $vPrestador['id'] ?></h3> <br>
@@ -108,56 +111,68 @@ $nFuncionarios = contarFuncionario($conexao, $id);
                     <?php
                     $status = $vPrestador['status'];
                     if ($status == 'ACEITO') {
-                        echo "<form action='../php/verificacao.php' method='post'> 
-                                 <input style='display: none' type='text' name='id' value='" . $id . "'>
-                                 <button type='submit' name='btn-banirP'> Banir </button> 
-                              </form>";
+                        echo "<div class='vorca'> 
+                                <form action='../php/verificacao.php' method='post'> 
+                                    <input style='display: none' type='text' name='id' value='" . $id . "'>
+                                    <button type='submit' name='btn-banirP' id='btn-funcao'> Banir </button> 
+                                </form>
+                              </div>
+                            ";
                     } elseif ($status == 'EM ANÁLISE') {
-                        echo "<form action='../php/verificacao.php' method='post'> 
-                                 <input style='display: none' type='text' name='id' value='" . $id . "'>
-                                 <button type='submit' name='btn-aceitarP'> Aceitar </button>
-                                 <button type='submit' name='btn-recusarP'> Recusar </button> 
-                              </form>";
+                        echo "<div class='vorca'>
+                                <form action='../php/verificacao.php' method='post'> 
+                                    <input style='display: none' type='text' name='id' value='" . $id . "'>
+                                    <button type='submit' name='btn-aceitarP' id='btn-funcao'> Aceitar </button>
+                                    <button type='submit' name='btn-recusarP' id='btn-funcao'> Recusar </button> 
+                                </form>
+                              </div>";
                     } else {
-                        echo "<form action='../php/verificacao.php' method='post'> 
+                        echo "<div class='vorca'>
+                              <form action='../php/verificacao.php' method='post'> 
                                 <input style='display: none' type='text' name='id' value='" . $id . "'>
-                                <button type='submit' name='btn-desbanirP'> Aceitar </button>
-                              </form>";
+                                <button type='submit' name='btn-desbanirP' id='btn-funcao'> Desbanir </button>
+                              </form>
+                              </div>";
                     }
                     ?>
                 </div>
             </section>
 
-            <div class="quadro">
-                <div>
-                    <form action="orcaP.php" method="post">
-                        <input type="text" style="display: none;" name="id" value="<?php echo $id ?>">
+            <section class="table100">
+                <div class="quadro">
+                    <div>
+                        <h3 class="qtd">Quantidade de Funcionarios cadastrados da Loja: <?php echo implode(",", $nFuncionarios); ?></h3>
+                    </div>
 
-                        <button type="submit" name="btn-verO">Ver Orcamentos</button>
-                    </form>
+                    <table class="table">
+                        <thead>
+                            <tr class="table100-head">
+                                <th class="column1">ID</th>
+                                <th class="column2">NOME</th>
+                                <th class="column3">CPF</th>
+                                <th class="column4">LOJA</th>
+                                <th class="column5">STATUS</th>
+                            </tr>
+                        </thead>
+                        <?php foreach ($funcionarios as $funcionario) : ?>
+                            <tr>
+                                <td class="column1"> <input type="text" name="id" value="<?php echo $funcionario['id']; ?>"></td>
+                                <td class="column2"> <?php echo $funcionario['nome']; ?> </td>
+                                <td class="column3"> <?php echo $funcionario['cpf']; ?> </td>
+                                <td class="column4"> <?php echo $funcionario['loja']; ?> </td>
+                                <td class="column5"> <?php echo $funcionario['status']; ?> </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    </table>
+                    <div class="vorca">
+                        <form action="orcaP.php" method="post">
+                            <input type="text" style="display: none;" name="id" value="<?php echo $id ?>">
 
-
-                    <h3>Quantidade de Funcionarios cadastrados da Loja: <?php echo implode(",", $nFuncionarios); ?></h3>
+                            <button type="submit" name="btn-verO" id='btn-funcao'>Ver Orcamentos</button>
+                        </form>
+                    </div>
                 </div>
-
-                <table class="table">
-                    <tr>
-                        <th>ID</th>
-                        <th>NOME</th>
-                        <th>CPF</th>
-                        <th>LOJA</th>
-                        <th>STATUS</th>
-                    </tr>
-                    <?php foreach ($funcionarios as $funcionario) : ?>
-                        <tr>
-                            <td> <input type="text" name="id" value="<?php echo $funcionario['id']; ?>"></td>
-                            <td> <?php echo $funcionario['nome']; ?> </td>
-                            <td> <?php echo $funcionario['cpf']; ?> </td>
-                            <td> <?php echo $funcionario['loja']; ?> </td>
-                            <td> <?php echo $funcionario['status']; ?> </td>>
-                        </tr>
-                    <?php endforeach; ?>
-            </div>
+            </section>
         </section>
     </section>
 

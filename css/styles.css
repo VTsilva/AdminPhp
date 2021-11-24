@@ -14,14 +14,17 @@ body {
 }
 
 section {
-    margin-top: 100px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center;       
 }
 
 .section-login {
     background-color: #2F343D;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
 }
 
 .container {
@@ -60,7 +63,7 @@ input[type="password"] {
     background-color: #64B5F6;
     border: none;
     border-radius: 100%;
-    height: 100%;
+    height: 40px;
     width: 40px;
     display: flex;
     justify-content: center;
@@ -365,11 +368,11 @@ input[type="password"] {
 .home-section {
     position: relative;
     background: white;
-    left: 260px;
-    height: 100vh;
+    left: 260px;    
     width: calc(100% - 260px);
     transition: all 0.5s ease;
     display: block;
+    padding: 10px 0 10px 0;
 }
 
 .sidebar.close ~ .home-section {
@@ -399,22 +402,44 @@ input[type="password"] {
     font-weight: 600;
 }
 
-
-
 .outdoor{
     display: flex;
     justify-content: center;
     align-items: center;
-
-    height: 100px;
-    width: 100%;
-    color: white;
 }
 
 .outdoor h2{
-    width: 1150px;
-    background-color:#2F343D;
-    padding: 10px;
-    text-align: center;
+    font-weight: 600;
+    font-size: 30px;
+    color: #2F343D;
 }
 
+.verp-section {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start !important;
+    flex-direction: row;
+    margin-top: 40px;
+}
+
+.info{
+    margin-right: 40px;
+}
+
+#btn-funcao{
+    background-color: #2F343D;
+    border-radius: 10px;
+    color: white;
+    padding: 10px;
+}
+
+#btn-funcao:hover{
+    transition: 0.5s;
+    text-decoration: underline;
+    color: rgb(163, 163, 163);
+}
+
+.vorca {
+    display: flex;
+    justify-content: right;
+}

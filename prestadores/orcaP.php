@@ -91,45 +91,63 @@ $nOrca = contarOrca($conexao, $id);
     </div>
 
     <section class="home-section">
-        <section class="section-table">
-            <section class="info">
+        <div class="outdoor">
+            <h2>ORÇAMENTOS</h2>
+        </div>
 
+        <div class="busca">
+            <form action="buscaP.php" method="post" class="frm-busca">
+                <select name="clausula" class="combobox">
+                    <option value="1" selected>Por id</option>
+                    <option value="2">Por nome</option>
+                    <option value="3">Por cnpj</option>
+                </select>
+                <input type="text" name="busca" placeholder="Insira aqui" class="search" />
+                <button type="submit" name="btn-buscar" class="btn-buscar">Buscar</button>
+            </form>
+        </div>
+
+        <section class="table100">
+            <div class="quadro">
                 <div>
-                    <h3>Quantidade de Orçamentos realizados: <?php echo implode(",", $nOrca) ?></h3>
+                    <h3 class="qtd">Quantidade de Orçamentos realizados: <?php echo implode(",", $nOrca) ?></h3>
                 </div>
 
                 <table class="table">
-                    <tr>
-                        <th>ID ORCAMENTO</th>
-                        <th>CLIENTE</th>
-                        <th>ID DO CLIENTE</th>
-                        <th>LOJA</th>
-                        <th>ID DA lOJA</th>
-                        <th>STATUS</th>
-                        <th>VALOR TOTAL</th>
-                        <th>AVALIAÇÃO(EM ESTRELAS)</th>
-                        <th>DATA</th>
-                    </tr>
+                    <thead>
+                        <tr class="table100-head">
+                            <th class="column1">ID </th>
+                            <th class="column4">CLIENTE</th>
+                            <th class="column4">ID CLIENTE</th>
+                            <th class="column4">LOJA</th>
+                            <th class="column4">ID <br> LOJA</th>
+                            <th class="column4">STATUS</th>
+                            <th class="column4">VALOR TOTAL</th>
+                            <th class="column4">AVALIAÇÃO</th>
+                            <th class="column4">DATA</th>
+                            <th></th>
+                        </tr>
+                    </thead>
                     <?php foreach ($orcamentos as $orcamento) : ?>
                         <tr>
                             <form action="verOrca.php" method="post">
-                                <td> <input type="text" name="idOrca" value="<?php echo $orcamento['id']; ?>"></td>
-                                <td> <?php echo $orcamento['cliente']; ?> </td>
-                                <td> <?php echo $orcamento['idCliente']; ?> </td>
-                                <td> <?php echo $orcamento['loja']; ?> </td>
-                                <td> <input type="text" name="idLoja" value="<?php echo $orcamento['idLoja']; ?>"></td>
-                                <td> <?php echo $orcamento['status']; ?> </td>
-                                <td> <?php echo $orcamento['valorTotal']; ?> </td>
-                                <td> <?php echo $orcamento['avaliacao']; ?> </td>
-                                <td> <?php echo $orcamento['data']; ?> </td>
+                                <td class="column1"> <input type="text" name="idOrca" value="<?php echo $orcamento['id']; ?>"></td>
+                                <td class="column4"> <?php echo $orcamento['cliente']; ?> </td>
+                                <td class="column1"> <?php echo $orcamento['idCliente']; ?> </td>
+                                <td class="column4"> <?php echo $orcamento['loja']; ?> </td>
+                                <td class="column1"> <input type="text" name="idLoja" value="<?php echo $orcamento['idLoja']; ?>"></td>
+                                <td class="column4"> <?php echo $orcamento['status']; ?> </td>
+                                <td class="column4"> <?php echo $orcamento['valorTotal']; ?> </td>
+                                <td class="column1"> <?php echo $orcamento['avaliacao']; ?> </td>
+                                <td class="column4"> <?php echo $orcamento['data']; ?> </td>
 
-                                <td> <button type="submit" name="btn-verP">Ver</button> </td>
+                                <td> <button type="submit" name="btn-verP" id="botao">Ver</button> </td>
                             </form>
                         </tr>
                     <?php endforeach; ?>
                 </table>
 
-            </section>
+            </div>
         </section>
     </section>
     <script src="./../js/animacao.js"></script>

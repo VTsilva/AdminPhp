@@ -88,51 +88,56 @@ $banidos = prestBanidos($conexao);
             <h2>Lista de Todos os Prestadores de Serviços Banidos</h2>
         </div>
 
-        <section class="section-table">
+        <div class="busca">
+            <form action="buscaP.php" method="post" class="frm-busca">
+                <select name="clausula" class="combobox">
+                    <option value="1" selected>Por id</option>
+                    <option value="2">Por nome</option>
+                    <option value="3">Por cnpj</option>
+                </select>
+                <input type="text" name="busca" placeholder="Insira aqui" class="search" />
+                <button type="submit" name="btn-buscar" class="btn-buscar">Buscar</button>
+            </form>
+        </div>
+
+        <section class="table100">
             <div class="quadro">
                 <div>
-                    <h3>Quantidade de Prestadores Banidos: <?php echo implode(",", $nBanidos); ?></h3>
-
-                    <form action="buscaP.php" method="post">
-                        <select name="clausula">
-                            <option value="1" selected>Por id</option>
-                            <option value="2">Por nome</option>
-                            <option value="3">Por cnpj</option>
-                        </select>
-
-                        <input type="text" name="busca" placeholder="Insira aqui">
-                        <button type="submit" name="btn-buscar">Buscar</button>
-                    </form>
+                    <h3 class="qtd">Quantidade de Prestadores Banidos: <?php echo implode(",", $nBanidos); ?></h3>
                 </div>
 
                 <table class="table">
-                    <tr>
-                        <th>ID</th>
-                        <th>NOME</th>
-                        <th>CNPJ</th>
-                        <th>EMAIL</th>
-                        <th>TEL</th>
-                        <th>CEP</th>
-                        <th>STATUS</th>
-                        <th>IMG</th>
-                    </tr>
+                    <thead>
+                        <tr class="table100-head">
+                            <th class="column1">ID</th>
+                            <th class="column2">NOME</th>
+                            <th class="column3">CNPJ</th>
+                            <th class="column4">EMAIL</th>
+                            <th class="column5">TEL</th>
+                            <th class="column6">CEP</th>
+                            <th class="column3">STATUS</th>
+                            <th class="column3">IMG</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
                     <?php foreach ($banidos as $banido) : ?>
                         <tr>
                             <form action="../php/verificacao.php" method="post">
-                                <td> <input type="text" name="id" value="<?php echo $banido['id']; ?>"></td>
-                                <td> <?php echo $banido['nome']; ?> </td>
-                                <td> <?php echo $banido['cnpj']; ?> </td>
-                                <td> <?php echo $banido['email']; ?> </td>
-                                <td> <?php echo $banido['tel']; ?> </td>
-                                <td> <?php echo $banido['cep']; ?> </td>
-                                <td> <?php echo $banido['status']; ?> </td>
-                                <td> <?php echo $banido['img']; ?> </td>
+                                <td class="column1"> <input type="text" name="id" value="<?php echo $banido['id']; ?>"></td>
+                                <td class="column2"> <?php echo $banido['nome']; ?> </td>
+                                <td class="column3"> <?php echo $banido['cnpj']; ?> </td>
+                                <td class="column4"> <?php echo $banido['email']; ?> </td>
+                                <td class="column5"> <?php echo $banido['tel']; ?> </td>
+                                <td class="column6"> <?php echo $banido['cep']; ?> </td>
+                                <td class="column3"> <?php echo $banido['status']; ?> </td>
+                                <td class="column3"> <?php echo $banido['img']; ?> </td>
 
-                                <td> <button type="submit" name="btn-desbanirP">Desbanir</button> </td>
+                                <td> <button type="submit" name="btn-desbanirP" id="botao">Desbanir</button> </td>
                             </form>
                             <form action="verPrest.php" method="post">
                                 <td style="display: none;"> <input type="text" name="id" value="<?php echo $banido['id']; ?>"></td>
-                                <td><button type="submit" name="btn-verP">Ver</button></td>
+                                <td><button type="submit" name="btn-verP" id="botao">Ver</button></td>
                             </form>
                         </tr>
                     <?php endforeach; ?>

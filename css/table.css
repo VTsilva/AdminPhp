@@ -1,37 +1,10 @@
-/* table, th, td {
-   border: 1px solid black;
-}
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600;700&family=Roboto:wght@100&display=swap');
 
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
-
-th {
-    height: 25px;
-    text-align: left;   
-    background-color: #2F343D;
-    color: white;
-    padding: 15px;
-    text-align: center;
-}
-
-td {
-    height: 10px;
-    vertical-align: bottom;
-    padding: 8px;
-    text-align: left;
-} */
-
-
-
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
-
-
-@font-face {
-  font-family: OpenSans-Regular;
-  src: url('../fonts/OpenSans/OpenSans-Regular.ttf'); 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -146,7 +119,6 @@ table td.r, table th.r {
 
 
 .table100-head th{
-  font-family: OpenSans-Regular;
   font-size: 18px;
   color: #fff;
   line-height: 1.2;
@@ -158,7 +130,6 @@ tbody tr:nth-child(even) {
 }
 
 tbody tr {
-  font-family: OpenSans-Regular;
   font-size: 15px;
   color: #808080;
   line-height: 1.2;
@@ -228,7 +199,6 @@ tbody tr:hover {
     margin-bottom: 0;
   }
   table tbody tr td:before {
-    font-family: OpenSans-Regular;
     font-size: 14px;
     color: #999999;
     line-height: 1.2;
@@ -277,56 +247,78 @@ tbody tr:hover {
   }
 }
 
-
 #botao {
     text-decoration: underline;
-    padding: 15px;
-    border-radius: 100%;
+    padding: 10px;
+    margin-right: 10px;
 }
 
 #botao:hover {
+    transition: 0.1s;
+    color: blue;
+}
+
+.input-btn button {
+    text-decoration: underline;
+    padding: 15px;
+    border-radius: 100%;
+    
+}
+
+.input-btn button:hover {
     transition: 0.5s;
     background-color: #2F343D;
     color: white;
 }
 
-
-
 .busca {
     display: flex;
-    align-items: center;
+    margin: 30px 170px 30px 170px;
+    height: 40px;
     justify-content: center;
-    /* background-color: red; */
-    height: 80px;
-    width: 100%;
-}
-.title-busca {
-    position: absolute;
-    margin-top: -60px;
+    align-items: center;
 }
 
 .frm-busca{
     display: flex;
-    flex-direction: row;
-    padding: 20px;
-    background-color: rgb(240, 240, 240);
-}
-
-.frm-busca div {
+    width: 70%;
     border-radius: 10px;
-    background-color: rgb(220, 220, 220);
-    display: flex;
-}
 
-.frm-busca div input {
-    border: none;
-    background-color: transparent;
-    text-align: center;
-    width: 100%;
-    height: 50px;
-    color: white;
+    border: 1px solid black;
 }
 
 .combobox {
-    margin-right: 15px;
+    width: 13% !important;
+    border: none;
+    color: #2f343d;
+    font-weight: 400;
+    outline: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    background: #2F343D;
+    color: white;
+}
+
+
+.search {
+    width: 80% !important;
+    height: 100% !important;
+    border: 0;
+    outline: none;
+    border-radius: 0px !important;
+    padding: 10px 0 10px 50px !important;
+    margin: 0 !important;
+}
+
+.btn-buscar {
+    width: 13% !important;
+    background: #2F343D;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
+}
+
+.qtd {
+    font-size: 18px;
+    font-weight: 10;
 }

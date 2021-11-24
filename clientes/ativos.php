@@ -83,48 +83,56 @@ $ativos = clienteAtivo($conexao);
     </div>
 
     <section class="home-section">
-        <section class="section-table">
+        <div class="outdoor">
+            <h2>Clientes Ativos</h2>
+        </div>
+
+        <div class="busca">
+            <form action="buscac.php" method="post" class="frm-busca">
+                <select name="clausula" class="combobox">
+                    <option value="1" selected>Por id</option>
+                    <option value="2">Por nome</option>
+                    <option value="3">Por cpf</option>
+                </select>
+                <input type="text" name="busca" placeholder="Insira aqui" class="search" />
+                <button type="submit" name="btn-buscar" class="btn-buscar">Buscar</button>
+            </form>
+        </div>
+
+        <section class="table100">
             <div class="quadro">
                 <div>
                     <h3>Quantidade de Clientes Ativos Cadastrados: <?php echo implode(",", $nAtivos); ?></h3>
-
-                    <form action="buscaC.php" method="post">
-                        <select name="clausula">
-                            <option value="1" selected>Por id</option>
-                            <option value="2">Por nome</option>
-                            <option value="3">Por cpf</option>
-                        </select>
-
-                        <input type="text" name="busca" placeholder="Insira aqui">
-                        <button type="submit" name="btn-buscar">Buscar</button>
-                    </form>
-
                 </div>
 
                 <table class="table">
-                    <tr>
-                        <th>ID</th>
-                        <th>NOME</th>
-                        <th>CPF</th>
-                        <th>TEL</th>
-                        <th>STATUS</th>
-                        <th>IMG</th>
-                    </tr>
+                    <thead>
+                        <tr class="table100-head">
+                            <th class="column1">ID</th>
+                            <th class="column2">NOME</th>
+                            <th class="column3">CPF</th>
+                            <th class="column4">TEL</th>
+                            <th class="column5">STATUS</th>
+                            <th class="column6">IMG</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
                     <?php foreach ($ativos as $ativo) : ?>
                         <tr>
                             <form action="../php/verificacao.php" method="post">
-                                <td> <input type="text" name="id" value="<?php echo $ativo['id']; ?>"></td>
-                                <td> <?php echo $ativo['nome']; ?> </td>
-                                <td> <?php echo $ativo['cpf']; ?> </td>
-                                <td> <?php echo $ativo['tel']; ?> </td>
-                                <td> <?php echo $ativo['status']; ?> </td>
-                                <td> <?php echo $ativo['img']; ?> </td>
+                                <td class="column1"> <input type="text" name="id" value="<?php echo $ativo['id']; ?>"> </td>
+                                <td class="column2"> <?php echo $ativo['nome']; ?> </td>
+                                <td class="column3"> <?php echo $ativo['cpf']; ?> </td>
+                                <td class="column4"> <?php echo $ativo['tel']; ?> </td>
+                                <td class="column5"> <?php echo $ativo['status']; ?> </td>
+                                <td class="column6"> <?php echo $ativo['img']; ?> </td>
 
-                                <td> <button type="submit" name="btn-banirC">Banir</button> </td>
+                                <td> <button type="submit" name="btn-banirC" id="botao">Banir</button> </td>
                             </form>
                             <form action="verCli.php" method="post">
                                 <td style="display: none;"> <input type="text" name="id" value="<?php echo $ativo['id']; ?>"></td>
-                                <td><button type="submit" name="btn-verC">Ver</button></td>
+                                <td><button type="submit" name="btn-verC" id="botao">Ver</button></td>
                             </form>
                         </tr>
 

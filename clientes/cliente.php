@@ -83,43 +83,52 @@ $clientes = listarCliente($conexao);
     </div>
 
     <section class="home-section">
-        <section class="section-table">
+        <div class="outdoor">
+            <h2>Clientes Cadastrados</h2>
+        </div>
+
+        <div class="busca">
+            <form action="buscac.php" method="post" class="frm-busca">
+                <select name="clausula" class="combobox">
+                    <option value="1" selected>Por id</option>
+                    <option value="2">Por nome</option>
+                    <option value="3">Por cpf</option>
+                </select>
+                <input type="text" name="busca" placeholder="Insira aqui" class="search" />
+                <button type="submit" name="btn-buscar" class="btn-buscar">Buscar</button>
+            </form>
+        </div>
+
+        <section class="table100">
             <div class="quadro">
                 <div>
                     <h3>Quantidade de Cliente Cadastrados: <?php echo implode(",", $num); ?> </h3>
-
-                    <form action="buscaC.php" method="post">
-                        <select name="clausula">
-                            <option value="1" selected>Por id</option>
-                            <option value="2">Por nome</option>
-                            <option value="3">Por cpf</option>
-                        </select>
-
-                        <input type="text" name="busca" placeholder="Insira aqui">
-                        <button type="submit" name="btn-buscar">Buscar</button>
-                    </form>
                 </div>
+
                 <table class="table">
-                    <tr>
-                        <th>ID</th>
-                        <th>NOME</th>
-                        <th>CPF</th>
-                        <th>TEL</th>
-                        <th>STATUS</th>
-                        <th>IMG</th>
-                    </tr>
+                    <thead>
+                        <tr class="table100-head">
+                            <th class="column1">ID</th>
+                            <th class="column2">NOME</th>
+                            <th class="column3">CPF</th>
+                            <th class="column4">TEL</th>
+                            <th class="column5">STATUS</th>
+                            <th class="column6">IMG</th>
+                            <th></th>
+                        </tr>
+                    </thead>
                     <?php foreach ($clientes as $cliente) : ?>
                         <tr>
                             <form action="verCli" method="post">
-                                <td> <input type="text" name="id" value="<?php echo $cliente['id']; ?>"> </td>
-                                <td> <?php echo $cliente['nome']; ?> </td>
-                                <td> <?php echo $cliente['cpf']; ?> </td>
-                                <td> <?php echo $cliente['tel']; ?> </td>
-                                <td> <?php echo $cliente['status']; ?> </td>
-                                <td> <?php echo $cliente['img']; ?> </td>
+                                <td class="column1"> <input type="text" name="id" value="<?php echo $cliente['id']; ?>"> </td>
+                                <td class="column2"> <?php echo $cliente['nome']; ?> </td>
+                                <td class="column3"> <?php echo $cliente['cpf']; ?> </td>
+                                <td class="column4"> <?php echo $cliente['tel']; ?> </td>
+                                <td class="column5"> <?php echo $cliente['status']; ?> </td>
+                                <td class="column6"> <?php echo $cliente['img']; ?> </td>
 
                                 <td>
-                                    <button type="submit" name="btn-verP">Ver</button>
+                                    <button type="submit" name="btn-verP" id="botao">Ver</button>
                                 </td>
                             </form>
                         </tr>

@@ -92,7 +92,8 @@ $nAuto = contarAuto($conexao, $id);
     </div>
 
     <section class="home-section">
-        <section class="section-table">
+
+        <section class="table100">
             <section class="info">
                 <div>
                     <h3>Este é o id: <?php echo $vCliente['id'] ?></h3> <br>
@@ -107,12 +108,12 @@ $nAuto = contarAuto($conexao, $id);
                     if ($status == 'ATIVO') {
                         echo "<form action='../php/verificacao.php' method='post'> 
                                  <input style='display: none' type='text' name='id' value='" . $id . "'>
-                                 <button type='submit' name='btn-banirC'> Banir </button> 
+                                 <button type='submit' name='btn-banirC' id='btn-funcao'> Banir </button> 
                               </form>";
                     } else {
                         echo "<form action='../php/verificacao.php' method='post'> 
                                 <input style='display: none' type='text' name='id' value='" . $id . "'>
-                                <button type='submit' name='btn-desbanirC'> Desbanir </button>
+                                <button type='submit' name='btn-desbanirC' id='btn-funcao'> Desbanir </button>
                               </form>";
                     }
                     ?>
@@ -125,20 +126,22 @@ $nAuto = contarAuto($conexao, $id);
                 </div>
 
                 <table class="table">
-                    <tr>
-                        <th>ID</th>
-                        <th>MARCA</th>
-                        <th>MODELO</th>
-                        <th>COR</th>
-                        <th>CATEGORIA</th>
-                    </tr>
+                    <thead>
+                        <tr class="table100-head">
+                            <th class="column1">ID</th>
+                            <th class="column2">MARCA</th>
+                            <th class="column3">MODELO</th>
+                            <th class="column4">COR</th>
+                            <th class="column5">CATEGORIA</th>
+                        </tr>
+                    </thead>
                     <?php foreach ($automoveis as $automovel) : ?>
                         <tr>
-                            <td> <input type="text" name="id" value="<?php echo $automovel['id']; ?>"></td>
-                            <td> <?php echo $automovel['marca']; ?> </td>
-                            <td> <?php echo $automovel['modelo']; ?> </td>
-                            <td> <?php echo $automovel['cor']; ?> </td>
-                            <td> <?php echo $automovel['categoria']; ?> </td>>
+                            <td class="column1"> <input type="text" name="id" value="<?php echo $automovel['id']; ?>"></td>
+                            <td class="column2"> <?php echo $automovel['marca']; ?> </td>
+                            <td class="column3"> <?php echo $automovel['modelo']; ?> </td>
+                            <td class="column4"> <?php echo $automovel['cor']; ?> </td>
+                            <td class="column5"> <?php echo $automovel['categoria']; ?> </td>
                         </tr>
                     <?php endforeach; ?>
             </div>
