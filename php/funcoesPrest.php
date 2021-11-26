@@ -232,7 +232,7 @@ function aceitarPrest($conexao, $id)
 
     $query = mysqli_query($conexao, $sql);
 
-    echo "Prestador aceito com sucesso. <button onclick='location.href = document.referrer;'>Voltar</button>";
+    echo "Prestador aceito com sucesso. <button type='submit' class='btn-funcao' onclick='window.location.href='../prestadores/prestador.php''>Voltar</button>";
 }
 
 function recusarPrest($conexao, $id)
@@ -245,7 +245,7 @@ function recusarPrest($conexao, $id)
     $query = mysqli_query($conexao, $sql);
 
 
-    echo "Prestador recusado com sucesso. <button onclick='location.href = document.referrer;'>Voltar</button>";
+    return $mensagem = "Prestador recusado com sucesso. <a href='../prestadores/prestador.php' class='btn-back'>Voltar</a>";
 }
 
 function banirPrest($conexao, $id)
@@ -257,7 +257,7 @@ function banirPrest($conexao, $id)
 
     $query = mysqli_query($conexao, $sql);
 
-    echo "Prestador banido com sucesso. <button onclick='location.href = document.referrer;'>Voltar</button>";
+    return $mensagem = "Prestador banido com sucesso. <a href='../prestadores/prestador.php'>Voltar</a>";
 }
 
 function desbanirPrest($conexao, $id)
@@ -268,7 +268,7 @@ function desbanirPrest($conexao, $id)
 
     $query = mysqli_query($conexao, $sql);
 
-    echo "Prestador desbanido com sucesso. <button onclick='location.href = document.referrer;'>Voltar</button>";
+    return $mensagem = "Prestador aceito com sucesso. <a href='../prestadores/prestador.php'>Voltar</a>";
 }
 
 function verPrestador($conexao, $id)
@@ -363,7 +363,42 @@ function contarFuncionario($conexao, $idLoja)
 }
 
 
-function vOrca($conexao, $idLoja)
+function vOrca($conexao, $idOrca)
+{
+    $vOrca = array();
+
+    $sql = "select tb_orcamento.tb_orcamento_id as 'id',
+                   tb_cliente.tb_cliente_nome as 'cliente',
+                   tb_cliente.tb_cliente_id as 'idCliente', 
+                   tb_loja.tb_loja_nome as 'loja',
+                   tb_loja.tb_loja_id as 'idLoja',
+                   tb_status.tb_status_nome as 'status',
+                   tb_total.tb_total_valor as 'valorTotal',
+                   tb_avaliacao.tb_avaliacao_indice as 'avaliacao',
+                   tb_orcamento.tb_orcamento_dt as 'data'
+            from tb_orcamento
+            inner join tb_cliente
+            on tb_cliente.tb_cliente_id = tb_orcamento.tb_orcamento_id
+            inner join tb_loja
+            on tb_loja.tb_loja_id = tb_orcamento.tb_loja_id
+            inner join tb_status
+            on tb_status.tb_status_id = tb_orcamento.tb_status_id
+            inner join tb_total
+            on tb_total.tb_orcamento_id = tb_orcamento.tb_orcamento_id
+            inner join tb_avaliacao
+            on tb_avaliacao.tb_orcamento_id = tb_orcamento.tb_orcamento_id
+            where tb_orcamento.tb_orcamento_id = $idOrca;";
+
+    $query = mysqli_query($conexao, $sql);
+
+    while ($orca = mysqli_fetch_assoc($query)) {
+        array_push($vOrca, $orca);
+    }
+
+    return $vOrca;
+}
+
+function vOrcaP($conexao, $idLoja)
 {
     $vOrca = array();
 
@@ -455,4 +490,27 @@ function contaDetalhe($conexao, $idOrca)
     $nDetalhe = mysqli_fetch_assoc($query);
 
     return $nDetalhe;
+}
+
+function buscaOrca($conexao, $clausula, $busca)
+{
+
+    $bOrca = array();
+    $clausula = $clausula;
+
+    if ($clausula == '1') {
+        $sql = "";
+    } elseif ($clausula == '2') {
+        $sql = "";
+    } elseif ($clausula == '3') {
+        $sql = "";
+    }
+
+    $query = mysqli_query($conexao, $sql);
+
+    while ($buscaOrca = mysqli_fetch_assoc($query)) {
+        array_push($bOrca, $buscaOrca);
+    }
+
+    return $bOrca;
 }

@@ -8,7 +8,7 @@ if (!$id) {
     echo "Orçamentos não encontrados. <a href='./../prestadores/prestador.php'>VOLTAR</a>";
 }
 
-$orcamentos = vOrca($conexao, $id);
+$orcamentos = vOrcaP($conexao, $id);
 
 $nOrca = contarOrca($conexao, $id);
 
@@ -96,13 +96,15 @@ $nOrca = contarOrca($conexao, $id);
         </div>
 
         <div class="busca">
-            <form action="buscaP.php" method="post" class="frm-busca">
+            <form action="buscaOrca.php" method="post" class="frm-busca">
                 <select name="clausula" class="combobox">
-                    <option value="1" selected>Por id</option>
-                    <option value="2">Por nome</option>
-                    <option value="3">Por cnpj</option>
+                    <option value="1" selected>Por cliente</option>
+                    <option value="2">Por id</option>
+                    <option value="3">Por avaliação</option>
+                    <option value="4">Por status</option>
                 </select>
-                <input type="text" name="busca" placeholder="Insira aqui" class="search" />
+                <input style="display: ;" type="number" name="abc" placeholder="Insira o numero aq" class="search" />
+                <input style="display: none;" type="text" name="busca" placeholder="Insira aqui" class="search" />
                 <button type="submit" name="btn-buscar" class="btn-buscar">Buscar</button>
             </form>
         </div>
@@ -135,7 +137,7 @@ $nOrca = contarOrca($conexao, $id);
                                 <td class="column4"> <?php echo $orcamento['cliente']; ?> </td>
                                 <td class="column1"> <?php echo $orcamento['idCliente']; ?> </td>
                                 <td class="column4"> <?php echo $orcamento['loja']; ?> </td>
-                                <td class="column1"> <input type="text" name="idLoja" value="<?php echo $orcamento['idLoja']; ?>"></td>
+                                <td class="column1"> <?php echo $orcamento['idLoja']; ?>"></td>
                                 <td class="column4"> <?php echo $orcamento['status']; ?> </td>
                                 <td class="column4"> <?php echo $orcamento['valorTotal']; ?> </td>
                                 <td class="column1"> <?php echo $orcamento['avaliacao']; ?> </td>

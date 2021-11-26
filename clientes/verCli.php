@@ -92,29 +92,42 @@ $nAuto = contarAuto($conexao, $id);
     </div>
 
     <section class="home-section">
+        <div class="outdoor">
+            <h2>Cliente Cadastrado</h2>
+        </div>
 
         <section class="table100">
             <section class="info">
-                <div>
-                    <h3>Este é o id: <?php echo $vCliente['id'] ?></h3> <br>
-                    <h3>Este é o nome: <?php echo $vCliente['nome'] ?></h3> <br>
-                    <h3>Este é o cpf: <?php echo $vCliente['cpf'] ?></h3> <br>
-                    <h3>Este é o tel: <?php echo $vCliente['tel'] ?></h3> <br>
-                    <h3>Este é o status: <?php echo $vCliente['status'] ?></h3> <br>
-                    <h3>Este é caminho para a img: <?php echo $vCliente['img'] ?></h3> <br>
+                <div class="quadro-info">
+                    <p> ID: <b><?php echo $vCliente['id'] ?></b> </p> <br>
+                    <p> Nome: <b><?php echo $vCliente['nome'] ?></b> </p> <br>
+                    <p> CPF: <b><?php echo $vCliente['cpf'] ?></b> </p> <br>
+                    <p> TEL: <b><?php echo $vCliente['tel'] ?></b> </p> <br>
+                    <p> Status: <b><?php echo $vCliente['status'] ?></b> </p> <br>
+                    <p> IMG de Perfil: <a id="botao" href="<?php echo $vCliente['img'] ?>"> Ver</a> </p> <br>
 
                     <?php
                     $status = $vCliente['status'];
                     if ($status == 'ATIVO') {
-                        echo "<form action='../php/verificacao.php' method='post'> 
-                                 <input style='display: none' type='text' name='id' value='" . $id . "'>
-                                 <button type='submit' name='btn-banirC' id='btn-funcao'> Banir </button> 
-                              </form>";
+                        echo "<div class='vorca'>
+                                <form action='../php/verificacao.php' method='post' class='form-cli'> 
+                                    <input style='display: none' type='text' name='id' value='" . $id . "'>
+                                    <button type='submit' name='btn-banirC' class='btn-funcao'> Banir </button> 
+                                </form>
+                                <div class='btn-voltar'>
+                                    <button type='submit' class='btn-funcao' onclick='location.href = document.referrer;'>Voltar</button>
+                                </div>
+                              </div>";
                     } else {
-                        echo "<form action='../php/verificacao.php' method='post'> 
-                                <input style='display: none' type='text' name='id' value='" . $id . "'>
-                                <button type='submit' name='btn-desbanirC' id='btn-funcao'> Desbanir </button>
-                              </form>";
+                        echo "<div class='vorca'>  
+                                <form action='../php/verificacao.php' method='post' class='form-cli'> 
+                                    <input style='display: none' type='text' name='id' value='" . $id . "'>
+                                    <button type='submit' name='btn-desbanirC' class='btn-funcao'> Desbanir </button>
+                                </form>
+                                <div class='btn-voltar'>
+                                    <button type='submit' class='btn-funcao' onclick='location.href = document.referrer;'>Voltar</button>
+                                </div>
+                              </div>";
                     }
                     ?>
                 </div>
@@ -122,7 +135,7 @@ $nAuto = contarAuto($conexao, $id);
 
             <div class="quadro">
                 <div>
-                    <h3>Quantidade de Automoveis do cliente Cadastrados: <?php echo implode(",", $nAuto); ?></h3>
+                    <h3 class="qtd">Quantidade de Automoveis do cliente Cadastrados: <?php echo implode(",", $nAuto); ?></h3>
                 </div>
 
                 <table class="table">
