@@ -106,7 +106,7 @@ $nFuncionarios = contarFuncionario($conexao, $id);
                     <p> CEP: <b> <?php echo $vPrestador['cep'] ?></b> </p> <br>
                     <p> Status: <b> <?php echo $vPrestador['status'] ?></b> </p> <br>
                     <p> IMG de Perfil: <a id="botao" href="<?php echo $vPrestador['img'] ?>">Ver</a></p> <br>
-
+                    <p>TEste</p>
                     <?php
                     $status = $vPrestador['status'];
                     if ($status == 'ACEITO') {
