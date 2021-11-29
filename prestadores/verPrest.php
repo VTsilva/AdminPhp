@@ -98,6 +98,18 @@ $nFuncionarios = contarFuncionario($conexao, $id);
         </div>
         <section class="verp-section">
             <section class="info">
+<<<<<<< HEAD
+                <div class="quadro-info">
+                    <p> ID: <b> <?php echo $vPrestador['id'] ?></b> </p> <br>
+                    <p> Nome: <b> <?php echo $vPrestador['nome'] ?></b> </p> <br>
+                    <p> CNPJ: <b> <?php echo $vPrestador['cnpj'] ?></b> </p> <br>
+                    <p> Email: <b> <?php echo $vPrestador['email'] ?></b> </p> <br>
+                    <p> TEL: <b> <?php echo $vPrestador['tel'] ?></b> </p> <br>
+                    <p> CEP: <b> <?php echo $vPrestador['cep'] ?></b> </p> <br>
+                    <p> Status: <b> <?php echo $vPrestador['status'] ?></b> </p> <br>
+                    <p> IMG de Perfil: <a id="botao" href="<?php echo $vPrestador['img'] ?>">Ver</a></p> <br>
+                    <p>TEste</p>
+=======
                 <div>
                     <h3>Este é o id: <?php echo $vPrestador['id'] ?></h3> <br>
                     <h3>Este é o nome: <?php echo $vPrestador['nome'] ?></h3> <br>
@@ -108,6 +120,7 @@ $nFuncionarios = contarFuncionario($conexao, $id);
                     <h3>Este é o status: <?php echo $vPrestador['status'] ?></h3> <br>
                     <h3>Este é caminho para a img: <?php echo $vPrestador['img'] ?></h3> <br>
 
+>>>>>>> main
                     <?php
                     $status = $vPrestador['status'];
                     if ($status == 'ACEITO') {
