@@ -3,7 +3,9 @@ include('../php/conexao.php');
 include('../php/funcoesPrest.php');
 
 $nBanidos = contarBanidos($conexao);
-$banidos = prestBanidos($conexao);
+$banidos = prestBanidos($conexao, $inicio, $qnt_result_pg);
+$quantidade_pg = quantidadePg($qnt_result_pg, contarBanidos($conexao));
+$page_name = basename($_SERVER['PHP_SELF']);
 ?>
 
 <!DOCTYPE html>
@@ -147,6 +149,15 @@ $banidos = prestBanidos($conexao);
     </section>
 
     <script src="./../js/animacao.js"></script>
+
+    <?php
+    if ($quantidade_pg > 1) {
+        include('../php/menuPaginas.php');
+    } else {
+        die;
+    }
+
+    ?>
 </body>
 
 </html>

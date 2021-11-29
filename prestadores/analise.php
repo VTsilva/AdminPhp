@@ -3,7 +3,9 @@ include('../php/conexao.php');
 include('../php/funcoesPrest.php');
 
 $nAnalise = contarAnalise($conexao);
-$analises = prestAnalise($conexao);
+$analises = prestAnalise($conexao, $inicio, $qnt_result_pg);
+$quantidade_pg = quantidadePg($qnt_result_pg, contarAnalise($conexao));
+$page_name = basename($_SERVER['PHP_SELF']);
 ?>
 
 <!DOCTYPE html>
@@ -151,6 +153,15 @@ $analises = prestAnalise($conexao);
     </section>
 
     <script src="./../js/animacao.js"></script>
+
+    <?php
+    if ($quantidade_pg > 1) {
+        include('../php/menuPaginas.php');
+    } else {
+        die;
+    }
+
+    ?>
 </body>
 
 </html>

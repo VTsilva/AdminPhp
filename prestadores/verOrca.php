@@ -4,7 +4,10 @@ include('../php/funcoesPrest.php');
 
 $idOrca = $_POST['idOrca'];
 
-$orcamentos = vOrca($conexao, $idOrca);
+$idLoja = $_POST['idLoja'];
+
+
+$orcamentos = vOrca($conexao, $idLoja);
 
 $detalhaOrcas = detalhaOrca($conexao, $idOrca);
 
@@ -95,24 +98,18 @@ $nDetalhe = contaDetalhe($conexao, $idOrca);
         <section class="verp-section">
             <section class="table100">
                 <section class="info">
-                    <div class="quadro-info">
+                    <div>
                         <?php foreach ($orcamentos as $orcamento) : ?>
-                            <p> ID do Orçamento: <b> <?php echo $orcamento['id'] ?> </b></p> <br>
-                            <p> Cliente: <b> <?php echo $orcamento['cliente'] ?> </b> </p> <br>
-                            <p> ID do Cliente: <b> <?php echo $orcamento['idCliente'] ?> </b></p> <br>
-                            <p> Prestador: <b> <?php echo $orcamento['loja'] ?> </b></p> <br>
-                            <p> ID do Prestador: <b> <?php echo $orcamento['idLoja'] ?> </b></p> <br>
-                            <p> Status: <b> <?php echo $orcamento['status'] ?> </b></p> <br>
-                            <p> Valor Total: <b>R$ <?php echo $orcamento['valorTotal'] ?> </b> </p> <br>
-                            <p> Avaliação(0-5, estrelas): <b> <?php echo $orcamento['avaliacao'] ?> </b></p> <br>
-                            <p> Data da Realização: <b> <?php echo $orcamento['data'] ?> </b></p> <br>
+                            <h3>Este é o id do orcamento: <?php echo $orcamento['id'] ?></h3> <br>
+                            <h3>Este é o Cliente: <?php echo $orcamento['cliente'] ?></h3> <br>
+                            <h3>Este é o id do Cliente: <?php echo $orcamento['idCliente'] ?></h3> <br>
+                            <h3>Este é o Prestador: <?php echo $orcamento['loja'] ?></h3> <br>
+                            <h3>Este é o id do Prestador: <?php echo $orcamento['idLoja'] ?></h3> <br>
+                            <h3>Este é o status do orcamento: <?php echo $orcamento['status'] ?></h3> <br>
+                            <h3>Este é o valor total do orcamento: <?php echo $orcamento['valorTotal'] ?></h3> <br>
+                            <h3>Este é a avaliação dos servicos prestados(0-5, estrelas): <?php echo $orcamento['avaliacao'] ?></h3> <br>
+                            <h3>Este é a data do orcamento: <?php echo $orcamento['data'] ?></h3> <br>
                         <?php endforeach; ?>
-
-                        <div class="vorca">
-                            <div class='btn-voltar'>
-                                <button type='submit' class='btn-funcao' onclick="javascript:history.back()">Voltar</button>
-                            </div>
-                        </div>
                     </div>
                 </section>
 
@@ -137,7 +134,7 @@ $nDetalhe = contaDetalhe($conexao, $idOrca);
                                 <td class="column2"> <?php echo $detalhaOrca['servico']; ?> </td>
                                 <td class="column3"> <?php echo $detalhaOrca['veiculo']; ?> </td>
                                 <td class="column4"> <?php echo $detalhaOrca['idFun']; ?> </td>
-                                <td class="column5"> <?php echo $detalhaOrca['funcionario']; ?> </td>
+                                <td class="column5"> <?php echo $detalhaOrca['funcionario']; ?> </td>>
                             </tr>
                         <?php endforeach; ?>
                 </div>
