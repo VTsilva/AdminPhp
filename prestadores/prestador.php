@@ -132,7 +132,7 @@ $prestadores = listarPrestador($conexao);
                                 <td class="column3"> <?php echo $prestador['status']; ?> </td>
                                 <td class="column2"> <?php echo $prestador['img']; ?> </td>
 
-                                <td> <button type="submit" name="btn-verP" id="botao">Ver</button> </td>
+                                <td> <button type="submit" id="botao">Ver</button> </td>
                             </form>
                         </tr>
                     <?php endforeach; ?>

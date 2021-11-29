@@ -4,15 +4,13 @@ include('../php/funcoesPrest.php');
 
 $id = $_POST['id'];
 
-if (!$id) {
-    echo "Prestador não encontrado. <a href='./../prestadores/prestador.php'>VOLTAR</a>";
-}
-
 $vPrestador = verPrestador($conexao, $id);
 
 $funcionarios = buscarFuncionario($conexao, $id);
 
 $nFuncionarios = contarFuncionario($conexao, $id);
+
+
 
 ?>
 
@@ -32,6 +30,7 @@ $nFuncionarios = contarFuncionario($conexao, $id);
 </head>
 
 <body>
+
     <div class="sidebar close">
         <div class="logo-details">
             <div class="img menu-side-bar"><img src="./../img/car-white.svg" alt=""></div>
@@ -98,15 +97,15 @@ $nFuncionarios = contarFuncionario($conexao, $id);
         </div>
         <section class="verp-section">
             <section class="info">
-                <div>
-                    <h3>Este é o id: <?php echo $vPrestador['id'] ?></h3> <br>
-                    <h3>Este é o nome: <?php echo $vPrestador['nome'] ?></h3> <br>
-                    <h3>Este é o cnpj: <?php echo $vPrestador['cnpj'] ?></h3> <br>
-                    <h3>Este é o email: <?php echo $vPrestador['email'] ?></h3> <br>
-                    <h3>Este é o tel: <?php echo $vPrestador['tel'] ?></h3> <br>
-                    <h3>Este é o cep: <?php echo $vPrestador['cep'] ?></h3> <br>
-                    <h3>Este é o status: <?php echo $vPrestador['status'] ?></h3> <br>
-                    <h3>Este é caminho para a img: <?php echo $vPrestador['img'] ?></h3> <br>
+                <div class="quadro-info">
+                    <p> ID: <b> <?php echo $vPrestador['id'] ?></b> </p> <br>
+                    <p> Nome: <b> <?php echo $vPrestador['nome'] ?></b> </p> <br>
+                    <p> CNPJ: <b> <?php echo $vPrestador['cnpj'] ?></b> </p> <br>
+                    <p> Email: <b> <?php echo $vPrestador['email'] ?></b> </p> <br>
+                    <p> TEL: <b> <?php echo $vPrestador['tel'] ?></b> </p> <br>
+                    <p> CEP: <b> <?php echo $vPrestador['cep'] ?></b> </p> <br>
+                    <p> Status: <b> <?php echo $vPrestador['status'] ?></b> </p> <br>
+                    <p> IMG de Perfil: <a id="botao" href="<?php echo $vPrestador['img'] ?>">Ver</a></p> <br>
 
                     <?php
                     $status = $vPrestador['status'];
@@ -114,24 +113,33 @@ $nFuncionarios = contarFuncionario($conexao, $id);
                         echo "<div class='vorca'> 
                                 <form action='../php/verificacao.php' method='post'> 
                                     <input style='display: none' type='text' name='id' value='" . $id . "'>
-                                    <button type='submit' name='btn-banirP' id='btn-funcao'> Banir </button> 
+                                    <button type='submit' name='btn-banirP' class='btn-funcao'> Banir </button> 
                                 </form>
+                                <div class='btn-voltar'>
+                                <button type='submit' class='btn-funcao' onclick='location.href = document.referrer;'>Voltar</button>
+                                </div>         
                               </div>
                             ";
                     } elseif ($status == 'EM ANÁLISE') {
                         echo "<div class='vorca'>
                                 <form action='../php/verificacao.php' method='post'> 
                                     <input style='display: none' type='text' name='id' value='" . $id . "'>
-                                    <button type='submit' name='btn-aceitarP' id='btn-funcao'> Aceitar </button>
-                                    <button type='submit' name='btn-recusarP' id='btn-funcao'> Recusar </button> 
+                                    <button type='submit' name='btn-aceitarP' class='btn-funcao'> Aceitar </button>
+                                    <button type='submit' name='btn-recusarP' class='btn-funcao'> Recusar </button> 
                                 </form>
+                                <div class='btn-voltar'>
+                                <button type='submit' class='btn-funcao' onclick='location.href = document.referrer;'>Voltar</button>
+                                </div>
                               </div>";
                     } else {
                         echo "<div class='vorca'>
-                              <form action='../php/verificacao.php' method='post'> 
+                                <form action='../php/verificacao.php' method='post'> 
                                 <input style='display: none' type='text' name='id' value='" . $id . "'>
-                                <button type='submit' name='btn-desbanirP' id='btn-funcao'> Desbanir </button>
-                              </form>
+                                <button type='submit' name='btn-desbanirP' class='btn-funcao'> Aceitar </button>
+                                </form>
+                                <div class='btn-voltar'>
+                                <button type='submit' class='btn-funcao' onclick='location.href = document.referrer;'>Voltar</button>
+                                </div>
                               </div>";
                     }
                     ?>
@@ -168,7 +176,7 @@ $nFuncionarios = contarFuncionario($conexao, $id);
                         <form action="orcaP.php" method="post">
                             <input type="text" style="display: none;" name="id" value="<?php echo $id ?>">
 
-                            <button type="submit" name="btn-verO" id='btn-funcao'>Ver Orcamentos</button>
+                            <button type="submit" name="btn-verO" class='btn-funcao'>Ver Orcamentos</button>
                         </form>
                     </div>
                 </div>

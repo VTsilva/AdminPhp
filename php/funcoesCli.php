@@ -212,7 +212,7 @@ function banirCli($conexao, $id)
 
     $query = mysqli_query($conexao, $sql);
 
-    echo "Cliente banido com sucesso. <button onclick='location.href = document.referrer;'>Voltar </button>";
+    return $mensagem = "Cliente banido com sucesso. <a href='../clientes/cliente.php'>Voltar</a>";
 }
 
 function desbanirCli($conexao, $id)
@@ -223,5 +223,5 @@ function desbanirCli($conexao, $id)
 
     $query = mysqli_query($conexao, $sql);
 
-    echo "Cliente desbanido com sucesso. <button onclick='location.href = document.referrer;'>Voltar </button>";
+    return $mensagem = "Cliente desbanido com sucesso. <a href='../clientes/cliente.php'>Voltar</a>";
 }

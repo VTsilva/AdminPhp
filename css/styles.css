@@ -426,20 +426,65 @@ input[type="password"] {
     margin-right: 40px;
 }
 
-#btn-funcao{
+.btn-funcao{
     background-color: #2F343D;
     border-radius: 10px;
     color: white;
     padding: 10px;
+    text-decoration: none;
 }
 
-#btn-funcao:hover{
+.btn-funcao a{
+    height: 40px;
+}
+
+.btn-funcao:hover{
     transition: 0.5s;
     text-decoration: underline;
     color: rgb(163, 163, 163);
 }
 
+.btn-voltar{
+    margin-left: 5px;
+}
+
 .vorca {
     display: flex;
     justify-content: right;
+}
+
+.mensagem{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
+}
+
+.mensagem a{
+    color: #000;
+}
+
+.mensagem a:hover{
+    transition: 0.3s;
+    color: blue;
+}
+
+.quadro-info{
+    background-color: rgb(223, 223, 223);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 7px 10px 0 rgb(18 19 20 / 54%);
+}
+
+.form-cli{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    
+}
+
+.table100{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start !important;
 }
