@@ -232,7 +232,7 @@ function aceitarPrest($conexao, $id)
 
     $query = mysqli_query($conexao, $sql);
 
-    echo "Prestador aceito com sucesso. <button type='submit' class='btn-funcao' onclick='window.location.href='../prestadores/prestador.php''>Voltar</button>";
+    return $mensagem = "Prestador aceito com sucesso. <a href='../prestadores/prestador.php' class='btn-back'>Voltar</a>";
 }
 
 function recusarPrest($conexao, $id)
@@ -492,18 +492,25 @@ function contaDetalhe($conexao, $idOrca)
     return $nDetalhe;
 }
 
-function buscaOrca($conexao, $clausula, $busca)
+/**
+ *
+ *
+ */
+
+function buscaOrca($conexao, $clausula, $busca, $idLoja)
 {
 
     $bOrca = array();
     $clausula = $clausula;
 
     if ($clausula == '1') {
-        $sql = "";
+        $sql = "select * from seleciona_orca where idloja = '$idLoja' and cliente like '% $busca %';"; //cliente
     } elseif ($clausula == '2') {
-        $sql = "";
+        $sql = "select * from seleciona_orca where idloja = '$idLoja' and id = '$busca';"; //id do orcamento
     } elseif ($clausula == '3') {
-        $sql = "";
+        $sql = "select * from seleciona_orca where idloja = '$idLoja' and avaliacao = '$busca';"; //avaliação
+    } elseif ($clausula == '4') {
+        $sql = "select * from seleciona_orca where idloja = '$idLoja' and status = '$busca';"; //status
     }
 
     $query = mysqli_query($conexao, $sql);
