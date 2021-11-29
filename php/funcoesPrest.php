@@ -1,4 +1,5 @@
 <?php
+// include('../php/paginacao.php');
 
 // 
 // TODOS OS PRESTADORES
@@ -14,7 +15,7 @@ function contarPrestador($conexao)
     return $num;
 }
 
-function listarPrestador($conexao)
+function listarPrestador($conexao, $inicio, $qnt_result_pg)
 {
     $prestadores = array();
     $sql =
@@ -28,7 +29,8 @@ function listarPrestador($conexao)
             tb_loja.tb_loja_img as 'img'
         from tb_loja
         inner join tb_status
-        on tb_status.tb_status_id = tb_loja.tb_status_id;";
+        on tb_status.tb_status_id = tb_loja.tb_status_id
+        LIMIT $inicio, $qnt_result_pg;";
 
     $query = mysqli_query($conexao, $sql);
 
@@ -45,7 +47,7 @@ function listarPrestador($conexao)
 function contarAtivos($conexao)
 {
     $sql = "
-            select count(tb_loja_id)
+            select count(tb_loja_id) as 'quantidade'
             from tb_loja
             inner join tb_status
             on tb_status.tb_status_id = tb_loja.tb_status_id
@@ -58,7 +60,7 @@ function contarAtivos($conexao)
     return $nAtivos;
 }
 
-function prestAtivos($conexao)
+function prestAtivos($conexao, $inicio, $qnt_result_pg)
 {
     $ativos = array();
     $sql =
@@ -73,7 +75,8 @@ function prestAtivos($conexao)
         from tb_loja
         inner join tb_status
         on tb_status.tb_status_id = tb_loja.tb_status_id
-        where tb_status.tb_status_nome = 'aceito';";
+        where tb_status.tb_status_nome = 'aceito'
+        LIMIT $inicio, $qnt_result_pg;";
 
     $query = mysqli_query($conexao, $sql);
 
@@ -90,7 +93,7 @@ function prestAtivos($conexao)
 function contarAnalise($conexao)
 {
     $sql = "
-            select count(tb_loja_id)
+            select count(tb_loja_id) as 'quantidade'
             from tb_loja
             inner join tb_status
             on tb_status.tb_status_id = tb_loja.tb_status_id
@@ -103,7 +106,7 @@ function contarAnalise($conexao)
     return $nAnalise;
 }
 
-function prestAnalise($conexao)
+function prestAnalise($conexao, $inicio, $qnt_result_pg)
 {
     $analises = array();
     $sql =
@@ -118,7 +121,8 @@ function prestAnalise($conexao)
         from tb_loja
         inner join tb_status
         on tb_status.tb_status_id = tb_loja.tb_status_id
-        where tb_status.tb_status_nome = 'em analise';";
+        where tb_status.tb_status_nome = 'em analise'
+        LIMIT $inicio, $qnt_result_pg;";
 
     $query = mysqli_query($conexao, $sql);
 
@@ -136,7 +140,7 @@ function prestAnalise($conexao)
 function contarRecusados($conexao)
 {
     $sql = "
-            select count(tb_loja_id)
+            select count(tb_loja_id) as 'quantidade'
             from tb_loja
             inner join tb_status
             on tb_status.tb_status_id = tb_loja.tb_status_id
@@ -149,7 +153,7 @@ function contarRecusados($conexao)
     return $nRecusado;
 }
 
-function prestRecusado($conexao)
+function prestRecusado($conexao, $inicio, $qnt_result_pg)
 {
     $recusados = array();
     $sql =
@@ -164,7 +168,8 @@ function prestRecusado($conexao)
         from tb_loja
         inner join tb_status
         on tb_status.tb_status_id = tb_loja.tb_status_id
-        where tb_status.tb_status_nome = 'recusado';";
+        where tb_status.tb_status_nome = 'recusado'
+        LIMIT $inicio, $qnt_result_pg;";
 
     $query = mysqli_query($conexao, $sql);
 
@@ -181,7 +186,7 @@ function prestRecusado($conexao)
 function contarBanidos($conexao)
 {
     $sql = "
-            select count(tb_loja_id)
+            select count(tb_loja_id) as 'quantidade'
             from tb_loja
             inner join tb_status
             on tb_status.tb_status_id = tb_loja.tb_status_id
@@ -194,7 +199,7 @@ function contarBanidos($conexao)
     return $nBanido;
 }
 
-function prestBanidos($conexao)
+function prestBanidos($conexao, $inicio, $qnt_result_pg)
 {
     $banidos = array();
     $sql =
@@ -209,7 +214,8 @@ function prestBanidos($conexao)
         from tb_loja
         inner join tb_status
         on tb_status.tb_status_id = tb_loja.tb_status_id
-        where tb_status.tb_status_nome = 'banido';";
+        where tb_status.tb_status_nome = 'banido'
+        LIMIT $inicio, $qnt_result_pg;";
 
     $query = mysqli_query($conexao, $sql);
 
@@ -232,7 +238,7 @@ function aceitarPrest($conexao, $id)
 
     $query = mysqli_query($conexao, $sql);
 
-    return $mensagem = "Prestador aceito com sucesso. <a href='../prestadores/prestador.php' class='btn-back'>Voltar</a>";
+    echo "Prestador aceito com sucesso. <button onclick='location.href = document.referrer;'>Voltar</button>";
 }
 
 function recusarPrest($conexao, $id)
@@ -245,7 +251,7 @@ function recusarPrest($conexao, $id)
     $query = mysqli_query($conexao, $sql);
 
 
-    return $mensagem = "Prestador recusado com sucesso. <a href='../prestadores/prestador.php' class='btn-back'>Voltar</a>";
+    echo "Prestador recusado com sucesso. <button onclick='location.href = document.referrer;'>Voltar</button>";
 }
 
 function banirPrest($conexao, $id)
@@ -257,7 +263,7 @@ function banirPrest($conexao, $id)
 
     $query = mysqli_query($conexao, $sql);
 
-    return $mensagem = "Prestador banido com sucesso. <a href='../prestadores/prestador.php'>Voltar</a>";
+    echo "Prestador banido com sucesso. <button onclick='location.href = document.referrer;'>Voltar</button>";
 }
 
 function desbanirPrest($conexao, $id)
@@ -268,7 +274,7 @@ function desbanirPrest($conexao, $id)
 
     $query = mysqli_query($conexao, $sql);
 
-    return $mensagem = "Prestador aceito com sucesso. <a href='../prestadores/prestador.php'>Voltar</a>";
+    echo "Prestador desbanido com sucesso. <button onclick='location.href = document.referrer;'>Voltar</button>";
 }
 
 function verPrestador($conexao, $id)
@@ -351,7 +357,7 @@ function buscarFuncionario($conexao, $idLoja)
 function contarFuncionario($conexao, $idLoja)
 {
 
-    $sql = "select count(tb_funcionario.tb_funcionario_id)
+    $sql = "select count(tb_funcionario.tb_funcionario_id) as 'quantidade'
 	        from tb_funcionario
             where tb_funcionario.tb_loja_id = '$idLoja';";
 
@@ -363,7 +369,7 @@ function contarFuncionario($conexao, $idLoja)
 }
 
 
-function vOrca($conexao, $idOrca)
+function vOrca($conexao, $idLoja, $inicio, $qnt_result_pg)
 {
     $vOrca = array();
 
@@ -387,42 +393,8 @@ function vOrca($conexao, $idOrca)
             on tb_total.tb_orcamento_id = tb_orcamento.tb_orcamento_id
             inner join tb_avaliacao
             on tb_avaliacao.tb_orcamento_id = tb_orcamento.tb_orcamento_id
-            where tb_orcamento.tb_orcamento_id = $idOrca;";
-
-    $query = mysqli_query($conexao, $sql);
-
-    while ($orca = mysqli_fetch_assoc($query)) {
-        array_push($vOrca, $orca);
-    }
-
-    return $vOrca;
-}
-
-function vOrcaP($conexao, $idLoja)
-{
-    $vOrca = array();
-
-    $sql = "select tb_orcamento.tb_orcamento_id as 'id',
-                   tb_cliente.tb_cliente_nome as 'cliente',
-                   tb_cliente.tb_cliente_id as 'idCliente', 
-                   tb_loja.tb_loja_nome as 'loja',
-                   tb_loja.tb_loja_id as 'idLoja',
-                   tb_status.tb_status_nome as 'status',
-                   tb_total.tb_total_valor as 'valorTotal',
-                   tb_avaliacao.tb_avaliacao_indice as 'avaliacao',
-                   tb_orcamento.tb_orcamento_dt as 'data'
-            from tb_orcamento
-            inner join tb_cliente
-            on tb_cliente.tb_cliente_id = tb_orcamento.tb_orcamento_id
-            inner join tb_loja
-            on tb_loja.tb_loja_id = tb_orcamento.tb_loja_id
-            inner join tb_status
-            on tb_status.tb_status_id = tb_orcamento.tb_status_id
-            inner join tb_total
-            on tb_total.tb_orcamento_id = tb_orcamento.tb_orcamento_id
-            inner join tb_avaliacao
-            on tb_avaliacao.tb_orcamento_id = tb_orcamento.tb_orcamento_id
-            where tb_loja.tb_loja_id = $idLoja;";
+            where tb_loja.tb_loja_id = $idLoja
+            LIMIT $inicio, $qnt_result_pg;";
 
     $query = mysqli_query($conexao, $sql);
 
@@ -435,7 +407,7 @@ function vOrcaP($conexao, $idLoja)
 
 function contarOrca($conexao, $idLoja)
 {
-    $sql = "select count(tb_orcamento_id)
+    $sql = "select count(tb_orcamento_id) as 'quantidade'
             from tb_orcamento
             where tb_loja_id = $idLoja;";
 
@@ -490,34 +462,4 @@ function contaDetalhe($conexao, $idOrca)
     $nDetalhe = mysqli_fetch_assoc($query);
 
     return $nDetalhe;
-}
-
-/**
- *
- *
- */
-
-function buscaOrca($conexao, $clausula, $busca, $idLoja)
-{
-
-    $bOrca = array();
-    $clausula = $clausula;
-
-    if ($clausula == '1') {
-        $sql = "select * from seleciona_orca where idloja = '$idLoja' and cliente like '% $busca %';"; //cliente
-    } elseif ($clausula == '2') {
-        $sql = "select * from seleciona_orca where idloja = '$idLoja' and id = '$busca';"; //id do orcamento
-    } elseif ($clausula == '3') {
-        $sql = "select * from seleciona_orca where idloja = '$idLoja' and avaliacao = '$busca';"; //avaliação
-    } elseif ($clausula == '4') {
-        $sql = "select * from seleciona_orca where idloja = '$idLoja' and status = '$busca';"; //status
-    }
-
-    $query = mysqli_query($conexao, $sql);
-
-    while ($buscaOrca = mysqli_fetch_assoc($query)) {
-        array_push($bOrca, $buscaOrca);
-    }
-
-    return $bOrca;
 }

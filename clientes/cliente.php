@@ -3,7 +3,9 @@ include('../php/conexao.php');
 include('../php/funcoesCli.php');
 
 $num = contarCliente($conexao);
-$clientes = listarCliente($conexao);
+$clientes = listarCliente($conexao, $inicio, $qnt_result_pg);
+$quantidade_pg = quantidadePg($qnt_result_pg, contarCliente($conexao));
+$page_name = basename($_SERVER['PHP_SELF']);
 ?>
 
 <!DOCTYPE html>
@@ -102,7 +104,7 @@ $clientes = listarCliente($conexao);
         <section class="table100">
             <div class="quadro">
                 <div>
-                    <h3 class="qtd">Quantidade de Cliente Cadastrados: <?php echo implode(",", $num); ?> </h3>
+                    <h3>Quantidade de Cliente Cadastrados: <?php echo implode(",", $num); ?> </h3>
                 </div>
 
                 <table class="table">
@@ -139,6 +141,16 @@ $clientes = listarCliente($conexao);
     </section>
 
     <script src="./../js/animacao.js"></script>
+
+    <?php
+    if ($quantidade_pg > 1) {
+        include('../php/menuPaginas.php');
+    } else {
+        die;
+    }
+
+    ?>
+
 </body>
 
 </html>

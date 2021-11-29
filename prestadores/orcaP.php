@@ -8,9 +8,12 @@ if (!$id) {
     echo "Orçamentos não encontrados. <a href='./../prestadores/prestador.php'>VOLTAR</a>";
 }
 
-$orcamentos = vOrcaP($conexao, $id);
+$orcamentos = vOrca($conexao, $id, $inicio, $qnt_result_pg);
 
 $nOrca = contarOrca($conexao, $id);
+
+$quantidade_pg = quantidadePg($qnt_result_pg, contarOrca($conexao, $id));
+$page_name = basename($_SERVER['PHP_SELF']);
 
 ?>
 
@@ -30,21 +33,6 @@ $nOrca = contarOrca($conexao, $id);
 </head>
 
 <body>
-
-    <script>
-        function verificaValor(clausula) {
-            if (clausula == '1') {
-                document.getElementById("cli").style.display = 'block';
-            } else if (clausula == '2') {
-                document.getElementById("id").style.display = 'block';
-            } else if (clausula == '3') {
-                document.getElementById("ava").style.display = 'block';
-            } else if (clausula == '4') {
-                document.getElementById("sta").style.display = 'block';
-            }
-        }
-    </script>
-
     <div class="sidebar close">
         <div class="logo-details">
             <div class="img menu-side-bar"><img src="./../img/car-white.svg" alt=""></div>
@@ -111,26 +99,13 @@ $nOrca = contarOrca($conexao, $id);
         </div>
 
         <div class="busca">
-            <form action="buscaOrca.php" method="post" class="frm-busca">
-                <select id="clausula" name="clausula" class="combobox">
-                    <option value="1" selected onchange="verificaValor(1)">Por cliente</option>
-                    <option value="2" onchange="verificaValor(2)">Por id</option>
-                    <option value="3" onchange="verificaValor(3)">Por avaliação</option>
-                    <option value="4" onchange="verificaValor(4)">Por status</option>
+            <form action="buscaP.php" method="post" class="frm-busca">
+                <select name="clausula" class="combobox">
+                    <option value="1" selected>Por id</option>
+                    <option value="2">Por nome</option>
+                    <option value="3">Por cnpj</option>
                 </select>
-
-                <input id="cli" style="display: none;" type="text" name="busca" placeholder="Insira aqui" class="search" />
-                <input id="id" style="display: none;" type="number" name="busca" placeholder="Insira o numero aq" class="search" />
-                <input id="ava" style="display: none;" type="number" min="1" max="5" name="busca" placeholder="Insira aqui" class="search" />
-                <select id="sta" style="display: none;" name="busca" id="">
-                    <option value="ACEITO">ACEITO</option>
-                    <option value="RECUSADO">RECUSADO</option>
-                    <option value="CONCLUIDO">CONCLUIDO</option>
-                    <option value="EM ANDAMENTO">EM ANDAMENTO</option>
-                </select>
-
-
-
+                <input type="text" name="busca" placeholder="Insira aqui" class="search" />
                 <button type="submit" name="btn-buscar" class="btn-buscar">Buscar</button>
             </form>
         </div>
@@ -138,11 +113,7 @@ $nOrca = contarOrca($conexao, $id);
         <section class="table100">
             <div class="quadro">
                 <div>
-                    <div class="vorca" style="margin-bottom: -20px;">
-                        <button class="btn-funcao" onclick="">voltar</button>
-                    </div>
                     <h3 class="qtd">Quantidade de Orçamentos realizados: <?php echo implode(",", $nOrca) ?></h3>
-
                 </div>
 
                 <table class="table">
@@ -167,7 +138,7 @@ $nOrca = contarOrca($conexao, $id);
                                 <td class="column4"> <?php echo $orcamento['cliente']; ?> </td>
                                 <td class="column1"> <?php echo $orcamento['idCliente']; ?> </td>
                                 <td class="column4"> <?php echo $orcamento['loja']; ?> </td>
-                                <td class="column1"> <?php echo $orcamento['idLoja']; ?></td>
+                                <td class="column1"> <input type="text" name="idLoja" value="<?php echo $orcamento['idLoja']; ?>"></td>
                                 <td class="column4"> <?php echo $orcamento['status']; ?> </td>
                                 <td class="column4"> <?php echo $orcamento['valorTotal']; ?> </td>
                                 <td class="column1"> <?php echo $orcamento['avaliacao']; ?> </td>
@@ -179,11 +150,19 @@ $nOrca = contarOrca($conexao, $id);
                     <?php endforeach; ?>
                 </table>
 
-
             </div>
         </section>
     </section>
     <script src="./../js/animacao.js"></script>
+
+    <?php
+    if ($quantidade_pg > 1) {
+        include('../php/menuPaginas.php');
+    } else {
+        die;
+    }
+
+    ?>
 </body>
 
 </html>
