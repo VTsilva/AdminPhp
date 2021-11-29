@@ -1,6 +1,0 @@
-            aonde eu pare?
-
-
-            metodo busca dos orçamentos.
-
-            arquivo orcap.php linha 106

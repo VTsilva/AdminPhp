@@ -1,4 +1,5 @@
 <?php
+// include('../php/paginacao.php');
 
 function contarCliente($conexao)
 {
@@ -11,7 +12,7 @@ function contarCliente($conexao)
     return $num;
 }
 
-function listarCliente($conexao)
+function listarCliente($conexao, $inicio, $qnt_result_pg)
 {
     $clientes = array();
     $sql = "select tb_cliente.tb_cliente_id as 'id',
@@ -22,7 +23,8 @@ function listarCliente($conexao)
                    tb_cliente.tb_cliente_img as 'img'
             from tb_cliente
             inner join tb_status
-            on tb_status.tb_status_id = tb_cliente.tb_status_id;";
+            on tb_status.tb_status_id = tb_cliente.tb_status_id
+            LIMIT $inicio, $qnt_result_pg;";
 
     $query = mysqli_query($conexao, $sql);
 
@@ -36,7 +38,7 @@ function listarCliente($conexao)
 
 function contarBanido($conexao)
 {
-    $sql = "select count(tb_cliente_id)
+    $sql = "select count(tb_cliente_id) as 'quantidade'
             from tb_cliente
             inner join tb_status
             on tb_status.tb_status_id = tb_cliente.tb_status_id
@@ -49,7 +51,7 @@ function contarBanido($conexao)
     return $num;
 }
 
-function clienteBanido($conexao)
+function clienteBanido($conexao, $inicio, $qnt_result_pg)
 {
     $clientes = array();
     $sql = "select tb_cliente.tb_cliente_id as 'id',
@@ -61,7 +63,8 @@ function clienteBanido($conexao)
             from tb_cliente
             inner join tb_status
             on tb_status.tb_status_id = tb_cliente.tb_status_id
-            where tb_status.tb_status_nome = 'banido';";
+            where tb_status.tb_status_nome = 'banido'
+            LIMIT $inicio, $qnt_result_pg;";
 
     $query = mysqli_query($conexao, $sql);
 
@@ -154,7 +157,7 @@ function buscarAuto($conexao, $id)
 function contarAuto($conexao, $id)
 {
 
-    $sql = "select count(tb_automovel_id)
+    $sql = "select count(tb_automovel_id) as 'quantidade'
             from tb_automovel
             where tb_automovel.tb_cliente_id = '$id';";
 
@@ -165,7 +168,7 @@ function contarAuto($conexao, $id)
     return $nAuto;
 }
 
-function clienteAtivo($conexao)
+function clienteAtivo($conexao, $inicio, $qnt_result_pg)
 {
     $clientes = array();
     $sql = "select tb_cliente.tb_cliente_id as 'id',
@@ -177,7 +180,8 @@ function clienteAtivo($conexao)
             from tb_cliente
             inner join tb_status
             on tb_status.tb_status_id = tb_cliente.tb_status_id
-            where tb_status.tb_status_nome = 'ativo';";
+            where tb_status.tb_status_nome = 'ativo'
+            LIMIT $inicio, $qnt_result_pg;";
 
     $query = mysqli_query($conexao, $sql);
 
@@ -190,7 +194,7 @@ function clienteAtivo($conexao)
 
 function contarAtivo($conexao)
 {
-    $sql = "select count(tb_cliente_id)
+    $sql = "select count(tb_cliente_id) as 'quantidade'
             from tb_cliente
             inner join tb_status
             on tb_status.tb_status_id = tb_cliente.tb_status_id
@@ -212,7 +216,7 @@ function banirCli($conexao, $id)
 
     $query = mysqli_query($conexao, $sql);
 
-    return $mensagem = "Cliente banido com sucesso. <a href='../clientes/cliente.php'>Voltar</a>";
+    echo "Cliente banido com sucesso. <button onclick='location.href = document.referrer;'>Voltar </button>";
 }
 
 function desbanirCli($conexao, $id)
@@ -223,5 +227,5 @@ function desbanirCli($conexao, $id)
 
     $query = mysqli_query($conexao, $sql);
 
-    return $mensagem = "Cliente desbanido com sucesso. <a href='../clientes/cliente.php'>Voltar</a>";
+    echo "Cliente desbanido com sucesso. <button onclick='location.href = document.referrer;'>Voltar </button>";
 }

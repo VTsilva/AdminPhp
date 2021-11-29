@@ -426,26 +426,17 @@ input[type="password"] {
     margin-right: 40px;
 }
 
-.btn-funcao{
+#btn-funcao{
     background-color: #2F343D;
     border-radius: 10px;
     color: white;
     padding: 10px;
-    text-decoration: none;
 }
 
-.btn-funcao a{
-    height: 40px;
-}
-
-.btn-funcao:hover{
+#btn-funcao:hover{
     transition: 0.5s;
     text-decoration: underline;
     color: rgb(163, 163, 163);
-}
-
-.btn-voltar{
-    margin-left: 5px;
 }
 
 .vorca {

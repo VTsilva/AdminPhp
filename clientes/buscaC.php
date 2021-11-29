@@ -45,32 +45,32 @@ $nBuscac = contarBuscaC($conexao, $clausula, $busca);
             </li>
             <li>
                 <div class="icon-link">
-                    <a href="cliente.php">
+                    <a href="./../clientes/cliente.php">
                         <span class="icon"><img src="./../img/ic-cliente.png" alt=""></span>
                         <span class="link-name">Clientes</span>
                     </a>
                     <span class="material-icons icon seta">expand_more</span>
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link-name" href="cliente.php">Clientes</a></li>
-                    <li><a href="ativos.php">Ativos</a></li>
-                    <li><a href="banidos.php">Banidos</a></li>
+                    <li><a class="link-name" href="./../clientes/cliente.php">Clientes</a></li>
+                    <li><a href="./../clientes/ativos.php">Ativos</a></li>
+                    <li><a href="./../clientes/banidos.php">Banidos</a></li>
                 </ul>
             </li>
             <li>
                 <div class="icon-link">
-                    <a href="../prestadores/prestador.php">
+                    <a href="prestador.php">
                         <span class="icon"><img src="./../img/ic-prestador.png" alt=""></span>
                         <span class="link-name">Prestadores</span>
                     </a>
                     <span class="material-icons icon seta">expand_more</span>
                 </div>
                 <ul class="sub-menu">
-                    <li><a class="link-name" href="../prestadores/prestador.php">Prestadores</a></li>
-                    <li><a href="../prestadores/ativos.php">Ativos</a></li>
-                    <li><a href="../prestadores/analise.php">Em Análise</a></li>
-                    <li><a href="../prestadores/recusados.php">Recusados</a></li>
-                    <li><a href="../prestadores/banidos">Banidos</a></li>
+                    <li><a class="link-name" href="prestador.php">Prestadores</a></li>
+                    <li><a href="ativos.php">Ativos</a></li>
+                    <li><a href="analise.php">Em Análise</a></li>
+                    <li><a href="recusados.php">Recusados</a></li>
+                    <li><a href="banidos">Banidos</a></li>
                 </ul>
             </li>
             <li>
@@ -108,11 +108,11 @@ $nBuscac = contarBuscaC($conexao, $clausula, $busca);
         <section class="section-table">
             <div class="quadro">
                 <div>
-                    <h3 class="qtd">Quantidade de Registros Achados: <?php echo implode(",", $nBuscac); ?></h3>
+                    <h3>Quantidade de Registros Achados: <?php echo implode(",", $nBuscac); ?></h3>
                 </div>
                 <table class="table">
                     <thead>
-                        <tr class="table100-head">
+                        <tr>
                             <th class="column1">ID</th>
                             <th class="column2">NOME</th>
                             <th class="column3">CPF</th>
