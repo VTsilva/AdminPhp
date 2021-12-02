@@ -55,6 +55,25 @@ if (isset($_POST['btn-desbanirC'])) {
     desbanirCli($conexao, $id);
 }
 
+if (isset($_POST['btn-editPrest'])){
+    $id = mysqli_escape_string($conexao, $_POST['idPrest']);
+    $cnpj = mysqli_escape_string($conexao, $_POST['cnpjPrest']);
+    $nome = mysqli_escape_string($conexao, $_POST['nomePrest']);
+    $email = mysqli_escape_string($conexao, $_POST['emailPrest']);
+    $tel = mysqli_escape_string($conexao, $_POST['telPrest']);
+    $senha = mysqli_escape_string($conexao, $_POST['senhaPrest']);
+    $cep = mysqli_escape_string($conexao, $_POST['cepPrest']);
+    $ende = mysqli_escape_string($conexao, $_POST['endPrest']);
+    $num = mysqli_escape_string($conexao, $_POST['num']);
+    $comp = mysqli_escape_string($conexao, $_POST['compPrest']);
+    $bairro = mysqli_escape_string($conexao, $_POST['bairroPrest']);
+    $cidade = mysqli_escape_string($conexao, $_POST['cidadePrest']);
+    $uf = mysqli_escape_string($conexao, $_POST['ufPrest']);
+
+    $mensagem = editPrest($conexao, $id, $cnpj, $nome, $email, $tel, $senha, 
+                          $cep, $ende, $num, $comp, $bairro, $cidade, $uf);
+}
+
 ?>
 
 <!DOCTYPE html>

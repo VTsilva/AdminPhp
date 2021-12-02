@@ -580,3 +580,30 @@ function nBuscaOrca($conexao, $idLoja, $clausula, $busca, $inicio, $qnt_result_p
 
     return $nbOrca;
 }
+
+function verPrestEdit($conexao, $id)
+{
+    $vPrestadores = array();
+
+    $sql = "select tb_loja.tb_loja_id as 'id',
+            tb_loja.tb_loja_nome as 'nome',
+            tb_loja.tb_loja_cnpj as 'cnpj',
+            tb_loja.tb_loja_email as 'email',
+            tb_loja.tb_loja_tel as 'tel',
+            tb_loja.tb_loja_senha as 'senha',
+            tb_loja.tb_loja_endereco as 'end',
+            tb_loja.tb_loja_num as 'num',
+            tb_loja.tb_loja_comp as 'comp',
+            tb_loja.tb_loja_bairro as 'bairro',
+            tb_loja.tb_loja_cidade as 'cidade',
+            tb_loja.tb_loja_uf as 'uf',
+            tb_loja.tb_loja_cep as 'cep'
+            from tb_loja 
+            where tb_loja.tb_loja_id = $id;";
+
+    $query = mysqli_query($conexao, $sql);
+
+    $vPrestadores = mysqli_fetch_assoc($query);
+
+    return $vPrestadores;
+}
