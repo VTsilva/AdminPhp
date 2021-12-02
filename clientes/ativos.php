@@ -19,6 +19,30 @@ $page_name = basename($_SERVER['PHP_SELF']);
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/table.css">
+    <script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="../js/jquery.mask.js"></script>
+
+    <script type="text/javascript">
+        function setcla(valor) {
+            if (valor == 1) {
+                document.getElementById("bid").style.display = 'block';
+                document.getElementById("bnom").style.display = 'none';
+                document.getElementById("bcpf").style.display = 'none';
+            } else if (valor == 2) {
+                document.getElementById("bid").style.display = 'none';
+                document.getElementById("bnom").style.display = 'block';
+                document.getElementById("bcpf").style.display = 'none';
+            } else if (valor == 3) {
+                document.getElementById("bid").style.display = 'none';
+                document.getElementById("bnom").style.display = 'none';
+                document.getElementById("bcpf").style.display = 'block';
+            }
+        }
+
+        $(document).ready(function() {
+            $('#bcpf').mask('000.000.000-00');
+        });
+    </script>
 
     <title>Clientes Ativos</title>
 </head>
@@ -91,12 +115,21 @@ $page_name = basename($_SERVER['PHP_SELF']);
 
         <div class="busca">
             <form action="buscac.php" method="post" class="frm-busca">
-                <select name="clausula" class="combobox">
+                <input type="text" style="display: none;" name="bstatus" value="ativo">
+
+                <!-- CLAUSULA DA BUSCA  -->
+                <select name="clausula" class="combobox" onchange="javascript:setcla(this.value);">
                     <option value="1" selected>Por id</option>
                     <option value="2">Por nome</option>
                     <option value="3">Por cpf</option>
                 </select>
-                <input type="text" name="busca" placeholder="Insira aqui" class="search" />
+                <!-- BUSCA POR ID  -->
+                <input type="number" name="buscaid" id="bid" placeholder="Insira aqui" class="search" />
+                <!-- BUSCA POR NOME -->
+                <input type="text" style="display: none;" name="buscanome" id="bnom" placeholder="Insira aqui" class="search" />
+                <!-- BUSCA POR CPF -->
+                <input type="text" style="display: none;" name="buscacpf" id="bcpf" placeholder="Insira aqui" class="search" />
+
                 <button type="submit" name="btn-buscar" class="btn-buscar">Buscar</button>
             </form>
         </div>
