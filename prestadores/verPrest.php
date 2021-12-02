@@ -116,10 +116,14 @@ $page_name = basename($_SERVER['PHP_SELF']);
                     <p> CEP: <b> <?php echo $vPrestador['cep'] ?></b> </p> <br>
                     <p> Status: <b> <?php echo $vPrestador['status'] ?></b> </p> <br>
                     <p> IMG de Perfil: <a id="botao" href="<?php echo $vPrestador['img'] ?>">Ver</a></p> <br>
+                    <a href="editprest"></a>
                     <?php
                     $status = $vPrestador['status'];
                     if ($status == 'ACEITO') {
                         echo "<div class='vorca'> 
+                                <form action='editPrest.php'>
+                                    <button type='submit' class='btn-funcao' style='margin-right: 5px;'>Editar</button>
+                                </form>
                                 <form action='../php/verificacao.php' method='post'> 
                                     <input style='display: none' type='text' name='id' value='" . $id . "'>
                                     <button type='submit' name='btn-banirP' class='btn-funcao'> Banir </button> 
@@ -131,6 +135,9 @@ $page_name = basename($_SERVER['PHP_SELF']);
                             ";
                     } elseif ($status == 'EM ANÁLISE') {
                         echo "<div class='vorca'>
+                                <form action='editPrest.php'>
+                                    <button type='submit' class='btn-funcao' style='margin-right: 5px;'>Editar</button>
+                                </form>
                                 <form action='../php/verificacao.php' method='post'> 
                                     <input style='display: none' type='text' name='id' value='" . $id . "'>
                                     <button type='submit' name='btn-aceitarP' class='btn-funcao'> Aceitar </button>
@@ -142,6 +149,9 @@ $page_name = basename($_SERVER['PHP_SELF']);
                               </div>";
                     } else {
                         echo "<div class='vorca'>
+                              <form action='editPrest.php'>
+                                 <button type='submit' class='btn-funcao' style='margin-right: 5px;'>Editar</button>
+                              </form>
                               <form action='../php/verificacao.php' method='post'> 
                                 <input style='display: none' type='text' name='id' value='" . $id . "'>
                                 <button type='submit' name='btn-desbanirP' class='btn-funcao'> Desbanir </button>
