@@ -133,14 +133,12 @@ function buscarAuto($conexao, $id)
 
     $sql = "select tb_automovel.tb_automovel_id as 'id',
                    tb_marca.tb_marca_nome as 'marca',
-                   tb_modelo.tb_modelo_nome as 'modelo',
+                   tb_automovel.tb_automovel_modelo as 'modelo',
                    tb_automovel.tb_automovel_cor as 'cor',
                    tb_categoria.tb_categoria_nome as 'categoria'
             from tb_automovel
             inner join tb_marca
             on tb_marca.tb_marca_id = tb_automovel.tb_marca_id
-            inner join tb_modelo
-            on tb_modelo.tb_modelo_id = tb_automovel.tb_modelo_id
             inner join tb_categoria
             on tb_categoria.tb_categoria_id = tb_automovel.tb_categoria_id
             where tb_automovel.tb_cliente_id = '$id';";

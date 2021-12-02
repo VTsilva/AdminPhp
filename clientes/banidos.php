@@ -104,7 +104,7 @@ $page_name = basename($_SERVER['PHP_SELF']);
         <section class="table100">
             <div class="quadro">
                 <div>
-                    <h3>Quantidade de Cliente Banidos: <?php echo implode(",", $num); ?> </h3>
+                    <h3 class="qtd">Quantidade de Cliente Banidos: <?php echo implode(",", $num); ?> </h3>
                 </div>
                 <table class="table">
                     <thead>

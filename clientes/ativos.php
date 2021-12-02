@@ -104,7 +104,7 @@ $page_name = basename($_SERVER['PHP_SELF']);
         <section class="table100">
             <div class="quadro">
                 <div>
-                    <h3>Quantidade de Clientes Ativos Cadastrados: <?php echo implode(",", $nAtivos); ?></h3>
+                    <h3 class="qtd">Quantidade de Clientes Ativos Cadastrados: <?php echo implode(",", $nAtivos); ?></h3>
                 </div>
 
                 <table class="table">

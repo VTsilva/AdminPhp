@@ -426,17 +426,26 @@ input[type="password"] {
     margin-right: 40px;
 }
 
-#btn-funcao{
+.btn-funcao{
     background-color: #2F343D;
     border-radius: 10px;
     color: white;
     padding: 10px;
+    text-decoration: none;
 }
 
-#btn-funcao:hover{
+.btn-funcao a{
+    height: 40px;
+}
+
+.btn-funcao:hover{
     transition: 0.5s;
     text-decoration: underline;
     color: rgb(163, 163, 163);
+}
+
+.btn-voltar{
+    margin-left: 5px;
 }
 
 .vorca {
@@ -478,5 +487,19 @@ input[type="password"] {
     display: flex;
     justify-content: center;
     align-items: flex-start !important;
+}
+
+.btn-back {
+    border: none;
+    color: #000;
+    background-color: transparent;
+    font-size: 19px;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.btn-back:hover{
+    transition: 0.2s;
+    color: blue;
 }
 
