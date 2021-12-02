@@ -2,10 +2,15 @@
 include('../php/conexao.php');
 include('../php/funcoesCli.php');
 
-$id = $_POST['id'];
-
-if (!$id) {
-    echo "Cliente não encontrado. <a href='./../clientes/cliente.php'>VOLTAR</a>";
+try {
+    if ($_POST) {
+        $id = $_POST['id'];
+        setcookie('idCli', $id);
+    } else {
+        $id = $_COOKIE['idCli'];
+    }
+} catch (Exception $e) {
+    echo "Houve um erro. " . $e;
 }
 
 $vCliente = verCliente($conexao, $id);
@@ -120,7 +125,7 @@ $page_name = basename($_SERVER['PHP_SELF']);
                                         <button type='submit' name='btn-banirC' class='btn-funcao'> Banir </button> 
                                     </form>
                                 <div class='btn-voltar'>    
-                                    <button type='submit' class='btn-funcao' onclick='location.href = document.referrer;'>Voltar</button>
+                                    <button type='submit' class='btn-funcao'><a class='btn-funcao' href='cliente.php'>Voltar</a></button>
                                 </div>
                               </div>";
                     } else {
@@ -130,7 +135,7 @@ $page_name = basename($_SERVER['PHP_SELF']);
                                         <button type='submit' name='btn-desbanirC' class='btn-funcao'> Desbanir </button>
                                     </form>
                                     <div class='btn-voltar'>    
-                                        <button type='submit' class='btn-funcao' onclick='location.href = document.referrer;'>Voltar</button>
+                                        <button type='submit' class='btn-funcao'><a class='btn-funcao' href='cliente.php'>Voltar</a></button>
                                     </div>
                                 </div>";
                     }
