@@ -108,11 +108,11 @@ $nBuscac = contarBuscaC($conexao, $clausula, $busca);
         <section class="section-table">
             <div class="quadro">
                 <div>
-                    <h3>Quantidade de Registros Achados: <?php echo implode(",", $nBuscac); ?></h3>
+                    <h3 class="qtd">Quantidade de Registros Achados: <?php echo implode(",", $nBuscac); ?></h3>
                 </div>
                 <table class="table">
                     <thead>
-                        <tr>
+                        <tr class="table100-head">
                             <th class="column1">ID</th>
                             <th class="column2">NOME</th>
                             <th class="column3">CPF</th>

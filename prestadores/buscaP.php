@@ -4,11 +4,25 @@ include('../php/funcoesPrest.php');
 
 $clausula = $_POST['clausula'];
 
-$busca = $_POST['busca'];
+$status = $_POST['bstatus'];
 
-$bPrestador = buscarPrest($conexao, $clausula, $busca);
+// echo "<center>" . $status . "</center>";
 
-$nBuscap = contarBusca($conexao, $clausula, $busca);
+if ($clausula == 1) {
+    $busca = $_POST['buscaid'];
+} elseif ($clausula == 2) {
+    $busca = $_POST['buscanome'];
+} elseif ($clausula == 3) {
+    $busca = $_POST['buscacnpj'];
+}
+
+
+$bPrestador = buscarPrest($conexao, $clausula, $busca, $inicio, $qnt_result_pg, $status);
+
+$nBuscap = contarBusca($conexao, $clausula, $busca, $inicio, $qnt_result_pg, $status);
+
+$quantidade_pg = quantidadePg($qnt_result_pg, contarBusca($conexao, $clausula, $busca, $inicio, $qnt_result_pg, $status));
+$page_name = basename($_SERVER['PHP_SELF']);
 
 ?>
 
@@ -23,6 +37,30 @@ $nBuscap = contarBusca($conexao, $clausula, $busca);
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/table.css">
+    <script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="../js/jquery.mask.js"></script>
+
+    <script type="text/javascript">
+        function setcla(valor) {
+            if (valor == 1) {
+                document.getElementById("bid").style.display = 'block';
+                document.getElementById("bnom").style.display = 'none';
+                document.getElementById("bcnpj").style.display = 'none';
+            } else if (valor == 2) {
+                document.getElementById("bid").style.display = 'none';
+                document.getElementById("bnom").style.display = 'block';
+                document.getElementById("bcnpj").style.display = 'none';
+            } else if (valor == 3) {
+                document.getElementById("bid").style.display = 'none';
+                document.getElementById("bnom").style.display = 'none';
+                document.getElementById("bcnpj").style.display = 'block';
+            }
+        }
+
+        $(document).ready(function() {
+            $('#bcnpj').mask('00.000.000/0000-00');
+        });
+    </script>
 
     <title>Prestadores de Serviços</title>
 </head>
@@ -95,12 +133,24 @@ $nBuscap = contarBusca($conexao, $clausula, $busca);
 
         <div class="busca">
             <form action="buscaP.php" method="post" class="frm-busca">
-                <select name="clausula" class="combobox">
+
+                <!-- STATUS -->
+                <input name="bstatus" type="text" style="display: none;" value="<?php echo $status; ?>">
+
+                <!-- CLAUSULA -->
+                <select id="clausula" name="clausula" onchange="javascript:setcla(this.value);" class="combobox">
                     <option value="1" selected>Por id</option>
                     <option value="2">Por nome</option>
                     <option value="3">Por cnpj</option>
                 </select>
-                <input type="text" name="busca" placeholder="Insira aqui" class="search" />
+                <!-- BUSCA POR ID -->
+                <input id="bid" min=1 type="number" name="buscaid" placeholder="Insira aqui" class="search" />
+                <!-- BUSCA POR NOME -->
+                <input id="bnom" style="display: none;" type="text" name="buscanome" placeholder="Insira aqui" class="search" />
+                <!-- BUSCA POR CNPJ -->
+                <input id="bcnpj" style="display: none;" type="text" name="buscacnpj" placeholder="Insira aqui" class="search" />
+
+
                 <button type="submit" name="btn-buscar" class="btn-buscar">Buscar</button>
             </form>
         </div>

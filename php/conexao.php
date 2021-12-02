@@ -1,8 +1,6 @@
 <?php
 $conexao =  mysqli_connect('localhost', 'root', 'vs521733', 'bd_vulcar', '3308');
 
-
-
 // PAGINAÇÃO
 
 //Recebe o número da página

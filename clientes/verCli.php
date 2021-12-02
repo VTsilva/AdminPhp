@@ -97,58 +97,75 @@ $page_name = basename($_SERVER['PHP_SELF']);
 
     <section class="home-section">
 
-        <section class="table100">
+        <div class="outdoor">
+            <h2>Clientes</h2>
+        </div>
+
+        <section class="verp-section">
             <section class="info">
-                <div>
-                    <h3>Este é o id: <?php echo $vCliente['id'] ?></h3> <br>
-                    <h3>Este é o nome: <?php echo $vCliente['nome'] ?></h3> <br>
-                    <h3>Este é o cpf: <?php echo $vCliente['cpf'] ?></h3> <br>
-                    <h3>Este é o tel: <?php echo $vCliente['tel'] ?></h3> <br>
-                    <h3>Este é o status: <?php echo $vCliente['status'] ?></h3> <br>
-                    <h3>Este é caminho para a img: <?php echo $vCliente['img'] ?></h3> <br>
+                <div class="quadro-info">
+                    <p> ID: <b> <?php echo $vCliente['id'] ?></b> </p> <br>
+                    <p> NOME: <b> <?php echo $vCliente['nome'] ?></b> </p> <br>
+                    <p> CPF: <b> <?php echo $vCliente['cpf'] ?></b> </p> <br>
+                    <p> TEL: <b> <?php echo $vCliente['tel'] ?> </b></p> <br>
+                    <p> STATUS: <b> <?php echo $vCliente['status'] ?> </b></p> <br>
+                    <p> IMG DE PERFIL: <b> <?php echo $vCliente['img'] ?> </b></p> <br>
 
                     <?php
                     $status = $vCliente['status'];
                     if ($status == 'ATIVO') {
-                        echo "<form action='../php/verificacao.php' method='post'> 
-                                 <input style='display: none' type='text' name='id' value='" . $id . "'>
-                                 <button type='submit' name='btn-banirC' id='btn-funcao'> Banir </button> 
-                              </form>";
+                        echo "  <div class='vorca'>
+                                    <form action='../php/verificacao.php' method='post'> 
+                                        <input style='display: none' type='text' name='id' value='" . $id . "'>
+                                        <button type='submit' name='btn-banirC' class='btn-funcao'> Banir </button> 
+                                    </form>
+                                <div class='btn-voltar'>    
+                                    <button type='submit' class='btn-funcao' onclick='location.href = document.referrer;'>Voltar</button>
+                                </div>
+                              </div>";
                     } else {
-                        echo "<form action='../php/verificacao.php' method='post'> 
-                                <input style='display: none' type='text' name='id' value='" . $id . "'>
-                                <button type='submit' name='btn-desbanirC' id='btn-funcao'> Desbanir </button>
-                              </form>";
+                        echo "  <div class='vorca'>
+                                    <form action='../php/verificacao.php' method='post'> 
+                                        <input style='display: none' type='text' name='id' value='" . $id . "'>
+                                        <button type='submit' name='btn-desbanirC' class='btn-funcao'> Desbanir </button>
+                                    </form>
+                                    <div class='btn-voltar'>    
+                                        <button type='submit' class='btn-funcao' onclick='location.href = document.referrer;'>Voltar</button>
+                                    </div>
+                                </div>";
                     }
                     ?>
                 </div>
             </section>
 
-            <div class="quadro">
-                <div>
-                    <h3>Quantidade de Automoveis do cliente Cadastrados: <?php echo implode(",", $nAuto); ?></h3>
-                </div>
+            <section class="table100">
 
-                <table class="table">
-                    <thead>
-                        <tr class="table100-head">
-                            <th class="column1">ID</th>
-                            <th class="column2">MARCA</th>
-                            <th class="column3">MODELO</th>
-                            <th class="column4">COR</th>
-                            <th class="column5">CATEGORIA</th>
-                        </tr>
-                    </thead>
-                    <?php foreach ($automoveis as $automovel) : ?>
-                        <tr>
-                            <td class="column1"> <input type="text" name="id" value="<?php echo $automovel['id']; ?>"></td>
-                            <td class="column2"> <?php echo $automovel['marca']; ?> </td>
-                            <td class="column3"> <?php echo $automovel['modelo']; ?> </td>
-                            <td class="column4"> <?php echo $automovel['cor']; ?> </td>
-                            <td class="column5"> <?php echo $automovel['categoria']; ?> </td>
-                        </tr>
-                    <?php endforeach; ?>
-            </div>
+                <div class="quadro">
+                    <div>
+                        <h3 class="qtd">Quantidade de Automoveis do cliente Cadastrados: <?php echo implode(",", $nAuto); ?></h3>
+                    </div>
+
+                    <table class="table">
+                        <thead>
+                            <tr class="table100-head">
+                                <th class="column1">ID</th>
+                                <th class="column2">MARCA</th>
+                                <th class="column3">MODELO</th>
+                                <th class="column4">COR</th>
+                                <th class="column5">CATEGORIA</th>
+                            </tr>
+                        </thead>
+                        <?php foreach ($automoveis as $automovel) : ?>
+                            <tr>
+                                <td class="column1"> <input type="text" name="id" value="<?php echo $automovel['id']; ?>"></td>
+                                <td class="column2"> <?php echo $automovel['marca']; ?> </td>
+                                <td class="column3"> <?php echo $automovel['modelo']; ?> </td>
+                                <td class="column4"> <?php echo $automovel['cor']; ?> </td>
+                                <td class="column5"> <?php echo $automovel['categoria']; ?> </td>
+                            </tr>
+                        <?php endforeach; ?>
+                </div>
+            </section>
         </section>
     </section>
 

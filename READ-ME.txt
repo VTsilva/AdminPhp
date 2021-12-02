@@ -1,0 +1,29 @@
+RELATO SOBRE O DESENVOLVIMENTO PARA ORIENTAÇÃO.
+
+-----------------------------------------------
+
+PARTE PRESTADOR :
+
+    01/12/2021
+        º METODOS DE BUSCA FINALIZADOS EM TODAS AS TELAS PRINCIPAIS, COMO:
+//                    -> ANALISE.PHP
+//                    -> ATIVOS.PHP
+//                    -> BANIDOS.PHP
+//                    -> RECUSADOS.PHP
+//                    -> PRESTADOR.PHP
+//                   ==> BUSCAP.PHP 
+
+        º METODOS DE BUSCA FINALIZADOS EM TODAS AS TELAS SECUNDÁRIAS, COMO:
+//                    -> BUSCAO.PHP
+//                    -> BUSCAP.PHP
+//                    -> ORCAP
+
+
+                <--!!  A SE FAZER  !!-->
+
+    ª EDITAR DADOS DE TUDO QUE FOR EXIBIDO
+    ª ORGANIZAR OS CODIGOS PARA BOAS PRATICAS
+-----------------------------------------------
+PARTE CLIENTE :
+
+    MUITO A SE FAZER AINDA;

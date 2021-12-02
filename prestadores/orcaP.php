@@ -4,11 +4,7 @@ include('../php/funcoesPrest.php');
 
 $id = $_POST['id'];
 
-if (!$id) {
-    echo "Orçamentos não encontrados. <a href='./../prestadores/prestador.php'>VOLTAR</a>";
-}
-
-$orcamentos = vOrca($conexao, $id, $inicio, $qnt_result_pg);
+$orcamentos = vOrcaP($conexao, $id, $inicio, $qnt_result_pg);
 
 $nOrca = contarOrca($conexao, $id);
 
@@ -28,11 +24,38 @@ $page_name = basename($_SERVER['PHP_SELF']);
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/table.css">
+    <script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="../js/jquery.mask.js"></script>
 
     <title>Prestadores de Serviços - Orçamentos</title>
+
+
+    <script type="text/javascript">
+        function setcla(valor) {
+            if (valor == 1) {
+                document.getElementById("bid").style.display = 'block';
+                document.getElementById("bsta").style.display = 'none';
+                document.getElementById("bdat").style.display = 'none';
+            } else if (valor == 2) {
+                document.getElementById("bid").style.display = 'none';
+                document.getElementById("bsta").style.display = 'block';
+                document.getElementById("bdat").style.display = 'none';
+            } else if (valor == 3) {
+                document.getElementById("bid").style.display = 'none';
+                document.getElementById("bsta").style.display = 'none';
+                document.getElementById("bdat").style.display = 'block';
+            }
+        }
+
+        $(document).ready(function() {
+            $('#bdat').mask('0000-00-00 00:00:00');
+        });
+    </script>
 </head>
 
 <body>
+
+
     <div class="sidebar close">
         <div class="logo-details">
             <div class="img menu-side-bar"><img src="./../img/car-white.svg" alt=""></div>
@@ -99,13 +122,31 @@ $page_name = basename($_SERVER['PHP_SELF']);
         </div>
 
         <div class="busca">
-            <form action="buscaP.php" method="post" class="frm-busca">
-                <select name="clausula" class="combobox">
+            <form action="buscaO.php" method="post" class="frm-busca">
+                <!-- id da loja -->
+                <input type="text" style="display: none;" name="idLoja" value="<?php echo $id; ?>">
+
+                <!-- Clausula da query -->
+                <select id="clausula" onchange="javascript:setcla(this.value);" name="clausula" class="combobox">
                     <option value="1" selected>Por id</option>
-                    <option value="2">Por nome</option>
-                    <option value="3">Por cnpj</option>
+                    <option value="2">Por status</option>
+                    <option value="3">Por Data</option>
                 </select>
-                <input type="text" name="busca" placeholder="Insira aqui" class="search" />
+
+                <!-- Pesquisa por ID dos orçamentos -->
+                <input type="number" min=1 id="bid" name="buscaid" placeholder="Insira aqui" class="search" />
+
+                <!-- Pesquisa por Statos dos orçamentos -->
+                <select name="buscasta" id="bsta" style="display: none;" class="search">
+                    <option value="Recusado" selected>Recusado</option>
+                    <option value="Em espera">Em espera</option>
+                    <option value="Em andamento">Em andamento</option>
+                    <option value="Concluido">Concluido</option>
+                </select>
+
+                <!-- Pesquisa pela data dos orçamentos -->
+                <input type="text" style="display: none;" id="bdat" name="buscadat" placeholder="Insira aqui" class="search" />
+
                 <button type="submit" name="btn-buscar" class="btn-buscar">Buscar</button>
             </form>
         </div>
@@ -138,7 +179,7 @@ $page_name = basename($_SERVER['PHP_SELF']);
                                 <td class="column4"> <?php echo $orcamento['cliente']; ?> </td>
                                 <td class="column1"> <?php echo $orcamento['idCliente']; ?> </td>
                                 <td class="column4"> <?php echo $orcamento['loja']; ?> </td>
-                                <td class="column1"> <input type="text" name="idLoja" value="<?php echo $orcamento['idLoja']; ?>"></td>
+                                <td class="column1"> <?php echo $orcamento['idLoja']; ?></td>
                                 <td class="column4"> <?php echo $orcamento['status']; ?> </td>
                                 <td class="column4"> <?php echo $orcamento['valorTotal']; ?> </td>
                                 <td class="column1"> <?php echo $orcamento['avaliacao']; ?> </td>
@@ -149,6 +190,10 @@ $page_name = basename($_SERVER['PHP_SELF']);
                         </tr>
                     <?php endforeach; ?>
                 </table>
+
+                <div class="vorca">
+                    <button class="btn-funcao" onclick="location.href = document.referrer">Voltar</button>
+                </div>
 
             </div>
         </section>
