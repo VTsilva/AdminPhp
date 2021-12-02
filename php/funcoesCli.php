@@ -75,17 +75,20 @@ function clienteBanido($conexao, $inicio, $qnt_result_pg)
     return $clientes;
 }
 
-function buscarCli($conexao, $clausula, $busca)
+function buscarCli($conexao, $clausula, $busca, $inicio, $qnt_result_pg, $status)
 {
     $bCliente = array();
     $clausula = $clausula;
 
     if ($clausula == '1') {
-        $sql = "select * from selecionar_cliente where id = '$busca';";
+        $sql = "select * from selecionar_cliente where id = '$busca' and status like '%$status%'
+                LIMIT $inicio, $qnt_result_pg;";
     } elseif ($clausula == '2') {
-        $sql = "select * from selecionar_cliente where nome like '%$busca%';";
+        $sql = "select * from selecionar_cliente where nome like '%$busca%' and status like '%$status%'
+                LIMIT $inicio, $qnt_result_pg;";
     } elseif ($clausula == '3') {
-        $sql = "select * from selecionar_cliente where cpf = '$busca';";
+        $sql = "select * from selecionar_cliente where cpf = '$busca' and status like '%$status%'
+                LIMIT $inicio, $qnt_result_pg;";
     }
 
     $query = mysqli_query($conexao, $sql);
@@ -96,16 +99,16 @@ function buscarCli($conexao, $clausula, $busca)
     return $bCliente;
 }
 
-function contarBuscaC($conexao, $clausula, $busca)
+function contarBuscaC($conexao, $clausula, $busca, $status)
 {
     $clausula = $clausula;
 
     if ($clausula == '1') {
-        $sql = "select count(id) from selecionar_cliente where id = '$busca';";
+        $sql = "select count(id) as 'quantidade' from selecionar_cliente where id = '$busca' and status like '%$status%';";
     } elseif ($clausula == '2') {
-        $sql = "select count(id) from selecionar_cliente where nome like '%$busca%';";
+        $sql = "select count(id) as 'quantidade' from selecionar_cliente where nome like '%$busca%' and status like '%$status%';";
     } elseif ($clausula == '3') {
-        $sql = "select count(id) from selecionar_cliente where cpf = '$busca';";
+        $sql = "select count(id) as 'quantidade' from selecionar_cliente where cpf = '$busca' and status like '%$status%';";
     }
 
     $query = mysqli_query($conexao, $sql);
@@ -214,7 +217,7 @@ function banirCli($conexao, $id)
 
     $query = mysqli_query($conexao, $sql);
 
-    echo "Cliente banido com sucesso. <button onclick='location.href = document.referrer;'>Voltar </button>";
+    return $mensagem = "Cliente banido com sucesso. <button class='btn-back' onclick='location.href = document.referrer;'>Voltar </button>";
 }
 
 function desbanirCli($conexao, $id)
@@ -225,5 +228,5 @@ function desbanirCli($conexao, $id)
 
     $query = mysqli_query($conexao, $sql);
 
-    echo "Cliente desbanido com sucesso. <button onclick='location.href = document.referrer;'>Voltar </button>";
+    return $mensagem = "Cliente desbanido com sucesso. <button class='btn-back' onclick='location.href = document.referrer;'>Voltar </button>";
 }
