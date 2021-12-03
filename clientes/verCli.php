@@ -114,12 +114,15 @@ $page_name = basename($_SERVER['PHP_SELF']);
                     <p> CPF: <b> <?php echo $vCliente['cpf'] ?></b> </p> <br>
                     <p> TEL: <b> <?php echo $vCliente['tel'] ?> </b></p> <br>
                     <p> STATUS: <b> <?php echo $vCliente['status'] ?> </b></p> <br>
-                    <p> IMG DE PERFIL: <b> <?php echo $vCliente['img'] ?> </b></p> <br>
+                    <p> IMG DE PERFIL: <a id="botao" href="<?php echo $vCliente['img'] ?>">Ver</a> </p> <br>
 
                     <?php
                     $status = $vCliente['status'];
                     if ($status == 'ATIVO') {
                         echo "  <div class='vorca'>
+                                    <form action='editCli.php' method='post'>
+                                        <button type='submit' class='btn-funcao' style='margin-right: 5px;'>Editar</button>
+                                    </form>
                                     <form action='../php/verificacao.php' method='post'> 
                                         <input style='display: none' type='text' name='id' value='" . $id . "'>
                                         <button type='submit' name='btn-banirC' class='btn-funcao'> Banir </button> 
@@ -130,6 +133,9 @@ $page_name = basename($_SERVER['PHP_SELF']);
                               </div>";
                     } else {
                         echo "  <div class='vorca'>
+                                    <form action='editCli.php' method='post'>
+                                        <button type='submit' class='btn-funcao' style='margin-right: 5px;'>Editar</button>
+                                    </form>
                                     <form action='../php/verificacao.php' method='post'> 
                                         <input style='display: none' type='text' name='id' value='" . $id . "'>
                                         <button type='submit' name='btn-desbanirC' class='btn-funcao'> Desbanir </button>

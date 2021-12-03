@@ -116,7 +116,7 @@ $page_name = basename($_SERVER['PHP_SELF']);
                     <p> CEP: <b> <?php echo $vPrestador['cep'] ?></b> </p> <br>
                     <p> Status: <b> <?php echo $vPrestador['status'] ?></b> </p> <br>
                     <p> IMG de Perfil: <a id="botao" href="<?php echo $vPrestador['img'] ?>">Ver</a></p> <br>
-                    <a href="editprest"></a>
+
                     <?php
                     $status = $vPrestador['status'];
                     if ($status == 'ACEITO') {

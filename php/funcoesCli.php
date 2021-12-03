@@ -230,3 +230,67 @@ function desbanirCli($conexao, $id)
 
     return $mensagem = "Cliente desbanido com sucesso. <button class='btn-back' onclick='location.href = document.referrer;'>Voltar </button>";
 }
+
+function verCliEdit($conexao, $id)
+{
+    $vClies = array();
+
+    $sql = "select tb_cliente_id as 'id',
+                   tb_cliente_nome as 'nome',
+                   tb_cliente_cpf as 'cpf',
+                   tb_cliente_email as 'email',
+                   tb_cliente_tel as 'tel',
+                   tb_cliente_senha as 'senha',
+                   tb_cliente_endereco as 'ende',
+                   tb_cliente_num as 'num',
+                   tb_cliente_comp as 'comp',
+                   tb_cliente_bairro as 'bairro',
+                   tb_cliente_cidade as 'cidade',
+                   tb_cliente_uf as 'uf',
+                   tb_cliente_cep as 'cep'
+            from tb_cliente
+            where tb_cliente_id = $id;";
+
+    $query = mysqli_query($conexao, $sql);
+
+    $vClies = mysqli_fetch_assoc($query);
+
+    return $vClies;
+}
+
+function editCli(
+    $conexao,
+    $id,
+    $nome,
+    $cpf,
+    $email,
+    $tel,
+    $senha,
+    $ende,
+    $num,
+    $comp,
+    $bairro,
+    $cidade,
+    $uf,
+    $cep
+) {
+
+    $sql = "update tb_cliente
+            set tb_cliente_nome = '$nome',
+                tb_cliente_cpf = '$cpf',
+                tb_cliente_email = '$email',
+                tb_cliente_tel = '$tel',
+                tb_cliente_senha = '$senha',
+                tb_cliente_endereco = '$ende',
+                tb_cliente_num = '$num',
+                tb_cliente_comp = '$comp',
+                tb_cliente_bairro = '$bairro',
+                tb_cliente_cidade = '$cidade',
+                tb_cliente_uf = '$uf',
+                tb_cliente_cep = '$cep'
+            where tb_cliente_id = $id;";
+
+    $query = mysqli_query($conexao, $sql);
+
+    return $mensagem = "Dados do Cliente atualizados com sucesso. <button class='btn-back'> <a href='../clientes/verCli.php'> Voltar </a></button>";
+}
