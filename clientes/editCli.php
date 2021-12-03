@@ -19,6 +19,26 @@ $eClies = verCliEdit($conexao, $id);
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/table.css">
+    <script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="../js/jquery.mask.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#tel').mask('(00) 00000-0000');
+        });
+
+        $(document).ready(function() {
+            $('#cpf').mask('000.000.000-00');
+        });
+
+        $(document).ready(function() {
+            $('#uf').mask('SS');
+        });
+
+        $(document).ready(function() {
+            $('#cep').mask('00000-000');
+        });
+    </script>
 
     <title>Prestadores de Serviços</title>
 </head>
@@ -95,18 +115,18 @@ $eClies = verCliEdit($conexao, $id);
                 <form action="../php/verificacao.php" method="post">
                     <input type="text" disabled name="teste" value="<?php echo $eClies['id']; ?>">
                     <input type="text" style="display: none;" name="id" value="<?php echo $eClies['id']; ?>">
-                    <input type="text" name="nome" value="<?php echo $eClies['nome']; ?>">
-                    <input type="text" name="cpf" value="<?php echo $eClies['cpf']; ?>">
-                    <input type="text" name="email" value="<?php echo $eClies['email']; ?>">
-                    <input type="text" name="tel" value="<?php echo $eClies['tel']; ?>">
-                    <input type="text" name="senha" value="<?php echo $eClies['senha']; ?>">
-                    <input type="text" name="ende" value="<?php echo $eClies['ende']; ?>">
-                    <input type="text" name="num" value="<?php echo $eClies['num']; ?>">
-                    <input type="text" name="comp" value="<?php echo $eClies['comp']; ?>">
-                    <input type="text" name="bairro" value="<?php echo $eClies['bairro']; ?>">
-                    <input type="text" name="cidade" value="<?php echo $eClies['cidade']; ?>">
-                    <input type="text" name="uf" value="<?php echo $eClies['uf']; ?>">
-                    <input type="text" name="cep" value="<?php echo $eClies['cep']; ?>">
+                    <input type="text" required name="nome" value="<?php echo $eClies['nome']; ?>">
+                    <input type="text" required name="cpf" id="cpf" value="<?php echo $eClies['cpf']; ?>">
+                    <input type="text" required name="email" value="<?php echo $eClies['email']; ?>">
+                    <input type="text" required name="tel" id="tel" value="<?php echo $eClies['tel']; ?>">
+                    <input type="text" required name="senha" value="<?php echo $eClies['senha']; ?>">
+                    <input type="text" required name="ende" value="<?php echo $eClies['ende']; ?>">
+                    <input type="text" required name="num" value="<?php echo $eClies['num']; ?>">
+                    <input type="text" required name="comp" value="<?php echo $eClies['comp']; ?>">
+                    <input type="text" required name="bairro" value="<?php echo $eClies['bairro']; ?>">
+                    <input type="text" required name="cidade" value="<?php echo $eClies['cidade']; ?>">
+                    <input type="text" required name="uf" id="uf" style="text-transform: uppercase;" value="<?php echo $eClies['uf']; ?>">
+                    <input type="text" required name="cep" id="cep" value="<?php echo $eClies['cep']; ?>">
 
                     <button type="submit" name="btn-editCli" class="btn-funcao">Salvar</button>
                 </form>
