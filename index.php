@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
     <link rel="stylesheet" href="css/styles.css">
 
+
+
     <title>Vulcar Adm</title>
 </head>
 
@@ -18,6 +20,7 @@
             <img src="img/car.svg" alt="">
             <input type="text" name="login" placeholder="Usuário" autocomplete="off">
             <input type="password" name="password" placeholder="Senha">
+
             <div class="btn-login">
                 <input type="submit" name="btn-login" id="btn" value="">
                 <img src="img/arrow.svg" alt="">
@@ -26,6 +29,8 @@
         <!-- Mensagens de erro -->
         <p class="message-error"></p>
     </section>
+
+    <script src="js/input.js"></script>
 </body>
 
 </html>

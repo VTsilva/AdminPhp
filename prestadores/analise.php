@@ -19,8 +19,8 @@ $page_name = basename($_SERVER['PHP_SELF']);
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/table.css">
-    query-3.6.0.js"></script>
-    <script type="text/javascript" src="../js/jquery.mask.js"></script><script type="text/javascript" src="../js/j
+    <script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
+    <script type="text/javascript" src="../js/jquery.mask.js"></script>
 
     <script type="text/javascript">
         function setcla(valor) {

@@ -95,7 +95,7 @@ table td, table th {
   padding-left: 8px;
 }
 table thead tr {
-  height: 60px;
+  height: 50px;
   background: #2F343D   ;
 }
 table tbody tr {
@@ -159,16 +159,16 @@ tbody tr:hover {
 }
 
 .column3 {
-  width: 165px;
+  width: 150px;
 }
 
 .column4 {
-  width: 110px;
+  width: 140px;
   padding-right: 20px;
 }
 
 .column5 {
-  width: 170px;
+  width: 150px;
 }
 
 .column6 {
@@ -247,6 +247,10 @@ tbody tr:hover {
   }
 }
 
+.table100{
+    margin-top: -1%;
+}
+
 #botao {
     text-decoration: underline;
     padding: 10px;
@@ -273,7 +277,7 @@ tbody tr:hover {
 
 .busca {
     display: flex;
-    margin: 30px 170px 30px 170px;
+    margin: 15px 170px 20px 170px;
     height: 40px;
     justify-content: center;
     align-items: center;
