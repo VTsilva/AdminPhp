@@ -55,7 +55,7 @@ if (isset($_POST['btn-desbanirC'])) {
     $mensagem = desbanirCli($conexao, $id);
 }
 
-if (isset($_POST['btn-editPrest'])){
+if (isset($_POST['btn-editPrest'])) {
     $id = mysqli_escape_string($conexao, $_POST['idPrest']);
     $cnpj = mysqli_escape_string($conexao, $_POST['cnpjPrest']);
     $nome = mysqli_escape_string($conexao, $_POST['nomePrest']);
@@ -70,8 +70,55 @@ if (isset($_POST['btn-editPrest'])){
     $cidade = mysqli_escape_string($conexao, $_POST['cidadePrest']);
     $uf = mysqli_escape_string($conexao, $_POST['ufPrest']);
 
-    $mensagem = editPrest($conexao, $id, $cnpj, $nome, $email, $tel, $senha, 
-                          $cep, $ende, $num, $comp, $bairro, $cidade, $uf);
+    $mensagem = editPrest(
+        $conexao,
+        $id,
+        $cnpj,
+        $nome,
+        $email,
+        $tel,
+        $senha,
+        $cep,
+        $ende,
+        $num,
+        $comp,
+        $bairro,
+        $cidade,
+        $uf
+    );
+}
+
+if (isset($_POST['btn-editCli'])) {
+    $id = mysqli_escape_string($conexao, $_POST['id']);
+    $nome = mysqli_escape_string($conexao, $_POST['nome']);
+    $cpf = mysqli_escape_string($conexao, $_POST['cpf']);
+    $email = mysqli_escape_string($conexao, $_POST['email']);
+    $tel = mysqli_escape_string($conexao, $_POST['tel']);
+    $senha = mysqli_escape_string($conexao, $_POST['senha']);
+    $ende = mysqli_escape_string($conexao, $_POST['ende']);
+    $num = mysqli_escape_string($conexao, $_POST['num']);
+    $comp = mysqli_escape_string($conexao, $_POST['comp']);
+    $bairro = mysqli_escape_string($conexao, $_POST['bairro']);
+    $cidade = mysqli_escape_string($conexao, $_POST['cidade']);
+    $uf = mysqli_escape_string($conexao, $_POST['uf']);
+    $cep = mysqli_escape_string($conexao, $_POST['cep']);
+
+    $mensagem = editCli(
+        $conexao,
+        $id,
+        $nome,
+        $cpf,
+        $email,
+        $tel,
+        $senha,
+        $ende,
+        $num,
+        $comp,
+        $bairro,
+        $cidade,
+        $uf,
+        $cep
+    );
 }
 
 ?>
