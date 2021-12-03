@@ -177,17 +177,25 @@ $page_name = basename($_SERVER['PHP_SELF']);
                                 <th class="column1">ID</th>
                                 <th class="column2">NOME</th>
                                 <th class="column3">CPF</th>
-                                <th class="column4">LOJA</th>
-                                <th class="column5">STATUS</th>
+                                <th class="column4">EMAIL</th>
+                                <th class="column5">TEL</th>
+                                <th class="column6">LOJA</th>
+                                <th class="column7">STATUS</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <?php foreach ($funcionarios as $funcionario) : ?>
                             <tr>
-                                <td class="column1"> <input type="text" name="id" value="<?php echo $funcionario['id']; ?>"></td>
-                                <td class="column2"> <?php echo $funcionario['nome']; ?> </td>
-                                <td class="column3"> <?php echo $funcionario['cpf']; ?> </td>
-                                <td class="column4"> <?php echo $funcionario['loja']; ?> </td>
-                                <td class="column5"> <?php echo $funcionario['status']; ?> </td>
+                                <form action="editFun.php" method="post">
+                                    <td class="column1"> <input type="text" name="id" value="<?php echo $funcionario['id']; ?>"></td>
+                                    <td class="column2"> <?php echo $funcionario['nome']; ?> </td>
+                                    <td class="column3"> <?php echo $funcionario['cpf']; ?> </td>
+                                    <td class="column4"> <?php echo $funcionario['email']; ?> </td>
+                                    <td class="column5"> <?php echo $funcionario['tel']; ?> </td>
+                                    <td class="column6"> <?php echo $funcionario['loja']; ?> </td>
+                                    <td class="column7"> <?php echo $funcionario['status']; ?> </td>
+                                    <td><button type="submit" name="btn-verF"id="botao">Editar</button></td>
+                                </form>
                             </tr>
                         <?php endforeach; ?>
                     </table>

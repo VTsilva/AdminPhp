@@ -359,6 +359,8 @@ function buscarFuncionario($conexao, $idLoja, $inicio, $qnt_result_pg)
     $sql = "select tb_funcionario.tb_funcionario_id as 'id',
 	               tb_funcionario.tb_funcionario_nome as 'nome',
 	               tb_funcionario.tb_funcionario_cpf as 'cpf',
+                   tb_funcionario.tb_funcionario_email as 'email',
+                   tb_funcionario.tb_funcionario_tel as 'tel',
                    tb_loja.tb_loja_nome as 'loja',
                    tb_status.tb_status_nome as 'status'
 	        from tb_funcionario
@@ -377,6 +379,32 @@ function buscarFuncionario($conexao, $idLoja, $inicio, $qnt_result_pg)
 
     return $funcionarios;
 }
+
+function verFuncionario($conexao, $id)
+{
+    $vFuncionarios = array();
+
+    $sql = "select tb_funcionario.tb_funcionario_id as 'id',
+            tb_funcionario.tb_funcionario_nome as 'nome',
+            tb_funcionario.tb_funcionario_cpf as 'cpf',
+            tb_funcionario.tb_funcionario_email as 'email',
+            tb_funcionario.tb_funcionario_tel as 'tel',
+            tb_funcionario.tb_funcionario_senha as 'senha',
+            tb_loja.tb_loja_nome as 'loja'
+        from tb_funcionario
+        inner join tb_loja
+        on tb_loja.tb_loja_id = tb_funcionario.tb_loja_id
+        inner join tb_status
+        on tb_status.tb_status_id = tb_funcionario.tb_status_id
+        where tb_funcionario.tb_funcionario_id = $id;";
+
+    $query = mysqli_query($conexao, $sql);
+
+    $vFuncionarios = mysqli_fetch_assoc($query);
+
+    return $vFuncionarios;
+}
+
 
 function contarFuncionario($conexao, $idLoja)
 {
@@ -606,4 +634,44 @@ function verPrestEdit($conexao, $id)
     $vPrestadores = mysqli_fetch_assoc($query);
 
     return $vPrestadores;
+}
+
+function editPrest($conexao, $id, $cnpj, $nome, $email, $tel, $senha, 
+$cep, $ende, $num, $comp, $bairro, $cidade, $uf)
+{
+
+    $sql = "update tb_loja
+            set tb_loja_cnpj = '$cnpj',
+            tb_loja_nome = '$nome',
+            tb_loja_email = '$email',
+            tb_loja_tel = '$tel',
+            tb_loja_senha = '$senha',
+            tb_loja_cep = '$cep',
+            tb_loja_endereco = '$ende',
+            tb_loja_num = '$num',
+            tb_loja_comp = '$comp',
+            tb_loja_bairro = '$bairro',
+            tb_loja_cidade = '$cidade',
+            tb_loja_uf = '$uf'
+            where tb_loja_id = $id;";
+
+    $query = mysqli_query($conexao, $sql);
+
+    return $mensagem = "Dados do prestador atualizados com sucesso. <button  class='btn-back'><a href='../prestadores/verPrest.php'>Voltar</a></button>";
+}
+
+function editFun($conexao, $id, $nome, $cpf, $email, $tel, $senha)
+{
+
+    $sql = "update tb_funcionario
+            set tb_funcionario_nome = '$nome',
+            tb_funcionario_cpf = '$cpf',
+            tb_funcionario_email = '$email',
+            tb_funcionario_tel = '$tel',
+            tb_funcionario_senha = '$senha'
+            where tb_funcionario_id = $id;";
+
+    $query = mysqli_query($conexao, $sql);
+
+    return $mensagem = "Dados do funcionário atualizados com sucesso. <button  class='btn-back'><a href='../prestadores/verPrest.php'>Voltar</a></button>";
 }

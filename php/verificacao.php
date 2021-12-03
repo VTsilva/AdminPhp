@@ -64,7 +64,7 @@ if (isset($_POST['btn-editPrest'])) {
     $senha = mysqli_escape_string($conexao, $_POST['senhaPrest']);
     $cep = mysqli_escape_string($conexao, $_POST['cepPrest']);
     $ende = mysqli_escape_string($conexao, $_POST['endPrest']);
-    $num = mysqli_escape_string($conexao, $_POST['num']);
+    $num = mysqli_escape_string($conexao, $_POST['numPrest']);
     $comp = mysqli_escape_string($conexao, $_POST['compPrest']);
     $bairro = mysqli_escape_string($conexao, $_POST['bairroPrest']);
     $cidade = mysqli_escape_string($conexao, $_POST['cidadePrest']);
@@ -119,6 +119,17 @@ if (isset($_POST['btn-editCli'])) {
         $uf,
         $cep
     );
+}
+
+if (isset($_POST['btn-editFun'])){
+    $id = mysqli_escape_string($conexao, $_POST['idFun']);
+    $nome = mysqli_escape_string($conexao, $_POST['nomeFun']);
+    $cpf = mysqli_escape_string($conexao, $_POST['cpfFun']);
+    $email = mysqli_escape_string($conexao, $_POST['emailFun']);
+    $tel = mysqli_escape_string($conexao, $_POST['telFun']);
+    $senha = mysqli_escape_string($conexao, $_POST['senhaFun']);
+
+    $mensagem = editFun($conexao, $id, $nome, $cpf, $email, $tel, $senha);
 }
 
 ?>
