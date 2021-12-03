@@ -104,8 +104,7 @@ $vPrestador = verPrestEdit($conexao, $id);
         <section>
             <center>
                 <form action="../php/verificacao.php" method="post">
-                    <input id="idPrest" type="text" name="id" disabled value="<?php echo $vPrestador['id']; ?>">
-                    <input id="idPrest" type="text" name="idPrest" style="display: none;" value="<?php echo $vPrestador['id']; ?>">
+                    <input id="idPrest" type="text" name="idPrest" readonly value="<?php echo $vPrestador['id']; ?>">
                     <input id="cnpjPrest" type="text" name="cnpjPrest" required value="<?php echo $vPrestador['cnpj']; ?>">
                     <input id="nomePrest" type="text" name="nomePrest" required value="<?php echo $vPrestador['nome']; ?>">
                     <input id="emailPrest" type="email" name="emailPrest" required value="<?php echo $vPrestador['email']; ?>">
