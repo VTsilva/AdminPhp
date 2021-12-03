@@ -1,10 +1,12 @@
 <?php
 include('../php/conexao.php');
-include("../php/funcoesPrest.php");
+include('../php/funcoesPrest.php');
 
-$id = $_COOKIE['idPrest'];
+$id = $_POST['id'];
+echo "<center>$id</center>";
 
-$vPrestador = verPrestEdit($conexao, $id);
+$vFuncionario = verFuncionario($conexao, $id);
+echo "<center>".$vFuncionario['id']."</center>";
 ?>
 
 <!DOCTYPE html>
@@ -24,17 +26,16 @@ $vPrestador = verPrestEdit($conexao, $id);
 
     <script>
         $(document).ready(function() {
-            $('#ufPrest').mask('SS');
-            $('#cnpjPrest').mask('00.000.000/0000-00');
-            $('#telPrest').mask('(00) 00000-0000');
-            $('#cepPrest').mask('00000-000');
+            $('#cpfFun').mask('000.000.000-00');
+            $('#telFun').mask('(00) 00000-0000');
         });
     </script>
 
-    <title>Editar prestador</title>
+    <title>Editar Funcionário</title>
 </head>
 <body>
-<div class="sidebar close">
+    
+    <div class="sidebar close">
         <div class="logo-details">
             <div class="img menu-side-bar"><img src="./../img/car-white.svg" alt=""></div>
             <div class="logo-name">VulCar</div>
@@ -96,39 +97,33 @@ $vPrestador = verPrestEdit($conexao, $id);
 
     <section class="home-section">
         <div class="outdoor">
-            <h2>Editar Prestador de Serviços</h2>
+            <h2>Editar Funcionário</h2>
         </div>
 
         <section>
             <center>
                 <form action="../php/verificacao.php" method="post">
-                    <input id="idPrest" type="text" name="id" disabled value="<?php echo $vPrestador['id'];?>">
-                    <input id="idPrest" type="text" name="idPrest" style="display: none;" value="<?php echo $vPrestador['id'];?>">
-                    <input id="cnpjPrest" type="text" name="cnpjPrest" required value="<?php echo $vPrestador['cnpj'];?>">
-                    <input id="nomePrest" type="text" name="nomePrest" required value="<?php echo $vPrestador['nome'];?>">
-                    <input id="emailPrest" type="email" name="emailPrest" required value="<?php echo $vPrestador['email'];?>">
-                    <input id="telPrest" type="text" name="telPrest" required value="<?php echo $vPrestador['tel'];?>">
-                    <input id="senhaPrest" type="text" name="senhaPrest" required value="<?php echo $vPrestador['senha'];?>">
-                    <input id="cepPrest" type="text" name="cepPrest" required value="<?php echo $vPrestador['cep'];?>">
-                    <input type="text" name="endPrest" required value="<?php echo $vPrestador['end'];?>">
-                    <input type="text" name="numPrest" required value="<?php echo $vPrestador['num'];?>">
-                    <input type="text" name="compPrest" value="<?php echo $vPrestador['comp'];?>">
-                    <input type="text" name="bairroPrest" required value="<?php echo $vPrestador['bairro'];?>">
-                    <input type="text" name="cidadePrest" required value="<?php echo $vPrestador['cidade'];?>">
-                    <input id="ufPrest" type="text" name="ufPrest" required value="<?php echo $vPrestador['uf'];?>">
+                    <input id="idFun" type="text" name="id" disabled value="<?php echo $vFuncionario['id'];?>">
+                    <input id="idFun" type="text" name="idFun" style="display: none;" value="<?php echo $vFuncionario['id'];?>">
+                    <input id="cpfFun" type="text" name="cpfFun" required value="<?php echo $vFuncionario['cpf'];?>">
+                    <input id="nomeFun" type="text" name="nomeFun" required value="<?php echo $vFuncionario['nome'];?>">
+                    <input id="emailFun" type="email" name="emailFun" required value="<?php echo $vFuncionario['email'];?>">
+                    <input id="telFun" type="text" name="telFun" required value="<?php echo $vFuncionario['tel'];?>">
+                    <input id="senhaFun" type="text" name="senhaFun" required value="<?php echo $vFuncionario['senha'];?>">
+                    <input id="lojaFun" type="text" name="lojaFun" disabled value="<?php echo $vFuncionario['loja'];?>">
 
-                    <button type="submit" name="btn-editPrest" class="btn-funcao">Salvar</button>
+                    <button type="submit" name="btn-editFun" class="btn-funcao">Salvar</button>
 
-                </form>    
+                </form>
 
                 <div>
-                    <button name="btn-cancelarEditPrest" class="btn-funcao"><a class="btn-funcao" href="../prestadores/verPrest.php">Cancelar</a></button>
+                    <button name="btn-cancelarEditFun" class="btn-funcao"><a class="btn-funcao" href="../prestadores/verPrest.php">Cancelar</a></button>
                 </div>
 
             </center>
         </section>
-        
+
     </section>
-    
+
 </body>
 </html>
