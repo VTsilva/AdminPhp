@@ -101,32 +101,36 @@ $vPrestador = verPrestEdit($conexao, $id);
             <h2>Editar Prestador de Serviços</h2>
         </div>
 
-        <section>
-            <center>
-                <form action="../php/verificacao.php" method="post">
-                    <input id="idPrest" type="text" name="idPrest" readonly value="<?php echo $vPrestador['id']; ?>">
-                    <input id="cnpjPrest" type="text" name="cnpjPrest" required value="<?php echo $vPrestador['cnpj']; ?>">
-                    <input id="nomePrest" type="text" name="nomePrest" required value="<?php echo $vPrestador['nome']; ?>">
-                    <input id="emailPrest" type="email" name="emailPrest" required value="<?php echo $vPrestador['email']; ?>">
-                    <input id="telPrest" type="text" name="telPrest" required value="<?php echo $vPrestador['tel']; ?>">
-                    <input id="senhaPrest" type="text" name="senhaPrest" required value="<?php echo $vPrestador['senha']; ?>">
-                    <input type="text" name="endPrest" required value="<?php echo $vPrestador['end']; ?>">
-                    <input type="text" name="numPrest" required value="<?php echo $vPrestador['num']; ?>">
-                    <input type="text" name="compPrest" value="<?php echo $vPrestador['comp']; ?>">
-                    <input type="text" name="bairroPrest" required value="<?php echo $vPrestador['bairro']; ?>">
-                    <input type="text" name="cidadePrest" required value="<?php echo $vPrestador['cidade']; ?>">
-                    <input id="ufPrest" type="text" name="ufPrest" required value="<?php echo $vPrestador['uf']; ?>">
-                    <input id="cepPrest" type="text" name="cepPrest" required value="<?php echo $vPrestador['cep']; ?>">
-
+        <section class="section-sla">
+            <form action="../php/verificacao.php" method="post" class="form-edit">
+                <div class="sla">
+                    <div class="info1">
+                        <label>ID: </label> <input id="idPrest" type="text" name="idPrest" readonly value="<?php echo $vPrestador['id']; ?>">
+                        <label>CNPJ: </label><input id="cnpjPrest" type="text" name="cnpjPrest" required value="<?php echo $vPrestador['cnpj']; ?>">
+                        <label>NOME: </label><input id="nomePrest" type="text" name="nomePrest" required value="<?php echo $vPrestador['nome']; ?>">
+                        <label>EMAIL: </label><input id="emailFrm" type="email" name="emailPrest" required value="<?php echo $vPrestador['email']; ?>">
+                        <label>TEL: </label><input id="telPrest" type="text" name="telPrest" required value="<?php echo $vPrestador['tel']; ?>">
+                        <label>SENHA: </label><input id="senhaPrest" type="text" name="senhaPrest" required value="<?php echo $vPrestador['senha']; ?>">
+                    </div>
+                    <div class="info2">
+                        <label>ENDEREÇO: </label><input type="text" name="endPrest" required value="<?php echo $vPrestador['end']; ?>">
+                        <label>NUMERO: </label><input type="text" name="numPrest" required value="<?php echo $vPrestador['num']; ?>">
+                        <label>COMPLEMENTO: </label><input type="text" name="compPrest" value="<?php echo $vPrestador['comp']; ?>">
+                        <label>BAIRRO: </label><input type="text" name="bairroPrest" required value="<?php echo $vPrestador['bairro']; ?>">
+                        <label>CIDADE: </label><input type="text" name="cidadePrest" required value="<?php echo $vPrestador['cidade']; ?>">
+                        <label>UF: </label><input id="ufPrest" type="text" name="ufPrest" required value="<?php echo $vPrestador['uf']; ?>">
+                        <label>CEP: </label><input id="cepPrest" type="text" name="cepPrest" required value="<?php echo $vPrestador['cep']; ?>">
+                    </div>
+                </div>
+                <div class="btn-edit">
                     <button type="submit" name="btn-editPrest" class="btn-funcao">Salvar</button>
 
-                </form>
 
-                <div>
-                    <button name="btn-cancelarEditPrest" class="btn-funcao"><a class="btn-funcao" href="../prestadores/verPrest.php">Cancelar</a></button>
-                </div>
+            </form>
 
-            </center>
+
+            <button name="btn-cancelarEditPrest" class="btn-funcao"><a class="btn-funcao" href="../prestadores/verPrest.php">Cancelar</a></button>
+            </div>
         </section>
 
     </section>

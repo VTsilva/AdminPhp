@@ -3,14 +3,12 @@ include('../php/conexao.php');
 include('../php/funcoesPrest.php');
 
 $id = $_POST['id'];
-echo "<center>$id</center>";
-
 $vFuncionario = verFuncionario($conexao, $id);
-echo "<center>".$vFuncionario['id']."</center>";
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,8 +31,9 @@ echo "<center>".$vFuncionario['id']."</center>";
 
     <title>Editar Funcionário</title>
 </head>
+
 <body>
-    
+
     <div class="sidebar close">
         <div class="logo-details">
             <div class="img menu-side-bar"><img src="./../img/car-white.svg" alt=""></div>
@@ -100,30 +99,34 @@ echo "<center>".$vFuncionario['id']."</center>";
             <h2>Editar Funcionário</h2>
         </div>
 
-        <section>
-            <center>
-                <form action="../php/verificacao.php" method="post">
-                    <input id="idFun" type="text" name="id" disabled value="<?php echo $vFuncionario['id'];?>">
-                    <input id="idFun" type="text" name="idFun" style="display: none;" value="<?php echo $vFuncionario['id'];?>">
-                    <input id="cpfFun" type="text" name="cpfFun" required value="<?php echo $vFuncionario['cpf'];?>">
-                    <input id="nomeFun" type="text" name="nomeFun" required value="<?php echo $vFuncionario['nome'];?>">
-                    <input id="emailFun" type="email" name="emailFun" required value="<?php echo $vFuncionario['email'];?>">
-                    <input id="telFun" type="text" name="telFun" required value="<?php echo $vFuncionario['tel'];?>">
-                    <input id="senhaFun" type="text" name="senhaFun" required value="<?php echo $vFuncionario['senha'];?>">
-                    <input id="lojaFun" type="text" name="lojaFun" disabled value="<?php echo $vFuncionario['loja'];?>">
-
+        <section class="section-sla">
+            <form action="../php/verificacao.php" method="post" class="form-edit">
+                <div class="sla">
+                    <div class="info1">
+                        <label>ID: </label><input id="idFun" type="text" readonly name="id" value="<?php echo $vFuncionario['id']; ?>">
+                        <label>CPF: </label><input id="cpfFun" type="text" name="cpfFun" required value="<?php echo $vFuncionario['cpf']; ?>">
+                        <label>NOME: </label><input id="nomeFun" type="text" name="nomeFun" required value="<?php echo $vFuncionario['nome']; ?>">
+                        <label>EMAIL: </label><input id="emailFrm" type="email" name="emailFun" required value="<?php echo $vFuncionario['email']; ?>">
+                    </div>
+                    <div class="info2">
+                        <label>TEL: </label><input id="telFun" type="text" name="telFun" required value="<?php echo $vFuncionario['tel']; ?>">
+                        <label>SENHA: </label><input id="senhaFun" type="text" name="senhaFun" required value="<?php echo $vFuncionario['senha']; ?>">
+                        <label>LOJA: </label><input id="lojaFun" type="text" name="lojaFun" disabled value="<?php echo $vFuncionario['loja']; ?>">
+                    </div>
+                </div>
+                <div class="btn-edit">
                     <button type="submit" name="btn-editFun" class="btn-funcao">Salvar</button>
 
-                </form>
+            </form>
 
-                <div>
-                    <button name="btn-cancelarEditFun" class="btn-funcao"><a class="btn-funcao" href="../prestadores/verPrest.php">Cancelar</a></button>
-                </div>
 
-            </center>
+            <button name="btn-cancelarEditFun" class="btn-funcao"><a class="btn-funcao" href="../prestadores/verPrest.php">Cancelar</a></button>
+            </div>
+
         </section>
 
     </section>
 
 </body>
+
 </html>

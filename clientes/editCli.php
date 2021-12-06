@@ -110,30 +110,34 @@ $eClies = verCliEdit($conexao, $id);
             <h2>Editar Cliente</h2>
         </div>
 
-        <section>
-            <center>
-                <form action="../php/verificacao.php" method="post">
-                    <input type="text" disabled name="teste" value="<?php echo $eClies['id']; ?>">
-                    <input type="text" style="display: none;" name="id" value="<?php echo $eClies['id']; ?>">
-                    <input type="text" required name="nome" value="<?php echo $eClies['nome']; ?>">
-                    <input type="text" required name="cpf" id="cpf" value="<?php echo $eClies['cpf']; ?>">
-                    <input type="text" required name="email" value="<?php echo $eClies['email']; ?>">
-                    <input type="text" required name="tel" id="tel" value="<?php echo $eClies['tel']; ?>">
-                    <input type="text" required name="senha" value="<?php echo $eClies['senha']; ?>">
-                    <input type="text" required name="ende" value="<?php echo $eClies['ende']; ?>">
-                    <input type="text" required name="num" value="<?php echo $eClies['num']; ?>">
-                    <input type="text" required name="comp" value="<?php echo $eClies['comp']; ?>">
-                    <input type="text" required name="bairro" value="<?php echo $eClies['bairro']; ?>">
-                    <input type="text" required name="cidade" value="<?php echo $eClies['cidade']; ?>">
-                    <input type="text" required name="uf" id="uf" style="text-transform: uppercase;" value="<?php echo $eClies['uf']; ?>">
-                    <input type="text" required name="cep" id="cep" value="<?php echo $eClies['cep']; ?>">
-
-                    <button type="submit" name="btn-editCli" class="btn-funcao">Salvar</button>
-                </form>
-                <div>
-                    <button class="btn-funcao"><a href="verCli.php"> Cancelar</a></button>
+        <section class="section-sla">
+            <form action="../php/verificacao.php" method="post" class="form-edit">
+                <div class="sla">
+                    <div class="info1">
+                        <label>ID: </label><input type="text" readonly name="id" value="<?php echo $eClies['id']; ?>">
+                        <label>NOME: </label><input type="text" required name="nome" value="<?php echo $eClies['nome']; ?>">
+                        <label>CPF: </label><input type="text" required name="cpf" id="cpf" value="<?php echo $eClies['cpf']; ?>">
+                        <label>EMAIL: </label><input type="text" id="emailFrm" required name="email" id="emailFrm" value="<?php echo $eClies['email']; ?>">
+                        <label>TEL: </label><input type="text" required name="tel" id="tel" value="<?php echo $eClies['tel']; ?>">
+                        <label>SENHA: </label><input type="text" required name="senha" value="<?php echo $eClies['senha']; ?>">
+                    </div>
+                    <div class="info2">
+                        <label>ENDEREÇO: </label><input type="text" required name="ende" value="<?php echo $eClies['ende']; ?>">
+                        <label>NÚMERO: </label><input type="text" required name="num" value="<?php echo $eClies['num']; ?>">
+                        <label>COMPLEMENTO: </label><input type="text" required name="comp" value="<?php echo $eClies['comp']; ?>">
+                        <label>BAIRRO: </label><input type="text" required name="bairro" value="<?php echo $eClies['bairro']; ?>">
+                        <label>CIDADE: </label><input type="text" required name="cidade" value="<?php echo $eClies['cidade']; ?>">
+                        <label>UF: </label><input type="text" required name="uf" id="uf" style="text-transform: uppercase;" value="<?php echo $eClies['uf']; ?>">
+                        <label>CEP: </label><input type="text" required name="cep" id="cep" value="<?php echo $eClies['cep']; ?>">
+                    </div>
                 </div>
-            </center>
+                <div class="btn-edit">
+                    <button type="submit" name="btn-editCli" class="btn-funcao">Salvar</button>
+            </form>
+
+            <button class="btn-funcao"><a href="verCli.php" class="btn-funcao"> Cancelar</a></button>
+            </div>
+
         </section>
 
     </section>
