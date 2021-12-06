@@ -15,7 +15,7 @@ try {
 
 $vCliente = verCliente($conexao, $id);
 
-$automoveis = buscarAuto($conexao, $id);
+$automoveis = buscarAuto($conexao, $id, $inicio, $qnt_result_pg);
 
 $nAuto = contarAuto($conexao, $id);
 
@@ -175,14 +175,9 @@ $page_name = basename($_SERVER['PHP_SELF']);
                                 <td class="column5"> <?php echo $automovel['categoria']; ?> </td>
                             </tr>
                         <?php endforeach; ?>
-                </div>
-            </section>
-        </section>
-    </section>
+                    </table>
 
-    <script src="./../js/animacao.js"></script>
-
-    <?php
+                        <?php
     if ($quantidade_pg > 1) {
         include('../php/menuPaginas.php');
     } else {
@@ -190,6 +185,17 @@ $page_name = basename($_SERVER['PHP_SELF']);
     }
 
     ?>
+
+                </div>
+              
+            </section>
+        </section>
+       
+    </section>
+
+    <script src="./../js/animacao.js"></script>
+
+   
 
 </body>
 

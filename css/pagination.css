@@ -1,4 +1,4 @@
-.section-pag{
+/* .section-pag{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,9 +6,11 @@
 
 .div-pag{
     background-color: #2F343D;
-    padding: 6px;
+    padding: 10px;
+    padding-left: 75px;
+    padding-right: 75px;
     border-radius: 8px;
-    width: 8%;
+    width: 5px;
     display: flex;
     justify-content: center;
 }
@@ -22,11 +24,10 @@
 #btn-pagina:hover{
     transition: 0.3s;
     color: rgb(163, 163, 163);
-}
-/* #btn-pagina{
+} */
+#btn-pagina{
+    font-size: 17px;
     background-color: #2F343D;
-    border-radius: 10px 10px 10px 10px;
-    margin: 0.5px;
     color: white;
     text-decoration: none;
    padding: 10px;
@@ -35,18 +36,53 @@
 #btn-pagina:hover{
     transition: 0.5s;
     color: rgb(163, 163, 163);
+    background-color: #1d2025;
 }
 
 #btn-pagina-atual{
+    font-size: 17px;
     background-color: rgb(163, 163, 163);
-    border-radius: 10px 10px 10px 10px;
-    margin: 0.5px;
     color: #2F343D;
     text-decoration: none;
+    margin-top: 10px;
     padding: 10px;
 }
 
 #btn-pagina-atual:hover{
     transition: 0.5s;
     color:white;
-} */
+}
+
+#btn-pagina-primeira{
+    font-size: 17px;
+    background-color: #2F343D;
+    color: white;
+    border-radius: 8px 0px 0px 8px;
+    text-decoration: none;
+   padding: 10px;
+}
+
+#btn-pagina-primeira:hover{
+    transition: 0.5s;
+    color: rgb(163, 163, 163);
+    background-color: #1d2025;
+}
+
+#btn-pagina-ultima{
+    font-size: 17px;
+    background-color: #2F343D;
+    color: white;
+    border-radius: 0px 8px 8px 0px;
+    text-decoration: none;
+   padding: 10px;
+}
+
+#btn-pagina-ultima:hover{
+    transition: 0.5s;
+    color: rgb(163, 163, 163);
+    background-color: #1d2025;
+}
+
+.div-pag{
+    margin: 10px;
+}

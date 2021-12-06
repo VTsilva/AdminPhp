@@ -133,7 +133,7 @@ $page_name = basename($_SERVER['PHP_SELF']);
                                 </div>
                               </div>
                             ";
-                    } elseif ($status == 'EM ANÁLISE') {
+                    } elseif ($status == 'EM ANALISE') {
                         echo "<div class='vorca'>
                                 <form action='editPrest.php'>
                                     <button type='submit' class='btn-funcao' style='margin-right: 5px;'>Editar</button>

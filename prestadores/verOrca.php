@@ -4,7 +4,7 @@ include('../php/funcoesPrest.php');
 
 $idOrca = $_POST['idOrca'];
 
-$orcamentos = vOrca($conexao, $idOrca);
+$orcamentos = vOrca($conexao, $idOrca, $inicio, $qnt_result_pg);
 $detalhaOrcas = detalhaOrca($conexao, $idOrca, $inicio, $qnt_result_pg);
 $nDetalhe = contaDetalhe($conexao, $idOrca);
 $quantidade_pg = quantidadePg($qnt_result_pg, contaDetalhe($conexao, $idOrca));
