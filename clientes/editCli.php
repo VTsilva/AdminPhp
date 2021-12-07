@@ -114,19 +114,19 @@ $eClies = verCliEdit($conexao, $id);
             <form action="../php/verificacao.php" method="post" class="form-edit">
                 <div class="sla">
                     <div class="info1">
-                        <label>ID: </label><input type="text" readonly name="id" value="<?php echo $eClies['id']; ?>">
-                        <label>NOME: </label><input type="text" required name="nome" value="<?php echo $eClies['nome']; ?>">
+                        <label>Id: </label><input type="text" readonly name="id" value="<?php echo $eClies['id']; ?>">
+                        <label>Nome: </label><input type="text" required name="nome" value="<?php echo $eClies['nome']; ?>">
                         <label>CPF: </label><input type="text" required name="cpf" id="cpf" value="<?php echo $eClies['cpf']; ?>">
-                        <label>EMAIL: </label><input type="text" id="emailFrm" required name="email" id="emailFrm" value="<?php echo $eClies['email']; ?>">
-                        <label>TEL: </label><input type="text" required name="tel" id="tel" value="<?php echo $eClies['tel']; ?>">
-                        <label>SENHA: </label><input type="text" required name="senha" value="<?php echo $eClies['senha']; ?>">
+                        <label>Email: </label><input type="text" id="emailFrm" required name="email" id="emailFrm" value="<?php echo $eClies['email']; ?>">
+                        <label>Tel: </label><input type="text" required name="tel" id="tel" value="<?php echo $eClies['tel']; ?>">
+                        <label>Senha: </label><input type="text" required name="senha" value="<?php echo $eClies['senha']; ?>">
                     </div>
                     <div class="info2">
-                        <label>ENDEREÇO: </label><input type="text" required name="ende" value="<?php echo $eClies['ende']; ?>">
-                        <label>NÚMERO: </label><input type="text" required name="num" value="<?php echo $eClies['num']; ?>">
-                        <label>COMPLEMENTO: </label><input type="text" required name="comp" value="<?php echo $eClies['comp']; ?>">
-                        <label>BAIRRO: </label><input type="text" required name="bairro" value="<?php echo $eClies['bairro']; ?>">
-                        <label>CIDADE: </label><input type="text" required name="cidade" value="<?php echo $eClies['cidade']; ?>">
+                        <label>Endereço: </label><input type="text" required name="ende" value="<?php echo $eClies['ende']; ?>">
+                        <label>Número: </label><input type="text" required name="num" value="<?php echo $eClies['num']; ?>">
+                        <label>Complemento: </label><input type="text" name="comp" value="<?php echo $eClies['comp']; ?>">
+                        <label>Bairro: </label><input type="text" required name="bairro" value="<?php echo $eClies['bairro']; ?>">
+                        <label>Cidade: </label><input type="text" required name="cidade" value="<?php echo $eClies['cidade']; ?>">
                         <label>UF: </label><input type="text" required name="uf" id="uf" style="text-transform: uppercase;" value="<?php echo $eClies['uf']; ?>">
                         <label>CEP: </label><input type="text" required name="cep" id="cep" value="<?php echo $eClies['cep']; ?>">
                     </div>

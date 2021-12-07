@@ -18,8 +18,7 @@ $vPrestador = verPrestEdit($conexao, $id);
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/table.css">
-    <link rel="stylesheet" href="../css/editPrest.css">
-
+    
     <script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
     <script type="text/javascript" src="../js/jquery.mask.js"></script>
 
@@ -105,19 +104,19 @@ $vPrestador = verPrestEdit($conexao, $id);
             <form action="../php/verificacao.php" method="post" class="form-edit">
                 <div class="sla">
                     <div class="info1">
-                        <label>ID: </label> <input id="idPrest" type="text" name="idPrest" readonly value="<?php echo $vPrestador['id']; ?>">
+                        <label>Id: </label> <input id="idPrest" type="text" name="idPrest" readonly value="<?php echo $vPrestador['id']; ?>">
                         <label>CNPJ: </label><input id="cnpjPrest" type="text" name="cnpjPrest" required value="<?php echo $vPrestador['cnpj']; ?>">
-                        <label>NOME: </label><input id="nomePrest" type="text" name="nomePrest" required value="<?php echo $vPrestador['nome']; ?>">
-                        <label>EMAIL: </label><input id="emailFrm" type="email" name="emailPrest" required value="<?php echo $vPrestador['email']; ?>">
-                        <label>TEL: </label><input id="telPrest" type="text" name="telPrest" required value="<?php echo $vPrestador['tel']; ?>">
-                        <label>SENHA: </label><input id="senhaPrest" type="text" name="senhaPrest" required value="<?php echo $vPrestador['senha']; ?>">
+                        <label>Nome: </label><input id="nomePrest" type="text" name="nomePrest" required value="<?php echo $vPrestador['nome']; ?>">
+                        <label>Email: </label><input id="emailFrm" type="email" name="emailPrest" required value="<?php echo $vPrestador['email']; ?>">
+                        <label>Tel: </label><input id="telPrest" type="text" name="telPrest" required value="<?php echo $vPrestador['tel']; ?>">
+                        <label>Senha: </label><input id="senhaPrest" type="text" name="senhaPrest" required value="<?php echo $vPrestador['senha']; ?>">
                     </div>
                     <div class="info2">
-                        <label>ENDEREÇO: </label><input type="text" name="endPrest" required value="<?php echo $vPrestador['end']; ?>">
-                        <label>NUMERO: </label><input type="text" name="numPrest" required value="<?php echo $vPrestador['num']; ?>">
-                        <label>COMPLEMENTO: </label><input type="text" name="compPrest" value="<?php echo $vPrestador['comp']; ?>">
-                        <label>BAIRRO: </label><input type="text" name="bairroPrest" required value="<?php echo $vPrestador['bairro']; ?>">
-                        <label>CIDADE: </label><input type="text" name="cidadePrest" required value="<?php echo $vPrestador['cidade']; ?>">
+                        <label>Endereço: </label><input type="text" name="endPrest" required value="<?php echo $vPrestador['end']; ?>">
+                        <label>Número: </label><input type="text" name="numPrest" required value="<?php echo $vPrestador['num']; ?>">
+                        <label>Complemento: </label><input type="text" name="compPrest" value="<?php echo $vPrestador['comp']; ?>">
+                        <label>Bairro: </label><input type="text" name="bairroPrest" required value="<?php echo $vPrestador['bairro']; ?>">
+                        <label>Cidade: </label><input type="text" name="cidadePrest" required style="text-transform: uppercase;" value="<?php echo $vPrestador['cidade']; ?>">
                         <label>UF: </label><input id="ufPrest" type="text" name="ufPrest" required value="<?php echo $vPrestador['uf']; ?>">
                         <label>CEP: </label><input id="cepPrest" type="text" name="cepPrest" required value="<?php echo $vPrestador['cep']; ?>">
                     </div>

@@ -424,7 +424,7 @@ function contarFuncionario($conexao, $idLoja)
 // 
 // 
 // 
-function vOrca($conexao, $idOrca)
+function vOrca($conexao, $idOrca, $inicio, $qnt_result_pg)
 {
     $vOrca = array();
 
@@ -448,7 +448,8 @@ function vOrca($conexao, $idOrca)
             on tb_total.tb_orcamento_id = tb_orcamento.tb_orcamento_id
             inner join tb_avaliacao
             on tb_avaliacao.tb_orcamento_id = tb_orcamento.tb_orcamento_id
-            where tb_orcamento.tb_orcamento_id = $idOrca;";
+            where tb_orcamento.tb_orcamento_id = $idOrca
+            LIMIT $inicio, $qnt_result_pg;";
 
     $query = mysqli_query($conexao, $sql);
 
@@ -464,27 +465,27 @@ function vOrcaP($conexao, $idLoja, $inicio, $qnt_result_pg)
     $vOrca = array();
 
     $sql = "select tb_orcamento.tb_orcamento_id as 'id',
-                   tb_cliente.tb_cliente_nome as 'cliente',
-                   tb_cliente.tb_cliente_id as 'idCliente', 
-                   tb_loja.tb_loja_nome as 'loja',
-                   tb_loja.tb_loja_id as 'idLoja',
-                   tb_status.tb_status_nome as 'status',
-                   tb_total.tb_total_valor as 'valorTotal',
-                   tb_avaliacao.tb_avaliacao_indice as 'avaliacao',
-                   tb_orcamento.tb_orcamento_dt as 'data'
-            from tb_orcamento
-            inner join tb_cliente
-            on tb_cliente.tb_cliente_id = tb_orcamento.tb_orcamento_id
-            inner join tb_loja
-            on tb_loja.tb_loja_id = tb_orcamento.tb_loja_id
-            inner join tb_status
-            on tb_status.tb_status_id = tb_orcamento.tb_status_id
-            inner join tb_total
-            on tb_total.tb_orcamento_id = tb_orcamento.tb_orcamento_id
-            inner join tb_avaliacao
-            on tb_avaliacao.tb_orcamento_id = tb_orcamento.tb_orcamento_id
-            where tb_loja.tb_loja_id = $idLoja
-            LIMIT $inicio, $qnt_result_pg;";
+            tb_cliente.tb_cliente_id as 'idcliente',
+            tb_cliente.tb_cliente_nome as 'nomecliente',
+            tb_loja.tb_loja_id as 'idloja',
+            tb_loja.tb_loja_nome as 'nomeloja',
+            tb_status.tb_status_nome as 'status',
+            tb_total.tb_total_valor as 'valor',
+            tb_avaliacao.tb_avaliacao_indice as 'avaliacao',
+            tb_orcamento.tb_orcamento_dt as 'data'
+        from tb_orcamento
+        inner join tb_cliente
+        on tb_cliente.tb_cliente_id = tb_orcamento.tb_cliente_id
+        inner join tb_loja
+        on tb_loja.tb_loja_id = tb_orcamento.tb_loja_id
+        inner join tb_status
+        on tb_status.tb_status_id = tb_orcamento.tb_status_id
+        inner join tb_total
+        on tb_total.tb_orcamento_id = tb_orcamento.tb_orcamento_id
+        inner join tb_avaliacao
+        on tb_avaliacao.tb_orcamento_id = tb_orcamento.tb_orcamento_id
+                    where tb_loja.tb_loja_id = $idLoja
+                    LIMIT $inicio, $qnt_result_pg;";
 
     $query = mysqli_query($conexao, $sql);
 

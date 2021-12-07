@@ -520,9 +520,10 @@ input[type="password"] {
 
 .sla{
     display: flex;
-    flex-direction: row;    
+    flex-direction: row;  
+    padding: 10px;  
     border-radius: 10px;
-    background-color: rgb(223, 223, 223);
+    background-color: #2F343D;
     box-shadow: 0 7px 10px 0 rgb(18 19 20 / 54%);
 }
 
@@ -531,10 +532,19 @@ input[type="password"] {
     margin-right: 5px;
 }
 
+
 .info1 input{
-    background-color: #2F343D;
-    color: white;
+    background-color: #2F343D;    
+    color: rgb(223, 223, 223);
+    border: 2px solid rgb(223, 223, 223) !important; 
+    border-radius: 10px;
+    margin-bottom: 15px !important;
     text-align: left;
+}
+
+.info1 input:focus{
+    border-radius: 0px;
+    border-bottom-color: rgb(223, 223, 223) !important;
 }
 
 .info2{
@@ -544,8 +554,16 @@ input[type="password"] {
 
 .info2 input{
     background-color: #2F343D;
-    color: white;
+    color: rgb(223, 223, 223);
+    border: 2px solid rgb(223, 223, 223) !important; 
+    border-radius: 10px;
+    margin-bottom: 15px !important;
     text-align: left;
+}
+
+.info2 input:focus{
+    border-radius: 0px;
+    border-bottom-color: rgb(223, 223, 223) !important;
 }
 
 .btn-edit{
@@ -556,6 +574,17 @@ input[type="password"] {
 #emailFrm{
     width: 200px;
     height: 30px;
-    border-radius: 3px;
+    border-radius: 10px;
     padding-left: 4px;
+}
+
+#emailFrm:focus{
+    border-radius: 0px;
+    border-bottom-color: rgb(223, 223, 223) !important;
+}
+
+label{
+    font-size: 13px;
+    font-weight: bold;
+    color: rgb(223, 223, 223);
 }

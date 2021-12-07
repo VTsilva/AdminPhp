@@ -130,7 +130,7 @@ function verCliente($conexao, $idCli)
     return mysqli_fetch_assoc($vCliente);
 }
 
-function buscarAuto($conexao, $id)
+function buscarAuto($conexao, $id, $inicio, $qnt_result_pg)
 {
     $automoveis = array();
 
@@ -144,7 +144,8 @@ function buscarAuto($conexao, $id)
             on tb_marca.tb_marca_id = tb_automovel.tb_marca_id
             inner join tb_categoria
             on tb_categoria.tb_categoria_id = tb_automovel.tb_categoria_id
-            where tb_automovel.tb_cliente_id = '$id';";
+            where tb_automovel.tb_cliente_id = '$id'
+            LIMIT $inicio, $qnt_result_pg;";
 
     $query = mysqli_query($conexao, $sql);
 

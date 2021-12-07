@@ -103,15 +103,15 @@ $vFuncionario = verFuncionario($conexao, $id);
             <form action="../php/verificacao.php" method="post" class="form-edit">
                 <div class="sla">
                     <div class="info1">
-                        <label>ID: </label><input id="idFun" type="text" readonly name="id" value="<?php echo $vFuncionario['id']; ?>">
+                        <label>Id: </label><input id="idFun" type="text" readonly name="id" value="<?php echo $vFuncionario['id']; ?>">
                         <label>CPF: </label><input id="cpfFun" type="text" name="cpfFun" required value="<?php echo $vFuncionario['cpf']; ?>">
-                        <label>NOME: </label><input id="nomeFun" type="text" name="nomeFun" required value="<?php echo $vFuncionario['nome']; ?>">
-                        <label>EMAIL: </label><input id="emailFrm" type="email" name="emailFun" required value="<?php echo $vFuncionario['email']; ?>">
+                        <label>Nome: </label><input id="nomeFun" type="text" name="nomeFun" required value="<?php echo $vFuncionario['nome']; ?>">
+                        <label>Email: </label><input id="emailFrm" type="email" name="emailFun" required value="<?php echo $vFuncionario['email']; ?>">
                     </div>
                     <div class="info2">
-                        <label>TEL: </label><input id="telFun" type="text" name="telFun" required value="<?php echo $vFuncionario['tel']; ?>">
-                        <label>SENHA: </label><input id="senhaFun" type="text" name="senhaFun" required value="<?php echo $vFuncionario['senha']; ?>">
-                        <label>LOJA: </label><input id="lojaFun" type="text" name="lojaFun" disabled value="<?php echo $vFuncionario['loja']; ?>">
+                        <label>Tel: </label><input id="telFun" type="text" name="telFun" required value="<?php echo $vFuncionario['tel']; ?>">
+                        <label>Senha: </label><input id="senhaFun" type="text" name="senhaFun" required value="<?php echo $vFuncionario['senha']; ?>">
+                        <label>Loja: </label><input id="lojaFun" type="text" name="lojaFun" disabled value="<?php echo $vFuncionario['loja']; ?>">
                     </div>
                 </div>
                 <div class="btn-edit">

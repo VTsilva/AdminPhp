@@ -3,9 +3,9 @@
 
 // $conexao =  mysqli_connect('172.20.10.13', 'root', 'no3699b601091996', 'bd_vulcar', '3306');
 
-$conexao =  mysqli_connect('localhost', 'root', 'vs521733', 'bd_vulcar', '3308');
+// $conexao =  mysqli_connect('localhost', 'root', 'vs521733', 'bd_vulcar', '3308');
 
-// $conexao =  mysqli_connect('localhost', 'root', '', 'bd_vulcar', '3306');
+$conexao =  mysqli_connect('localhost', 'root', '', 'bd_vulcar', '3306');
 
 // PAGINAÇÃO
 

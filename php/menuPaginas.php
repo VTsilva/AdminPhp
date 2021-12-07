@@ -2,7 +2,7 @@
 <section class="section-pag">
     <div class="div-pag">
         <?php
-        echo "<a href='$page_name?pagina=1' id='btn-pagina'> « </a>";
+        echo "<a href='$page_name?pagina=1' id='btn-pagina-primeira'> « </a>";
 
         for ($pag_ant = $pagina - $max_links; $pag_ant <= $pagina - 1; $pag_ant++) {
             if ($pag_ant >= 1)
@@ -16,7 +16,7 @@
                 echo "<a href='$page_name?pagina=$pag_dep' id='btn-pagina'> $pag_dep </a>";
         }
 
-        echo "<a href='$page_name?pagina=$quantidade_pg' id='btn-pagina'> » </a>";
+        echo "<a href='$page_name?pagina=$quantidade_pg' id='btn-pagina-ultima'> » </a>";
         ?>
     </div>
 </section>

@@ -2,7 +2,7 @@
 include('../php/conexao.php');
 include('../php/funcoesPrest.php');
 
-$id = $_POST['id'];
+$id = $_COOKIE['idPrest'];
 
 $orcamentos = vOrcaP($conexao, $id, $inicio, $qnt_result_pg);
 
@@ -176,12 +176,12 @@ $page_name = basename($_SERVER['PHP_SELF']);
                         <tr>
                             <form action="verOrca.php" method="post">
                                 <td class="column1"> <input type="text" name="idOrca" value="<?php echo $orcamento['id']; ?>"></td>
-                                <td class="column4"> <?php echo $orcamento['cliente']; ?> </td>
-                                <td class="column1"> <?php echo $orcamento['idCliente']; ?> </td>
-                                <td class="column4"> <?php echo $orcamento['loja']; ?> </td>
-                                <td class="column1"> <?php echo $orcamento['idLoja']; ?></td>
+                                <td class="column4"> <?php echo $orcamento['nomecliente']; ?> </td>
+                                <td class="column1"> <?php echo $orcamento['idcliente']; ?> </td>
+                                <td class="column4"> <?php echo $orcamento['nomeloja']; ?> </td>
+                                <td class="column1"> <?php echo $orcamento['idloja']; ?></td>
                                 <td class="column4"> <?php echo $orcamento['status']; ?> </td>
-                                <td class="column4"> <?php echo $orcamento['valorTotal']; ?> </td>
+                                <td class="column4"> <?php echo $orcamento['valor']; ?> </td>
                                 <td class="column1"> <?php echo $orcamento['avaliacao']; ?> </td>
                                 <td class="column4"> <?php echo $orcamento['data']; ?> </td>
 
