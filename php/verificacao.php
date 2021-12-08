@@ -121,8 +121,8 @@ if (isset($_POST['btn-editCli'])) {
     );
 }
 
-if (isset($_POST['btn-editFun'])){
-    $id = mysqli_escape_string($conexao, $_POST['idFun']);
+if (isset($_POST['btn-editFun'])) {
+    $id = mysqli_escape_string($conexao, $_POST['id']);
     $nome = mysqli_escape_string($conexao, $_POST['nomeFun']);
     $cpf = mysqli_escape_string($conexao, $_POST['cpfFun']);
     $email = mysqli_escape_string($conexao, $_POST['emailFun']);
